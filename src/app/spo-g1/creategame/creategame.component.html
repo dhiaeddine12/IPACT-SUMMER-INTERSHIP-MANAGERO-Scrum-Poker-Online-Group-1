@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning Poker Online</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #333333;
+    }
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Planning Poker Game Setup</h1>
+    <div class="input-group">
+        <label for="gameName">Game Name</label>
+        <input type="text" id="gameName" placeholder="Enter game name">
+      </div>
+      <div class="input-group">
+        <label for="votingSystem">Voting System</label>
+        <select id="votingSystem">
+          <option value="fibonacci">Fibonacci</option>
+          <option value="powers-of-2">Powers of 2</option>
+          <option value="t-shirt-sizes">T-Shirt Sizes</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="button" onclick="startGame()">Start Game</a>
+      </div>
+    </div>
+ 
+
+  <script>
+    function openModal() {
+      document.getElementById('gameModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('gameModal').style.display = 'none';
+    }
+
+    function startGame() {
+      const gameName = document.getElementById('gameName').value;
+      const votingSystem = document.getElementById('votingSystem').value;
+      if (gameName && votingSystem) {
+        // Here you would typically navigate to the actual game page or set up the game session
+        alert(`Starting game: ${gameName} with ${votingSystem} voting system`);
+        closeModal();
+      } else {
+        alert('Please enter a game name and select a voting system');
+      }
+    }
+
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('gameModal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
