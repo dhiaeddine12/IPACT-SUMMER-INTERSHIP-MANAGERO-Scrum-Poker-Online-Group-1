@@ -23,7 +23,7 @@ import { SpoG1Module } from '../spo-g1/spo-g1.module';
   ],
   declarations: [
     PagesComponent,
-    ScrumPokerG1Component
+    
     
   ],
 })
