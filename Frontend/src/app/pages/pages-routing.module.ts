@@ -25,7 +25,9 @@ const routes: Routes = [{
       path: 'poker-planning',
       component: ScrumPokerG1Component,
     },
-    
+    { path: 'poker-planning/votes', component: VotesComponent },
+    { path: 'poker-planning/forum', component: ForumComponent },
+    { path: 'poker-planning/creategame', component: CreategameComponent },
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
