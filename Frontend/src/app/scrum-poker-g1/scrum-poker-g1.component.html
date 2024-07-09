@@ -65,7 +65,75 @@
 <link rel='dns-prefetch' href='//stats.wp.com' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel='stylesheet' id='all-css-0' href='https://www.parabol.co/wp-includes/css/dist/block-library/style.min.css?m=1717605114g' type='text/css' media='all' />
+<style>
+	.intro p {
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+	.intro img {
+            width: 200px;
+            height: 200px;
+            vertical-align: middle;
+            margin: 0 auto 10px;
+        }
+		.card-container {
+            width: 500px;
+            border-radius: 8px;
+            margin: 10px;
+            background-color: #FFFFFF;
+            margin-left: 100px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+			overflow: hidden; /* Hides overflow content */
+            position: relative; /* Establishes a positioning context */
+        }
+		.card-container .info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease; /* Smooth transition for opacity */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+		.card-container:hover .info {
+            opacity: 1; /* Show on hover */
+        }
+        .card-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: filter 0.3s ease;
+        }
+        .card-container:hover img {
+            filter: brightness(120%);
+        }
+        .card-container h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .card-container p {
+            margin-top: 8px;
+            font-size: 1em;
+            color: #333;
+        }
+</style>
 <style id='wp-block-library-inline-css'>
+	
 .has-text-align-justify{text-align:justify;}
 </style>
 <link rel='stylesheet' id='all-css-2' href='https://www.parabol.co/_static/??-eJzTLy/QzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpobmpsZmBoamgIARK0u3Q==' type='text/css' media='all' />
@@ -141,50 +209,164 @@ height: 100%;
 	  <source src="assets/images/sprint-poker-estimate.mp4" type="video/mp4">
 	  Your browser does not support the video tag.
 	</video>
-  </div>
-  <div class="intro mt-3">
-	<p class="card-text">Scrum Poker, also known as Planning Poker, is a consensus-based, gamified technique for estimating, mostly used to estimate effort or relative size of user stories in software development. It is a fun and effective way for teams to discuss and agree on estimations.</p>
 	
   </div>
+  <div  data-module="spacing">
+	<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px">
 
+	</div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:50px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
+  <h2 class='text-center heading-2 md:text-left'>What is Scrum Poker? </h2>
+  <div class="container mt-5">
+	<div class="intro mt-3">
+		<img src="assets/images/james-grenning.jpg" alt="Icon">
+		<p class="card-text">
+			
+			
+			Planning poker, also called Scrum poker, is a consensus-based, gamified technique for estimating, mostly used for timeboxing in Agile principles. In planning poker, members of the group make estimates by playing numbered cards face-down to the table, instead of speaking them aloud. The cards are revealed, and the estimates are then discussed. By hiding the figures in this way, the group can avoid the cognitive bias of anchoring, where the first number spoken aloud sets a precedent for subsequent estimates.
+		</p>
+		
+		<p class="card-text">
+			The method was first defined and named by James Grenning in 2002 and later popularized by Mike Cohn in the book Agile Estimating and Planning, whose company trade marked the term and a digital online tool.
+		</p>
+	</div>
+</div>
+  <div  data-module="spacing">
+								<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px">
+							
+								</div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
+  <h2 class='text-center heading-2 md:text-left'>Why Scrum Poker? </h2>
 </div>
 
-<div  data-module="spacing">
-	<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px"></div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
 
+<div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; margin-left: 100px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Facilitates Consensus</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;"> It helps teams reach consensus on the complexity of tasks by involving all team members in the estimation process.</p>
+  </div>
+  <div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Improves Accuracy</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;">By leveraging collective intelligence, Scrum Poker reduces individual bias and improves the accuracy of task estimates.</p>
+  </div>
+  <div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Promotes Team Collaboration</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;">Encourages active participation and discussion among team members, leading to a shared understanding of the work to be done.</p>
+  </div>
+
+  <div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; margin-left: 100px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Increases Engagement</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;">Enhances team engagement and commitment to the project goals by fostering a sense of ownership in the estimation process</p>
+  </div>
+  <div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Enhanced Transparency</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;">Boosts team engagement and commitment by fostering ownership through transparent estimation processes.</p>
+  </div>
+  <div style="width: 300px;  background-color: #FFFFFF; border-radius: 8px; margin: 10px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+    <h3 style="margin-top: 10px; font-size: 1.2em;">Time Efficiency</h3>
+    <p style="margin-top: 8px; font-size: 1em; color: #333;">Scrum Poker streamlines estimation with a structured approach, reducing lengthy discussions and ensuring all viewpoints are considered efficiently.</p>
+  </div>		
+  <div  data-module="spacing">
+	<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px">
+
+	</div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>	
+  <h2 class='text-center heading-2 md:text-left'>What if ? </h2>
+  <div class="intro mt-3">
+	<p class="card-text">what if In the next sprint planning session, the team decides to implement a new approach based on their theory. They spend more time discussing and clarifying each user story before estimating. They also introduce a new practice of having a short retrospective after each estimation session to capture immediate feedback and improvements.</p>
+	
+  </div>
+  <h2 class='text-center heading-2 md:text-left ' style="margin-top: 50px;margin-bottom: 50px;">How Scrum Poker Works ?</h2>				
+				
+<div class="text-center"  >
+	<img src="assets/images/new.gif" style="height: 500px; width: 700px; margin-left: 200px; margin-bottom: 50px;" alt="Image Description">
+</div>
 
 	<div  data-module="asset-text">
-		<p> </p>
 							<section class="container"><div
 					class='md:flex-row flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"><img decoding="async" src="https://www.parabol.co/wp-content/uploads/2022/01/parabol-decide-issues-to-estimate-1.png?w=1042&#038;h=1042&#038;crop=default" title='parabol-decide-issues-to-estimate' alt=""></div><div
-						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:ml-16 lg:ml-48"><h2 class='text-center heading-2 md:text-left'>What is Scrum Poker? </h2><div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '><p><span style="font-weight: 400;">Scrum Poker involves team members assigning a point value to each task or user story. This process helps ensure that everyone’s perspective is considered and the team reaches a consensus on the effort required.</span></div></div></div></section>	</div>
-		
-
-	<div  data-module="spacing">
-							<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px"></div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
-		
-
-	<div  data-module="asset-text">
-							<section class="container"><div
-					class='md:flex-row-reverse flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"><img decoding="async" src="https://www.parabol.co/wp-content/uploads/2022/01/parabol-collaborate-without-anchoring-1.png?w=1042&#038;h=1042&#038;crop=default" title='parabol-collaborate-without-anchoring' alt=""></div><div
-						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:mr-16 lg:mr-48"><h2 class='text-center heading-2 md:text-left'>How to Play?</h2><div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '><p><span style="font-weight: 400;">Each team member uses a deck of cards with values representing effort estimates. After discussing a user story, each member privately selects a card representing their estimate. All cards are then revealed simultaneously to avoid any bias.</span></p></div></div></div></section>	</div>
-		
-
-	<div  data-module="spacing">
-							<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px"></div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
-		
+						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:ml-16 lg:ml-48">
+						<h2 class='text-center heading-2 md:text-left'>1. Preparation </h2>
+						<div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '><p>
+							<span style="font-weight: 400;">The Product Owner or Scrum Master prepares a list of user stories or tasks to be estimated then creates a setion to start voting.</span></div></div></div></section>	</div>
+						
+							<div  data-module="spacing">
+								<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px">
+							
+								</div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
+							
 
 	<div  data-module="asset-text">
 							<section class="container"><div
-					class='md:flex-row flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"><img decoding="async" src="https://www.parabol.co/wp-content/uploads/2022/01/parabol-decide-final-estimate.png?w=1042&#038;h=1042&#038;crop=default" title='parabol-decide-final-estimate' alt=""></div><div
-						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:ml-16 lg:ml-48"><h2 class='text-center heading-2 md:text-left'>How to Decide the final estimate?</h2><div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '><p><span style="font-weight: 400;">the final estimate is decided by discussing the range of estimates given by team members. After each member privately selects a card representing their estimate, they discuss their reasoning. Through this discussion, any discrepancies are addressed until a consensus is reached on the final estimate for the task or user story.</span></p></div></div></div></section>	</div>
+					class='md:flex-row-reverse flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"></div><div
+						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:mr-16 lg:mr-48">
+						<h2 class='text-center heading-2 md:text-left'>2. Card Selection </h2>
+						<div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '></div></div></div></section>	</div>
+					<p style="margin-left: 100px; margin-bottom: 50px; margin-top: 30px;">Each team member selects a set of estimation cards (often Fibonacci sequence or T-shirt sizes) representing different levels of complexity or effort.</p>	
+						<div style="width: 500px;  border-radius: 8px; margin: 10px;  background-color: #FFFFFF; margin-left: 100px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+							<h3 style="margin-top: 10px; font-size: 1.2em;">Fibonacci Sequence Cards</h3>
+							<img decoding="async" class="object-cover object-center w-full h-full rounded-16" src="https://www.parabol.co/wp-content/uploads/2022/01/agile-estimation-fibonacci.png?w=576&#038;h=576&#038;crop=default" alt="Fibonacci Scale - Agile Estimation"/>
+							<div class="info">
+							
+								
+								<p style="margin-top: 8px; font-size: 1em; color: #333;">The Fibonacci sequence is a mathematical sequence where each number is the sum of the two preceding ones, starting from 0 and 1 (e.g., 0, 1, 1, 2, 3, 5, 8, 13, etc.). In Scrum Poker, Fibonacci sequence cards are used to represent different levels of complexity or effort required to complete a task.</p>
+							</div>
+							</div>
+						  
+						  <div style="width: 500px;  border-radius: 8px; margin: 10px;  background-color: #FFFFFF; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+							<h3 style="margin-top: 10px; font-size: 1.2em;">T-Shirt Sizes Cards</h3>
+							<img decoding="async" class="object-cover object-center w-full h-full rounded-16" src="https://www.parabol.co/wp-content/uploads/2021/12/agile-estimation-t-shirt-sizing-scale.png?w=576&#038;h=576&#038;crop=default" alt="T-Shirt size estimation"/>
+							<div class="info">
+							<p style="margin-top: 8px; font-size: 1em; color: #333;">T-shirt sizes are used metaphorically to represent different sizes of effort or complexity, similar to clothing sizes (e.g., XS, S, M, L, XL, XXL).</p>
+						  </div>
+						</div>
+
+
+
+						  <div style="width: 500px;  border-radius: 8px; margin: 10px; background-color: #FFFFFF; margin-left: 100px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+							<h3 style="margin-top: 10px; font-size: 1.2em;">Modified Fibonacci Sequence</h3>
+							
+							<img decoding="async" class="object-cover object-center w-full h-full rounded-16" src="https://www.parabol.co/wp-content/uploads/2022/01/agile-estimation-custom-scale.png?w=576&#038;h=576&#038;crop=default" alt="Custom scale for agile estimation"/>
+							<div class="info">
+							<p style="margin-top: 8px; font-size: 1em; color: #333;">Similar to the Fibonacci sequence but modified to include more intermediate values, such as 0.5, 1, 2, 3, 5, 8, 13, 21, 34, 55. This provides more granularity in estimation.</p>
+						  </div>
+						</div>
+
+						  <div style="width: 500px;  border-radius: 8px; margin: 10px;  background-color: #FFFFFF; padding: 10px; display: inline-block; vertical-align: top; text-align: center;" class="card-container">
+							<h3 style="margin-top: 10px; font-size: 1.2em;">Sequential Numbers</h3>
+							<img decoding="async" class="object-cover object-center w-full h-full rounded-16" src="https://www.parabol.co/wp-content/uploads/2022/01/agile-estimation-five-fingers.png?w=576&#038;h=576&#038;crop=default" alt="Five fingers estimation"/>
+							<div class="info">
+							<p style="margin-top: 8px; font-size: 1em; color: #333;">This method uses a simple sequence of numbers, such as 1, 2, 3, 4, 5, etc. This approach is straightforward and easy to understand.</p>
+						  </div>
+						</div>
+						  <div  data-module="spacing">
+							<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px">
+						
+							</div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
+						
+
+	<div  data-module="asset-text">
+							<section class="container"><div
+					class='md:flex-row flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"><img decoding="async" src="https://www.parabol.co/wp-content/uploads/2022/01/parabol-collaborate-without-anchoring-1.png?w=1042&#038;h=1042&#038;crop=default" title='parabol-collaborate-without-anchoring' alt=""></div><div
+						class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:ml-16 lg:ml-48">
+						<h2 class='text-center heading-2 md:text-left'>3. Estimation</h2>
+						<div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '>
+							<p><span style="font-weight: 400;">Each team member privately selects a card that represents their estimate of the effort required. Cards are not revealed until everyone has chosen.</span></p>
+							<button class="purple-button" [routerLink]="['/poker-planni']">Start a New Game</button></div></div></div></section>	</div>
 		
 
 	<div  data-module="spacing">
 							<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px"></div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
 		
-
-
+							<div  data-module="asset-text">
+								<section class="container"><div
+						class='md:flex-row-reverse flex justify-center items-center flex-col max-w-[290px] md:max-w-[705px] lg:max-w-[1090px] m-auto'><div class="md:w-1/2 flex items-center justify-center mb-24 md:mb-0"><img decoding="async" src="https://www.parabol.co/wp-content/uploads/2022/01/parabol-decide-final-estimate.png?w=1042&#038;h=1042&#038;crop=default" title='parabol-decide-final-estimate' alt=""></div><div
+							class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:mr-16 lg:mr-48">
+							<h2 class='text-center heading-2 md:text-left'>4. Consensus </h2>
+							<div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '>
+								<p><span style="font-weight: 400;">Team members reveal their chosen cards simultaneously. If there's a wide discrepancy, the team discusses the reasons behind their estimates. After discussion, team members may re-estimate by selecting cards again. This continues until a consensus is reached.</span></p><ul><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Team members</span><span style="font-weight: 400;"> look at the same </span><span style="font-weight: 400;">user story</span><span style="font-weight: 400;"> in </span><span style="font-weight: 400;">real-time</span><span style="font-weight: 400;">, and has the same cards to choose from, no matter if you&#8217;re the </span><span style="font-weight: 400;">product owner</span><span style="font-weight: 400;">, developer or </span><span style="font-weight: 400;">scrum master</span><span style="font-weight: 400;">.</span></li><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">See who has voted, but not what they voted to prevent participants anchoring each other</span></li><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Select a Question card if you don’t have enough information, or chose to Pass on estimating</span></li><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Reveal estimates once everyone has voted</span></li></ul></div></div></div></section>	</div>
+			
+								<div  data-module="spacing">
+									<div class="spacing"><div class="spacing__default md:hidden md:hidden lg:hidden xl:hidden" style="height:56px"></div><div class="hidden spacing__tablet md:block  lg:hidden xl:hidden" style="height:64px"></div><div class="hidden spacing__desktop-small lg:block xl:hidden" style="height:100px"></div><div class="hidden spacing__desktop xl:block" style="height:144px"></div></div>	</div>
+				
 
 			<script type="text/javascript" id="leadin-script-loader-js-js-extra">
 /* <![CDATA[ */

@@ -11,6 +11,7 @@ import {
 import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/pages/poker-planning', pathMatch: 'full' },
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
@@ -47,6 +48,7 @@ export const routes: Routes = [
      
     ],
   },
+  
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];

@@ -23,7 +23,7 @@ import {
 import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component';
 
 @NgModule({
-  declarations: [AppComponent, ScrumPokerG1Component],
+  declarations: [AppComponent, ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
