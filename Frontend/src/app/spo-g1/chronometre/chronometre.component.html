@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">TIME TO START THE ROOM</h1>
+
+  <div class="timer-display text-center">
+    <div class="display-time">
+      <span class="time-part">{{ hours | number: '2.0-0' }}</span>:<span class="time-part">{{ minutes | number: '2.0-0' }}</span>:<span class="time-part">{{ seconds | number: '2.0-0' }}</span>
+    </div>
+
+    <div class="timer-buttons mt-3">
+      <button class="btn btn-success" (click)="startTimer()">Start</button>
+      <button class="btn btn-danger" (click)="stopTimer()">Stop</button>
+      <button class="btn btn-warning" (click)="resetTimer()">Reset</button>
+    </div>
+  </div>
+</div>

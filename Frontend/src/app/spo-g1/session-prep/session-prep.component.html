@@ -1,0 +1,145 @@
+<p>session-prep works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Display</title>
+  <style>
+    .table th, .table td {
+      vertical-align: middle;
+    }
+    .btn-col {
+      text-align: center;
+    }
+    .page-title {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <p>session-prep works!</p>
+  <div class="col-7 align-self-center">
+    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Invite team members</h3>
+  </div>
+  <div class="card h-100">
+    <div class="card-body">
+      <form class="mt-3">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Search by name</label>
+            <input type="text" class="form-control" id="name" placeholder="Search by name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Search by email</label>
+            <input type="text" class="form-control" id="email" placeholder="Search by email">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">List of Users to Invite</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-primary text-white">
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th class="btn-col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Khalil</td>
+            <td>Karoui</td>
+            <td>khalilkaroui@gmail.com</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-primary waves-effect waves-light">Invite</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Dhia</td>
+            <td>Uwobikundiye</td>
+            <td>dhiaUwobikundiye@gmail.com</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-primary waves-effect waves-light">Invite</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Nour</td>
+            <td>Ben Aissa</td>
+            <td>nourbenaissa@gmail.com</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-primary waves-effect waves-light">Invite</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h4 class="card-title">List of Issues</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-warning text-dark">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Issue 1</td>
+            <td>Issue 1 Description</td>
+            <td>Open</td>
+            <td>High</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-warning waves-effect waves-light">add to Vote</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Issue 2</td>
+            <td>Issue 2 Description</td>
+            <td>In Progress</td>
+            <td>Medium</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-warning waves-effect waves-light">add to Vote</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Issue 3</td>
+            <td>Issue 3 Description</td>
+            <td>Closed</td>
+            <td>Low</td>
+            <td class="btn-col">
+              <button type="button" class="btn btn-outline-warning waves-effect waves-light">add to Vote</button>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button  routerLink="chrono" type="button" class="btn btn-outline-secondary waves-effect waves-light">Start Room</button>
+
+  </div>
+</div>
+</body>
+</html>
