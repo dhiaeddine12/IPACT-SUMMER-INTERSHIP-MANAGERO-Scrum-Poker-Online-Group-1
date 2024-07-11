@@ -16,7 +16,9 @@ export class IssueService {
   getIssues(): Observable<Issue[]> {
     return this.http.get<Issue[]>(this.apiUrl);
   }
-
+  deleteIssueFromProject(projectId: string, issueId: string) {
+    return this.http.delete(`${this.apiUrl2}/${projectId}/${issueId}`);
+  }
   getIssueById(id: string): Observable<Issue> {
     return this.http.get<Issue>(`${this.apiUrl}/${id}`);
   }

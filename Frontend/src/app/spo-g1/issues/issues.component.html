@@ -87,7 +87,8 @@
             <h4 class="card-title">
               List of Issues
               <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession()">Start Session</button>
-              <button type="button" class="btn btn-outline-primary btn-add" (click)="navigateToAddIssue()">Add Issue</button>
+              <button type="button" class="btn btn-outline-primary btn-add" (click)="openAddIssueDialog()">Add Issue</button>
+
             </h4>
             <div class="table-responsive" *ngIf="issues.length > 0">
               <table class="table">
@@ -115,15 +116,14 @@
                       </span>
                     </td>
                     <td class="btn-col">
-                      <!-- Edit Button -->
-                      <button type="button" class="btn btn-link" (click)="editIssue(issue)">
-                        <i class="fa fa-pen"></i> <!-- Pencil Icon -->
-                      </button>
                       
-                      <!-- Delete Button -->
-                      <button type="button" class="btn btn-link text-danger" (click)="deleteIssue(issue)">
-                        <i class="fa fa-trash"></i> <!-- Trash Icon -->
+                      <button type="button" class="btn btn-link" (click)="editIssue($event, issue)">
+                        <i class="fa fa-pen"></i>
                       </button>
+
+                      <button type="button" class="btn btn-link text-danger" (click)="deleteIssue($event, issue)">
+                        <i class="fa fa-trash"></i> 
+                      </button>  
                     </td>
                   </tr>
                 </tbody>            

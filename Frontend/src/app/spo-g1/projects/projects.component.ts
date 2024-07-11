@@ -65,9 +65,9 @@ export class ProjectsComponent implements OnInit{
   }
 
   editProject(event: Event, project: any): void {
-    event.stopPropagation(); // Prevents the row click event from firing
+    event.stopPropagation();
   
-    // Open dialog with project details filled in the form
+
     const dialogRef = this.dialogService.open(UpdateprojectComponent, {
       context: {
         projectData: {
@@ -79,7 +79,6 @@ export class ProjectsComponent implements OnInit{
       }
     });
   
-    // Subscribe to the dialog close event
     dialogRef.onClose.subscribe((updatedProjectData) => {
       if (updatedProjectData) {
         this.loadProjects();
@@ -89,8 +88,8 @@ export class ProjectsComponent implements OnInit{
   
   
   deleteProject(event: Event, project: any) {
-    event.stopPropagation(); // Prevents the row click event from firing
-    console.log(project); // Check the project object
+    event.stopPropagation(); 
+    console.log(project); 
     
     this.dialogService.open(ConfirmationDialogComponent, {
       context: {
@@ -102,18 +101,18 @@ export class ProjectsComponent implements OnInit{
         this.http.delete(`http://localhost:8081/api/projects/deletep/${project.id}`)
           .pipe(
             tap(() => {
-              // Update your projects list or any other necessary state
+      
               this.projects = this.projects.filter(p => p.id !== project.id);
             })
           )
           .subscribe(
             () => {
-              // Successful deletion
+
               this.toastrService.success('Project deleted successfully', 'Success');
-              this.router.navigate([this.router.url]); // Refresh the current route
+              this.router.navigate([this.router.url]); 
             },
             (error) => {
-              // Handle error
+         
               this.toastrService.danger('Error deleting project', 'Error');
               console.error('Error deleting project:', error);
             }

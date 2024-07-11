@@ -59,8 +59,8 @@
       align-items: center;
     }
     .project-name img {
-      margin-right: 8px; /* Adjust the space between the image and the text */
-      width: 30px; /* Adjust the size of the SVG image */
+      margin-right: 8px; 
+      width: 30px; 
       height: 30px;
       border-radius: 8px;
     }
@@ -94,18 +94,19 @@
                 <td>{{ i + 1 }}</td>
                 <td class="project-name">
                   <img src="assets/images/viewavatar.svg" alt="Project Icon">
-                  <a (click)="navigateToProjectIssues(project.id)">{{ project.title }}</a>
+                  <a (click)="navigateToProjectIssues(project.id)" style="cursor: pointer; color: #0056b3;">
+                    {{ project.title }}
+                  </a>
+                  
                 </td>
                 <td>{{ project.description }}</td>
                 <td class="btn-col">
-                  <!-- Edit Button -->
                   <button type="button" class="btn btn-link" (click)="editProject($event, project)">
-                    <i class="fa fa-pen"></i> <!-- Pencil Icon -->
+                    <i class="fa fa-pen"></i> 
                   </button>                  
-                  
-                  <!-- Delete Button -->
+
                   <button type="button" class="btn btn-link text-danger" (click)="deleteProject($event, project)">
-                    <i class="fa fa-trash"></i> <!-- Trash Icon -->
+                    <i class="fa fa-trash"></i> 
                   </button>
                 </td>
               </tr>

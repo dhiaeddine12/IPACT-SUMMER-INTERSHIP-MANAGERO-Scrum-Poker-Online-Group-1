@@ -39,7 +39,7 @@ export class UpdateprojectComponent implements OnInit{
         .subscribe(
           (response) => {
             this.toastrService.success('Project updated successfully', 'Success');
-            this.dialogRef.close(updatedProjectData); // Close dialog upon successful update
+            this.dialogRef.close(updatedProjectData); 
           },
           (error) => {
             this.toastrService.danger('Error updating project', 'Error');
@@ -50,6 +50,6 @@ export class UpdateprojectComponent implements OnInit{
   }
 
   close(): void {
-    this.dialogRef.close(); // Close dialog without any data
+    this.dialogRef.close();
   }
 }

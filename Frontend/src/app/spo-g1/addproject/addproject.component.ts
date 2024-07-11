@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./addproject.component.scss']
 })
 export class AddprojectComponent implements OnInit{
-
+  submitted = false;
   projectForm: FormGroup;
   projectData: any; 
   constructor(
@@ -28,7 +28,10 @@ export class AddprojectComponent implements OnInit{
 
   }
 
+
   onSubmit() {
+    this.submitted = true;
+
     if (this.projectForm.valid) {
       this.http.post('http://localhost:8081/api/projects/add', this.projectForm.value)
         .subscribe(
@@ -48,3 +51,5 @@ export class AddprojectComponent implements OnInit{
     this.dialogRef.close();
   }
 }
+  
+

@@ -7,6 +7,7 @@ import com.spo.app.dao.ProjectRepo;
 import com.spo.app.entity.Issue;
 import com.spo.app.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,7 +62,22 @@ public class IssueController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/update-issue/{id}")
+    public ResponseEntity<Issue> updateIssue(@PathVariable String id, @RequestBody Issue updatedIssue) {
+        Issue issue = issueRepo.findById(id).orElse(null);
+        if (issue != null) {
+            // Update fields
+            issue.setTitle(updatedIssue.getTitle());
+            issue.setDescription(updatedIssue.getDescription());
+            issue.setStatus(updatedIssue.getStatus());
 
+            // Save updated issue
+            Issue savedIssue = issueRepo.save(issue);
+            return new ResponseEntity<>(savedIssue, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @GetMapping
     public List<Issue> getAllIssues() {
         return issueRepo.findAll();

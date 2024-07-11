@@ -81,6 +81,26 @@ public class ProjectController {
         }
     }
 
+    // Endpoint to delete an issue from a project
+    @DeleteMapping("/{projectId}/{issueId}")
+    public ResponseEntity<Project> deleteIssueFromProject(@PathVariable String projectId, @PathVariable String issueId) {
+        Optional<Project> optionalProject = projectRepository.findById(projectId);
+        if (optionalProject.isPresent()) {
+            Project project = optionalProject.get();
+
+            // Remove issueId from the list
+            List<String> issueIds = project.getIssueIds();
+            issueIds.remove(issueId); // Remove the specific issueId
+
+            // Update the project in the repository
+            projectRepository.save(project);
+
+            return ResponseEntity.ok(project);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     // Delete project by ID
     @DeleteMapping("/deletep/{id}")
     public ResponseEntity<Void> deleteProject(@PathVariable String id) {

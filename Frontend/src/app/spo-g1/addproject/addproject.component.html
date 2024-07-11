@@ -6,18 +6,26 @@
         <div class="col-sm-6">
           <div class="form-group">
             <label for="inputTitle" class="label">Title</label>
-            <input type="text" nbInput fullWidth id="inputTitle" formControlName="title" placeholder="Title">
+            <input type="text" nbInput fullWidth id="inputTitle" formControlName="title" placeholder="Title"
+                   [ngClass]="{'is-invalid': submitted && projectForm.get('title').invalid}">
+            <div *ngIf="submitted && projectForm.get('title').invalid" class="invalid-feedback">
+              Title is required.
+            </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
             <label for="inputStatus" class="label">Status</label>
-            <nb-select fullWidth id="inputStatus" formControlName="status" placeholder="Select Status">
+            <nb-select fullWidth id="inputStatus" formControlName="status" placeholder="Select Status"
+                       [ngClass]="{'is-invalid': submitted && projectForm.get('status').invalid}">
               <nb-option value="IN_PROGRESS">IN_PROGRESS</nb-option>
               <nb-option value="COMPLETED">COMPLETED</nb-option>
               <nb-option value="ON_HOLD">ON_HOLD</nb-option>
               <nb-option value="CANCELLED">CANCELLED</nb-option>
             </nb-select>
+            <div *ngIf="submitted && projectForm.get('status').invalid" class="invalid-feedback">
+              Status is required.
+            </div>
           </div>
         </div>
       </div>
@@ -25,7 +33,11 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="inputDescription" class="label">Description</label>
-            <textarea rows="5" nbInput fullWidth id="inputDescription" formControlName="description" placeholder="Description"></textarea>
+            <textarea rows="5" nbInput fullWidth id="inputDescription" formControlName="description" placeholder="Description"
+                      [ngClass]="{'is-invalid': submitted && projectForm.get('description').invalid}"></textarea>
+            <p *ngIf="submitted && projectForm.get('description').invalid" class="invalid-feedback">
+              Description is required.
+            </p>
           </div>
         </div>
       </div>

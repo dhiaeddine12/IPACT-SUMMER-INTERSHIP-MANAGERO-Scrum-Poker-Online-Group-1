@@ -12,6 +12,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { IssuesComponent } from './issues/issues.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateprojectComponent } from './updateproject/updateproject.component';
+import { AddissueComponent } from './addissue/addissue.component';
+import { UpdateissueComponent } from './updateissue/updateissue.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { UpdateprojectComponent } from './updateproject/updateproject.component'
     ConfirmationDialogComponent,
     IssuesComponent,
     UpdateprojectComponent,
+    AddissueComponent,
+    UpdateissueComponent,
     
   ],
   imports: [
