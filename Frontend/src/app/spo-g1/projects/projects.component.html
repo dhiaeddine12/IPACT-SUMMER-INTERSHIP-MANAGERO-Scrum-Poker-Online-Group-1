@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Improved Display</title>
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px;
+      max-width: 100%;
+    }
+    .form-control {
+      margin-top: 20px;
+    }
+    .table-responsive {
+      margin-top: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      vertical-align: middle;
+      padding: 12px;
+      text-align: left;
+      border-bottom: none;
+    }
+    .btn-col {
+      text-align: center;
+    }
+    .card {
+      border: none;
+      margin-top: 20px;
+      box-shadow: none;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-add {
+      margin-left: auto;
+    }
+    .search-container {
+      margin-top: 20px; 
+      margin-left: 0px;
+    }
+    .project-name {
+      display: flex;
+      align-items: center;
+    }
+    .project-name img {
+      margin-right: 8px; /* Adjust the space between the image and the text */
+      width: 30px; /* Adjust the size of the SVG image */
+      height: 30px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          List of Projects
+          <button type="button" class="btn btn-outline-primary btn-add" (click)="navigateToAddProject()">Add Project</button>
+        </h4>
+        <div class="search-container">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="name" placeholder="Search by name">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="btn-col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of projects; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td class="project-name">
+                  <img src="assets/images/viewavatar.svg" alt="Project Icon">
+                  <a (click)="navigateToProjectIssues(project.id)">{{ project.title }}</a>
+                </td>
+                <td>{{ project.description }}</td>
+                <td class="btn-col">
+                  <!-- Edit Button -->
+                  <button type="button" class="btn btn-link" (click)="editProject($event, project)">
+                    <i class="fa fa-pen"></i> <!-- Pencil Icon -->
+                  </button>                  
+                  
+                  <!-- Delete Button -->
+                  <button type="button" class="btn btn-link text-danger" (click)="deleteProject($event, project)">
+                    <i class="fa fa-trash"></i> <!-- Trash Icon -->
+                  </button>
+                </td>
+              </tr>
+            </tbody>                         
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
+
