@@ -7,6 +7,7 @@ import { ForumComponent } from './forum/forum.component';
 import { CreategameComponent } from './creategame/creategame.component';
 import { SessionPrepComponent } from './session-prep/session-prep.component';
 import { ChronometreComponent } from './chronometre/chronometre.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,9 +18,10 @@ import { ChronometreComponent } from './chronometre/chronometre.component';
     SessionPrepComponent,
     ChronometreComponent,
   ],
-  imports: [
-    CommonModule,
-    SpoG1RoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        SpoG1RoutingModule,
+        FormsModule,
+    ],
 })
 export class SpoG1Module { }
