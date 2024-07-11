@@ -27,9 +27,10 @@ export class SessionPrepComponent implements OnInit {
       },
     );
   }
-  userId: string;
-  inviteUser() {
-      this.SS.inviteUser('668ef29057a26b8d1380598e', '668edb1714515533cbbebf49').subscribe(
+    userId: string;
+  inviteUser(email: any) {
+    console.log('khalil', email);
+      this.SS.inviteUser(email, '668edb1714515533cbbebf49').subscribe(
         (response: any) => {
           console.log('User invited successfully:', response);
         },
