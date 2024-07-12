@@ -10,6 +10,8 @@ import {
 } from '@nebular/auth';
 import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component';
 
+import {SessionPrepComponent} from './spo-g1/session-prep/session-prep.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: '/pages/poker-planning', pathMatch: 'full' },
   {
@@ -45,10 +47,8 @@ export const routes: Routes = [
         path: 'reset-password',
         component: NbResetPasswordComponent,
       },
-     
     ],
   },
-  
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];

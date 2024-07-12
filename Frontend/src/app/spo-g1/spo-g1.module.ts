@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SpoG1RoutingModule } from './spo-g1-routing.module';
+import { SessionPrepComponent } from './session-prep/session-prep.component';
+import { ChronometreComponent } from './chronometre/chronometre.component';
+import {FormsModule} from "@angular/forms";
+import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
+
+
 
 import { VotesComponent } from './votes/votes.component';
 import { ForumComponent } from './forum/forum.component';
@@ -24,6 +30,7 @@ import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
 @NgModule({
   declarations: [
     VotesComponent,
+
     ProjectsComponent,
     UserstoriesComponent,
     AddprojectComponent,
@@ -33,9 +40,14 @@ import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
     AddissueComponent,
     UpdateissueComponent,
     UpdatewhatifComponent,
-    
+    SessionPrepComponent,
+    ChronometreComponent,
+    FibunaciCardsComponent,
+    ForumComponent,
+    CreategameComponent,
   ],
   imports: [
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     SpoG1RoutingModule,
@@ -45,7 +57,8 @@ import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
     NbInputModule,
     NbSelectModule,
     ThemeModule,
->>>>>>> Nour-ben-aissa
+
   ]
+
 })
 export class SpoG1Module { }
