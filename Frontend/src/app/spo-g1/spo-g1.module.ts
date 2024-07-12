@@ -8,6 +8,8 @@ import { CreategameComponent } from './creategame/creategame.component';
 import { SessionPrepComponent } from './session-prep/session-prep.component';
 import { ChronometreComponent } from './chronometre/chronometre.component';
 import {FormsModule} from "@angular/forms";
+import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
+import { TShirtCardsComponent } from './t-shirt-cards/t-shirt-cards.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import {FormsModule} from "@angular/forms";
     CreategameComponent,
     SessionPrepComponent,
     ChronometreComponent,
+    FibunaciCardsComponent,
+    TShirtCardsComponent,
   ],
     imports: [
         CommonModule,

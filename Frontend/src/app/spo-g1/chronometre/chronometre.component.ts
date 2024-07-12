@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-chronometre',
@@ -11,9 +12,15 @@ export class ChronometreComponent implements OnInit {
   seconds: any = 0;
   timer: any;
   running: boolean = false;
+  selectedOption: string;
+  options = ['Fibonacci', 'T-shirt'];
+
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     this.startTimer();
   }
+
   startTimer() {
     if (!this.running) {
       this.running = true;
@@ -22,6 +29,7 @@ export class ChronometreComponent implements OnInit {
           if (this.minutes === 0) {
             if (this.hours === 0) {
               this.stopTimer();
+              this.navigateBasedOnOption(); // Appel de la redirection conditionnelle
             } else {
               this.hours--;
               this.minutes = 59;
@@ -49,5 +57,13 @@ export class ChronometreComponent implements OnInit {
     this.hours = 0;
     this.minutes = 10;
     this.seconds = 0;
+  }
+
+  navigateBasedOnOption(): void {
+    if (this.selectedOption === 'Fibonacci') {
+      this.router.navigate(['poker-planning/fibunaci']);
+    } else if (this.selectedOption === 'T-shirt') {
+      this.router.navigate(['poker-planning/preparation/chrono/tshirt']);
+    }
   }
 }

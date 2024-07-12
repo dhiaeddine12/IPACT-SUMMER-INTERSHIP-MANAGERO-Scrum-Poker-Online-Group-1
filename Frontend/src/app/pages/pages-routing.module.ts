@@ -11,6 +11,8 @@ import { ForumComponent } from '../spo-g1/forum/forum.component';
 import { CreategameComponent } from '../spo-g1/creategame/creategame.component';
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
 import {ChronometreComponent} from '../spo-g1/chronometre/chronometre.component';
+import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
+import {TShirtCardsComponent} from '../spo-g1/t-shirt-cards/t-shirt-cards.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -101,6 +103,14 @@ const routes: Routes = [{
     {
       path: 'poker-planning/preparation/chrono',
       component: ChronometreComponent,
+    },
+    {
+      path: 'poker-planning/fibunaci',
+      component: FibunaciCardsComponent,
+    },
+    {
+      path: 'poker-planning/preparation/chrono/tshirt',
+      component: TShirtCardsComponent,
     },
     {
       path: '**',

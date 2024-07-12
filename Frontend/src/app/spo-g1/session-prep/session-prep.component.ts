@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../Services/user.service';
-import {LoggerService} from '../Services/logger.service';
-import {SessionPreperationService} from '../Service/session-preperation.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../Services/user.service';
+import { LoggerService } from '../Services/logger.service';
+import { SessionPreperationService } from '../Service/session-preperation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-session-prep',
@@ -11,33 +12,34 @@ import {SessionPreperationService} from '../Service/session-preperation.service'
 export class SessionPrepComponent implements OnInit {
 
   listUsers: any[] = [];
-  session: any ;
-  constructor(private US: UserService, private logger: LoggerService, private SS: SessionPreperationService) {}
+  session: any;
+
+  constructor(private userService: UserService, private logger: LoggerService,
+              private sessionService: SessionPreperationService, private router: Router) {}
 
   ngOnInit() {
-
-
-    this.US.getAll().subscribe(
+    this.userService.getAll().subscribe(
       (data: any) => {
         this.listUsers = data;
         this.logger.log(this.listUsers); // Utilisation du service de journalisation
       },
       (error: any) => {
-        this.logger.error('Une erreur s\'est produite lors de la récupération des données : ' + error);
+        this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
       },
     );
   }
-    userId: string;
+
   inviteUser(email: any) {
-    console.log('khalil', email);
-      this.SS.inviteUser(email, '668edb1714515533cbbebf49').subscribe(
-        (response: any) => {
-          console.log('User invited successfully:', response);
-        },
-        (error: any) => {
-          console.error('There was an error inviting the user!', error);
-        },
-      );
+    console.log('Invitation pour :', email);
+    const sessionId = '668edb1714515533cbbebf49'; // Remplacez par l'ID correct de la session
+    this.sessionService.inviteUser(email, sessionId).subscribe(
+      (response: any) => {
+        console.log('Utilisateur invité avec succès :', response);
+      },
+      (error: any) => {
+        console.error('Une erreur s\'est produite lors de l\'invitation de l\'utilisateur :', error);
+      },
+    );
   }
 
   addSession(): void {
@@ -46,14 +48,25 @@ export class SessionPrepComponent implements OnInit {
       endDate: '2024-07-10T12:00:00',
       userList: [],
     };
-    this.SS.addSession(newSession).subscribe(
+    this.sessionService.addSession(newSession).subscribe(
       (data: any) => {
-        console.log('Session added successfully', data);
+        console.log('Session ajoutée avec succès :', data);
         this.session = data;
       },
       (error: any) => {
-        console.error('An error occurred while adding the session:', error);
+        console.error('Une erreur s\'est produite lors de l\'ajout de la session :', error);
       },
     );
+  }
+
+  selectedOption: string;
+  options = ['Fibonacci', 'T-shirt'];
+
+  onOptionSelected(): void {
+    if (this.selectedOption === 'Fibonacci') {
+      this.router.navigate(['poker-planning/fibonacci']);
+    } else if (this.selectedOption === 'T-shirt') {
+      this.router.navigate(['poker-planning/tshirt']);
+    }
   }
 }
