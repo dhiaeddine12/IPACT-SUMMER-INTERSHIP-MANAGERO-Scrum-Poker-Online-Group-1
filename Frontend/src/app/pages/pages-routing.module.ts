@@ -12,7 +12,8 @@ import { CreategameComponent } from '../spo-g1/creategame/creategame.component';
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
 import {ChronometreComponent} from '../spo-g1/chronometre/chronometre.component';
 import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
-import {TShirtCardsComponent} from '../spo-g1/t-shirt-cards/t-shirt-cards.component';
+
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -38,6 +39,7 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
+
       path: 'spo-g1',
       loadChildren: () => import('../spo-g1/spo-g1.module')
         .then(m => m.SpoG1Module),
@@ -113,6 +115,11 @@ const routes: Routes = [{
       component: TShirtCardsComponent,
     },
     {
+
+      pathMatch: 'full',
+    },
+    {
+
       path: '**',
       component: NotFoundComponent,
     },

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'ngx-creategame',
   templateUrl: './creategame.component.html',
   styleUrls: ['./creategame.component.scss'],
+
 })
 export class CreategameComponent {
 
