@@ -1,0 +1,40 @@
+:host ::ng-deep nb-stepper .step-content {
+    text-align: center;
+  
+    button {
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Adjust as needed */
+    gap: 20px; /* Adjust spacing between cards */
+  }
+
+  .card {
+    width: 400px; /* Adjust width of each card */
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .core-block.core-heading {
+    position: relative;
+  }
+  
+  .top-right-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+  }
+  

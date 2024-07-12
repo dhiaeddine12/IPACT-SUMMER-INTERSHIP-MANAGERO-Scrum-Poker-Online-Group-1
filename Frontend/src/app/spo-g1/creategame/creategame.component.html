@@ -14,164 +14,108 @@
       height: 100vh;
       margin: 0;
     }
-    .game-container {
+    .container {
       background: #ffffff;
-      padding: 20px;
+      padding: 40px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: grid;
-      grid-template-rows: auto auto auto;
-      grid-template-columns: auto 1fr auto;
-      gap: 10px;
-      max-width: 800px;
-      width: 100%;
       text-align: center;
+      max-width: 500px;
+      width: 100%;
     }
-    .game-header {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #333333;
+    h1 {
       margin-bottom: 20px;
-      grid-column: 1 / -1;
-    }
-    .user-top, .user-left, .user-right, .user-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .user-top {
-      grid-column: 2;
-      grid-row: 1;
-    }
-    .user-left {
-      grid-column: 1;
-      grid-row: 2;
-    }
-    .user-right {
-      grid-column: 3;
-      grid-row: 2;
-    }
-    .user-bottom {
-      grid-column: 2;
-      grid-row: 3;
-    }
-    .user img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-    .user-name {
-      font-size: 1rem;
+      font-size: 2rem;
       color: #333333;
     }
-    .voting-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      grid-column: 2;
-      grid-row: 2;
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
     }
-    .card {
-      background-color: #6200ea;
-      color: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      margin: 15px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
-    .card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
     }
-    .results-section {
-      grid-column: 1 / -1;
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .result {
+    .submit-button {
       background-color: #6200ea;
       color: #ffffff;
       padding: 10px 20px;
+      border: none;
       border-radius: 8px;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
-    .result span {
-      background-color: #ffffff;
-      color: #6200ea;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
+    .submit-button:hover {
+      background-color: #4500b5;
+    }
+
+    .edit-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 10px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .edit-container input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .edit-container button {
+      padding: 10px 20px;
+      background-color: #6200ea;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .edit-container button:hover {
+      background-color: #3700b3;
     }
   </style>
 </head>
 <body>
-  <div class="game-container">
-   
-    <div class="user user-top">
-      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User 1">
-      <div class="user-name">User 1</div>
+<div class="container">
+  <h1>Planning Poker Game Setup</h1>
+  <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label for="room_name">Game Name</label>
+      <input type="text" id="room_name" formControlName="room_name" placeholder="Enter game name">
     </div>
-    <div class="user user-left">
-      <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User 2">
-      <div class="user-name">User 2</div>
+    <div class="input-group">
+      <label for="votetype">Voting type</label>
+      <select id="votetype" formControlName="votetype">
+        <option value="Fibonacci_Sequence_Cards">Fibonacci</option>
+        <option value="TShirt_Sizes_Cards">T-Shirt Sizes</option>
+        <option value="Modified_Fibonacci_Sequence">Modified Fibonacci</option>
+        <option value="Sequential_Numbers">Sequential Numbers</option>
+      </select>
     </div>
-    <div class="voting-section">
-      <div class="card" onclick="vote(1)">1</div>
-      <div class="card" onclick="vote(2)">2</div>
-      <div class="card" onclick="vote(3)">3</div>
-      <div class="card" onclick="vote(5)">5</div>
-      <div class="card" onclick="vote(8)">8</div>
-      <div class="card" onclick="vote(13)">13</div>
-      <div class="card" onclick="vote(21)">21</div>
-    </div>
-    <div class="user user-right">
-      <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="User 3">
-      <div class="user-name">User 3</div>
-    </div>
-    <div class="user user-bottom">
-      <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="User 4">
-      <div class="user-name">User 4</div>
-    </div>
-    <div class="results-section" id="results">
-      <div class="result" id="result-1">Votes for 1: <span>0</span></div>
-      <div class="result" id="result-2">Votes for 2: <span>0</span></div>
-      <div class="result" id="result-3">Votes for 3: <span>0</span></div>
-      <div class="result" id="result-5">Votes for 5: <span>0</span></div>
-      <div class="result" id="result-8">Votes for 8: <span>0</span></div>
-      <div class="result" id="result-13">Votes for 13: <span>0</span></div>
-      <div class="result" id="result-21">Votes for 21: <span>0</span></div>
-    </div>
-  </div>
+    <button type="submit" class="submit-button" [disabled]="isLoading">Submit</button>
+  </form>
+</div>
 
-  <script>
-    const votes = {
-      1: 0,
-      2: 0,
-      3: 0,
-      5: 0,
-      8: 0,
-      13: 0,
-      21: 0
-    };
 
-    function vote(value) {
-      votes[value]++;
-      document.querySelector(`#result-${value} span`).innerText = votes[value];
-    }
-  </script>
+<script>
+  document.getElementById('gameForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const gameName = document.getElementById('gameName').value;
+    const votingSystem = document.getElementById('votingSystem').value;
+    alert(`Game Name: ${gameName}\nVoting System: ${votingSystem}`);
+  });
+</script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>Add New WhyTuto</nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="whytutoform" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="whyTitle" class="label">Why Title</label>
+        <input nbInput fullWidth id="whyTitle" formControlName="whyTitle" placeholder="Enter why title">
+      </div>
+      <div class="form-group">
+        <label for="whyDescription" class="label">Why Description</label>
+        <textarea nbInput rows="5" fullWidth id="whyDescription" formControlName="whyDescription" placeholder="Enter why description"></textarea>
+      </div>
+      <button type="submit" nbButton status="primary">Add WhyTuto</button>
+    </form>
+  </nb-card-body>
+</nb-card>
