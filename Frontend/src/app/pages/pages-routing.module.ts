@@ -34,9 +34,9 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
-      path: 'spo-g1',
-      loadChildren: () => import('../spo-g1/spo-g1.module')
-        .then(m => m.SpoG1Module),
+    path: 'spo-g1',
+    loadChildren: () => import('../spo-g1/spo-g1.module')
+      .then(m => m.SpoG1Module),
     },
     {
       path: 'forms',

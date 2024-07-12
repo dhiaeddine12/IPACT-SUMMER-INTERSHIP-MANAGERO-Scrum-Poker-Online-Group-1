@@ -8,29 +8,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppApplication implements CommandLineRunner {
+public class AppApplication  {
 
-	private  final TestRepo testRepo;
 
-	@Autowired
-	public  AppApplication(TestRepo testRepo){
-		this.testRepo= testRepo;
-	}
+
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		if(testRepo.findAll().isEmpty()){
-			testRepo.save(new Test("1","nour"));
-			testRepo.save(new Test("2","dhia"));
-			testRepo.save(new Test("3","khalil"));
-		}
-		for (Test test: testRepo.findAll()){
-			System.out.println(test);
-		}
-	}
+
+
 }

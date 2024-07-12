@@ -1,0 +1,37 @@
+<nb-card>
+    <nb-card-header>Add Issue</nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="issueForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputTitle" class="label">Title</label>
+          <input type="text" nbInput fullWidth id="inputTitle" formControlName="title" placeholder="Title"
+                 [ngClass]="{'is-invalid': submitted && issueForm.get('title').invalid}">
+          <div *ngIf="submitted && issueForm.get('title').invalid" class="invalid-feedback">
+            Title is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputStatus" class="label">Status</label>
+          <nb-select fullWidth id="inputStatus" formControlName="status" placeholder="Select Status"
+                     [ngClass]="{'is-invalid': submitted && issueForm.get('status').invalid}">
+            <nb-option value="TO_DO">TO_DO</nb-option>
+            <nb-option value="IN_PROGRESS">IN_PROGRESS</nb-option>
+            <nb-option value="COMPLETED">COMPLETED</nb-option>
+          </nb-select>
+          <div *ngIf="submitted && issueForm.get('status').invalid" class="invalid-feedback">
+            Status is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputDescription" class="label">Description</label>
+          <textarea rows="5" nbInput fullWidth id="inputDescription" formControlName="description" placeholder="Description"
+                    [ngClass]="{'is-invalid': submitted && issueForm.get('description').invalid}"></textarea>
+          <div *ngIf="submitted && issueForm.get('description').invalid" class="invalid-feedback">
+            Description is required.
+          </div>
+        </div>
+        <button type="submit" nbButton status="primary">Submit</button>
+      </form>
+    </nb-card-body>
+  </nb-card>
+  

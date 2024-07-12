@@ -1,0 +1,25 @@
+<nb-card>
+    <nb-card-header>Add Issue</nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="issueForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputTitle" class="label">Title</label>
+          <input type="text" nbInput fullWidth id="inputTitle" formControlName="title" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label for="inputStatus" class="label">Status</label>
+          <nb-select fullWidth id="inputStatus" formControlName="status" placeholder="Select Status">
+            <nb-option value="TO_DO">TO_DO</nb-option>
+            <nb-option value="IN_PROGRESS">IN_PROGRESS</nb-option>
+            <nb-option value="COMPLETED">COMPLETED</nb-option>
+          </nb-select>
+        </div>
+        <div class="form-group">
+          <label for="inputDescription" class="label">Description</label>
+          <textarea rows="5" nbInput fullWidth id="inputDescription" formControlName="description" placeholder="Description"></textarea>
+        </div>
+        <button type="submit" nbButton status="primary">Submit</button>
+      </form>
+    </nb-card-body>
+  </nb-card>
+  
