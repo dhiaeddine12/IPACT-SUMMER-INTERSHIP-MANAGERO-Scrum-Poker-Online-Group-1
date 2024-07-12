@@ -1,17 +1,14 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Whatif } from '../spo-g1/models/Whatif';
-import { WhatifService } from '../spo-g1/Services/whatif.service';
+import { WhatifService } from '../spo-g1/services/whatif.service';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { UpdatewhatifComponent } from '../spo-g1/updatewhatif/updatewhatif.component';
-
 
 @Component({
   selector: 'ngx-scrum-poker-g1',
   templateUrl: './scrum-poker-g1.component.html',
   styleUrls: ['./scrum-poker-g1.component.scss']
 })
-
 export class ScrumPokerG1Component implements OnInit {
 
   

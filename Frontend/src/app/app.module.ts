@@ -15,7 +15,6 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
-
   NbStepperModule,
   NbCardModule,
   NbMenuModule,
@@ -28,13 +27,12 @@ import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component
 
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent, ScrumPokerG1Component],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     NbCardModule,
     NbAccordionModule,
     NbSidebarModule.forRoot(),
@@ -49,7 +47,6 @@ import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-
     NbStepperModule,
   ],
   bootstrap: [AppComponent],

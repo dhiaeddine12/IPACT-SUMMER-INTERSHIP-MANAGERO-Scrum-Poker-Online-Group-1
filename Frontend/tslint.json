@@ -39,11 +39,7 @@
     "member-access": false,
     "no-arg": true,
     "no-console": [
-<<<<<<< HEAD
-      false,
-=======
       true,
->>>>>>> f1fc6d526a3772af8d0c0c122f2928fa25bbaa04
       "debug",
       "log",
       "time",
