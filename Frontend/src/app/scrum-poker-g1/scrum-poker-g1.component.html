@@ -128,7 +128,32 @@ height: 100%;
 
 .wp-block-table td, .wp-block-table th {
   border: 0;
-}</style>
+}
+.start-button {
+	background-color: #9e70cc; /* Fallback color */
+	background: linear-gradient(135deg, #ff6bcb, #7873f5); /* Gradient of pink and another color */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Slight shadow */
+  cursor: pointer;
+  outline: none; /* Remove outline when focused */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+}
+
+.start-button:hover {
+  transform: translateY(-2px); /* Move button slightly up on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25); /* Increase shadow on hover */
+}
+
+.start-button:active {
+  transform: translateY(0); /* Reset transform on click */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* Light shadow on click */
+}
+
+</style>
 			</head>
 
 	<body class="page-template-default page page-id-3751 page-child parent-pageid-3718 bg-slate-200 production">
@@ -148,7 +173,11 @@ height: 100%;
 					<div class="intro mt-3">
 					  <p class="card-text">Scrum Poker, also known as Planning Poker, is a consensus-based, gamified technique for estimating, mostly used to estimate effort or relative size of user stories in software development. It is a fun and effective way for teams to discuss and agree on estimations.</p>
 					</div>
+					<button class="start-button" [routerLink]="'/pages/spo-g1/project'">Start Now</button>
+
+
 				  </div>
+				  
 				  <button nbButton disabled nbStepperPrevious>prev</button>
 				  <button nbButton nbStepperNext>next</button>
 				</nb-step>
@@ -304,8 +333,12 @@ height: 100%;
 				<nb-step [label]="labelFour">
 				  <ng-template #labelFour>What if</ng-template>
 				  <div class="core-block core-heading" data-module="core-heading">
-					<h2 class="wp-block-heading has-text-align-center" id="h-bring-planning-poker-to-life-remotely">What if users find the interface confusing?</h2>
-				
+					<h2 class="wp-block-heading has-text-align-center" id="h-bring-planning-poker-to-life-remotely">
+					  {{ whatif?.title }}
+					</h2>
+					<button type="button" class="btn btn-link" (click)="editIssue($event, whatif)">
+						<i class="fa fa-pen"></i> 
+					  </button>   
 				  </div>
 				  <div  data-module="asset-text">
 					<section class="container"><div
@@ -314,9 +347,7 @@ height: 100%;
 				class="md:w-1/2 flex flex-col items-center md:items-start is-root-container md:ml-16 lg:ml-48">
 				
 				<div class='mt-8 text-center editor-styles-wrapper md:text-left lg:mt-20 '><p>
-					<span style="font-weight: 400;">User Testing: Conduct usability testing with a small group of users to gather feedback.
-						Iterative Design: Make iterative improvements based on user feedback and best practices in UX/UI design.
-						Help and Documentation: Provide comprehensive help documentation and tooltips within the application.</span></div></div></div></section>	</div>
+					<span style="font-weight: 400;">{{ whatif?.description }}</span></div></div></div></section>	</div>
 				  
 				  <button nbButton nbStepperPrevious>prev</button>
 				  <button nbButton disabled nbStepperNext>next</button>
