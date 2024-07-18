@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import {TutowhyService} from "../Services/tutowhy/tutowhy.service";
@@ -7,7 +7,7 @@ import {TutowhyService} from "../Services/tutowhy/tutowhy.service";
   templateUrl: './add-tutowhy.component.html',
   styleUrls: ['./add-tutowhy.component.scss']
 })
-export class AddTutowhyComponent {
+export class AddTutowhyComponent implements OnInit{
 
   whytutoform: FormGroup;
   whytutodata: any;

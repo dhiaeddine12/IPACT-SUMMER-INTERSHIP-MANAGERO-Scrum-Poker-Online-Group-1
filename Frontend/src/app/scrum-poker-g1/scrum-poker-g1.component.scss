@@ -1,6 +1,6 @@
 :host ::ng-deep nb-stepper .step-content {
     text-align: center;
-  
+
     button {
       cursor: pointer;
       margin: 0.5rem;
@@ -16,7 +16,7 @@
   .card {
     width: 400px; /* Adjust width of each card */
     padding: 20px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 8px;
     text-align: center;
   }
@@ -30,11 +30,10 @@
   .core-block.core-heading {
     position: relative;
   }
-  
+
   .top-right-icon {
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px;
   }
-  
