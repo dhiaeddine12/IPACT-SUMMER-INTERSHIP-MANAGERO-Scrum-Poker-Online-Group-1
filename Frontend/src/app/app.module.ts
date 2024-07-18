@@ -15,21 +15,29 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbStepperModule,
+  NbCardModule,
   NbMenuModule,
+  NbAccordionModule,
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
 import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component';
-
+import { SpoG1Module } from './spo-g1/spo-g1.module';
+import { ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent, ScrumPokerG1Component],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    NbCardModule,
+    NbAccordionModule,
+    
     NbSidebarModule.forRoot(),
+     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
@@ -40,6 +48,9 @@ import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NbStepperModule,
+    SpoG1Module,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
 })

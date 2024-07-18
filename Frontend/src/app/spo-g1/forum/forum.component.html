@@ -24,7 +24,54 @@
       max-width: 500px;
       width: 100%;
       height: 70vh;
+
+     
     }
+
+    .message-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .edit-button {
+    background-color: #2196f3; /* Blue */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .edit-button:hover {
+    background-color: #0d47a1; /* Darker shade of blue */
+  }
+
+  .delete-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .delete-button:hover {
+    background-color: #b71c1c; /* Darker shade of red */
+  }
+
+  
     .chat-header {
       font-size: 1.5rem;
       font-weight: bold;
@@ -83,48 +130,72 @@
     .chat-send-button:hover {
       background-color: #3700b3;
     }
+    .edit-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.edit-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.edit-container button {
+  padding: 10px 20px;
+  background-color: #6200ea;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-container button:hover {
+  background-color: #3700b3;
+}
+
   </style>
 </head>
 <body>
   <div class="chat-container">
     <div class="chat-header">Discussion</div>
     <div class="chat-messages" id="chatMessages">
-      <!-- Fake messages -->
-      <div class="chat-message">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 1">
+      <div *ngFor="let message of messages" class="chat-message" [class.user]="message.user === currentUser">
+        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="User">
         <div>
-          <strong>dhiaeddine</strong>
-          <p>Hey team, I think we should estimate this task as 5 points.</p>
-        </div>
-      </div>
-      <div class="chat-message">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User 2">
-        <div>
-          <strong>nour</strong>
-          <p>I agree, it seems like a moderate effort task.</p>
-        </div>
-      </div>
-      <div class="chat-message user">
-        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="User 3">
-        <div>
-          <strong>You</strong>
-          <p>What about the edge cases? Should we consider them?</p>
-        </div>
-      </div>
-      <div class="chat-message">
-        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="User 4">
-        <div>
-          <strong>dhiaeddine</strong>
-          <p>Yes, I think including edge cases, it could be 8 points.</p>
+          <strong>{{ message.user }}</strong>
+          <p>{{ message.content }}</p>
+          <small>{{ message.date | date: 'short' }}</small>
+          <div *ngIf="message.user === currentUser" class="message-actions">
+            <button class="edit-button" aria-label="Edit" (click)="startEditing(message)">
+              Edit
+            </button>
+            <button class="delete-button" aria-label="Delete" (click)="confirmDelete(message)">
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
+  
+    <div *ngIf="editingMessage" class="edit-container">
+      <input [(ngModel)]="editingMessage.content" />
+      <button (click)="saveEdit()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  
     <div class="chat-input-container">
-      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message...">
-      <button class="chat-send-button" onclick="sendMessage()">Send</button>
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..."
+             [(ngModel)]="newMessage" (keypress)="onKey($event)">
+      <button class="chat-send-button" (click)="sendMessage()">Send</button>
     </div>
   </div>
-
+  
   <script>
     const chatMessages = document.getElementById('chatMessages');
     const chatInput = document.getElementById('chatInput');

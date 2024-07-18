@@ -1,0 +1,32 @@
+.footer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  
+    .confirm-button {
+      background-color: #5cb85c;
+      border-color: #5cb85c;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+  
+      &:hover {
+        background-color: #4cae4c;
+        border-color: #4cae4c;
+      }
+    }
+  
+    .cancel-button {
+      background-color: #d9534f;
+      border-color: #d9534f;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+  
+      &:hover {
+        background-color: #c9302c;
+        border-color: #c9302c;
+      }
+    }
+  }
+  

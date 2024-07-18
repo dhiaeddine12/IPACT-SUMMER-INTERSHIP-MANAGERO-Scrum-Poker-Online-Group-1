@@ -1,0 +1,18 @@
+<nb-card class="container">
+    <nb-card-header class="header-content">
+      <h4>Edit Description</h4>
+    </nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="whattutoform" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label for="inputDescription" class="label">Description</label>
+          <textarea rows="5" nbInput fullWidth id="inputDescription" formControlName="description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-group buttons">
+         
+          <button type="submit" nbButton status="success">Submit</button>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+  

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Issues Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px;
+      max-width: 100%;
+    }
+    .form-control {
+      margin-top: 20px;
+    }
+    .table-responsive {
+      margin-top: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      vertical-align: middle;
+      padding: 12px;
+      text-align: left;
+      border-bottom: none;
+    }
+    .btn-col {
+      text-align: center;
+    }
+    .card {
+      border: none;
+      margin-top: 20px;
+      box-shadow: none;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-add {
+      margin-left: auto;
+    }
+    .search-container {
+      margin-top: 20px; 
+      margin-left: 0px;
+    }
+    .status-to-do {
+      color: #44546f;
+      background-color: #e4e6ea;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .status-in-progress {
+      color: #0055cc;
+      background-color: #e9f2ff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .status-completed {
+      color: #2f795b;
+      background-color: #dcfff1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">
+              List of Issues
+              <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession()">Start Session</button>
+              <button type="button" class="btn btn-outline-primary btn-add" (click)="openAddIssueDialog()">Add Issue</button>
+
+            </h4>
+            <div class="table-responsive" *ngIf="issues.length > 0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th class="btn-col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let issue of issues; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ issue.title }}</td>
+                    <td>{{ issue.description }}</td>
+                    <td>
+                      <span [ngClass]="{
+                          'status-to-do': issue.status === 'TO_DO',
+                          'status-in-progress': issue.status === 'IN_PROGRESS',
+                          'status-completed': issue.status === 'COMPLETED'
+                        }">
+                        {{ issue.status }}
+                      </span>
+                    </td>
+                    <td class="btn-col">
+                      
+                      <button type="button" class="btn btn-link" (click)="editIssue($event, issue)">
+                        <i class="fa fa-pen"></i>
+                      </button>
+
+                      <button type="button" class="btn btn-link text-danger" (click)="deleteIssue($event, issue)">
+                        <i class="fa fa-trash"></i> 
+                      </button>  
+                    </td>
+                  </tr>
+                </tbody>            
+              </table>
+            </div>
+            <div *ngIf="issues.length === 0">
+              <p>No issues created.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

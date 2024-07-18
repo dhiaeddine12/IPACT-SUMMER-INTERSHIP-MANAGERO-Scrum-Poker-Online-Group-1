@@ -1,2 +1,6 @@
-package com.spo.app.entity;public class startgame {
+package com.spo.app.entity;
+
+public class Startgame {
+
+
 }
