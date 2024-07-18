@@ -10,7 +10,6 @@ import {TutowhyService} from "../Services/tutowhy/tutowhy.service";
 export class AddTutowhyComponent {
 
   whytutoform: FormGroup;
-  whyTutoList: any[] = [];
   whytutodata: any;
   constructor(
     private fb: FormBuilder,
