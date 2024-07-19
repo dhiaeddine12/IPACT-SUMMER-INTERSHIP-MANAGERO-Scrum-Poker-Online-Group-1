@@ -4,30 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Improved Display</title>
-  <style>
-    .container {
-      margin-top: 20px;
-    }
-    .table th, .table td {
-      vertical-align: middle;
-    }
-    .btn-col {
-      text-align: center;
-    }
-    .page-title {
-      margin: 20px 0;
-    }
-  </style>
+
 </head>
 <body>
+<div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
 <div class="form-group">
   <label for="estimationMethod">Select Estimation Method:</label>
-  <select id="estimationMethod" class="form-control" [(ngModel)]="selectedOption" (change)="onOptionSelected()">
+  <select id="estimationMethod" class="form-control" >
     <option *ngFor="let option of options" [value]="option">{{ option }}</option>
   </select>
 </div>
+  </div>
+</div>
 
 <div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
+    <div class="card h-100">
+      <div class="card-title">
+        <label>name</label>
+        <input type="input" class="form-control" formControlName="name">
+      </div>
+    </div>
+  </div>
   <div class="col-7 align-self-center">
     <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Invite Team Members</h3>
   </div>
@@ -110,7 +109,7 @@
             </table>
           </div>
         </div>
-        <button routerLink="chrono" type="button" class="btn btn-outline-secondary waves-effect waves-light">Start Room</button>
+        <button routerLink="chrono" type="submit" class="btn btn-outline-secondary waves-effect waves-light">Start Room</button>
       </div>
     </div>
   </div>

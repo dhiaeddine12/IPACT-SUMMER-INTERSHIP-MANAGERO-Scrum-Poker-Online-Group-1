@@ -22,6 +22,8 @@ public class Session {
     @Id
     private String id;
     @Field
+    private String name;
+    @Field
     private Date start_date;
     @Field
     private Date end_date ;

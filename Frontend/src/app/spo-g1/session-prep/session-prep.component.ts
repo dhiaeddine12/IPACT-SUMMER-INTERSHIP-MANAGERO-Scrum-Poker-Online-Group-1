@@ -3,6 +3,7 @@ import { UserService } from '../Services/user.service';
 import { LoggerService } from '../Services/logger.service';
 import { SessionPreperationService } from '../Service/session-preperation.service';
 import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'ngx-session-prep',
@@ -13,11 +14,17 @@ export class SessionPrepComponent implements OnInit {
 
   listUsers: any[] = [];
   session: any;
-
+  add_session!:FormGroup;
   constructor(private userService: UserService, private logger: LoggerService,
-              private sessionService: SessionPreperationService, private router: Router) {}
+              private sessionService: SessionPreperationService, private router: Router,
+              private fb :FormBuilder) {}
 
   ngOnInit() {
+    this.add_session=this.fb.group({
+      name: ['', Validators.required],  // Ajoutez des validateurs si nécessaire
+    });
+
+
     this.userService.getAll().subscribe(
       (data: any) => {
         this.listUsers = data;
@@ -28,6 +35,17 @@ export class SessionPrepComponent implements OnInit {
       },
     );
   }
+
+
+  Add(){
+    let session={
+    }
+    this.onOptionSelected();
+    console.log(this.add_session.value);
+    this.sessionService.addSession(session).
+    subscribe(()=>{alert("adde Success")
+    })}
+
 
   inviteUser(email: any) {
     console.log('Invitation pour :', email);

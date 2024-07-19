@@ -30,6 +30,8 @@ import { AddTutowhyComponent } from './add-tutowhy/add-tutowhy.component';
 import {TutowhatComponent} from "./tutowhat/tutowhat.component";
 import {TutowhyComponent} from "./tutowhy/tutowhy.component";
 import {UpdateTutowhyComponent} from "./update-tutowhy/update-tutowhy.component";
+import {PokerPlanningComponent} from "./poker-planning/poker-planning.component";
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {UpdateTutowhyComponent} from "./update-tutowhy/update-tutowhy.component"
     TutowhyComponent,
     AddTutowhyComponent,
     UpdateTutowhyComponent,
+    PokerPlanningComponent
   ],
   imports: [
     FormsModule,
