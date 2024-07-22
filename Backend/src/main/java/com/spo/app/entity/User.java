@@ -22,6 +22,7 @@ import java.util.List;
 
 @Document(collection = "User")
 public class User {
+<<<<<<< Updated upstream
         @Id
         private ObjectId id;
 
@@ -86,3 +87,69 @@ public class User {
         private boolean enabled;
 
     }
+=======
+    @Id
+    private ObjectId id;
+
+    @Field
+    private String email;
+
+    @Field
+    private String resetPassword;
+
+    @Field
+    private String matriculate;
+
+    @Field
+    private List<ObjectId> roles;
+
+    @Field
+    private int failedAttempts;
+
+    @Field
+    private String answer1;
+
+    @Field
+    private String answer2;
+
+    @Field
+    private String answer3;
+
+    @Field
+    private boolean nonLocked;
+
+    @Field
+    private boolean archiver;
+
+    @Field
+    private boolean accountEnabled;
+
+    @Field
+    private String codeVerification;
+
+    @Field
+    private String codeExpiryDate;
+
+    @Field
+    private String password;
+
+    @Field
+    private String username;
+
+    @Field
+    private List<String> authorities;
+
+    @Field
+    private boolean accountNonExpired;
+
+    @Field
+    private boolean accountNonLocked;
+
+    @Field
+    private boolean credentialsNonExpired;
+
+    @Field
+    private boolean enabled;
+
+}
+>>>>>>> Stashed changes

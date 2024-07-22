@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,10 @@
         <input type="input" class="form-control" formControlName="name">
       </div>
     </div>
+=======
+<div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
+>>>>>>> Stashed changes
   </div>
   <div class="col-7 align-self-center">
     <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Invite Team Members</h3>
@@ -33,6 +38,16 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">List of Users to Invite</h4>
+<<<<<<< Updated upstream
+=======
+
+      <!-- Ajout de l'input pour le room_name -->
+      <div class="form-group">
+        <label for="roomName">Room Name</label>
+        <input type="text" id="roomName" [(ngModel)]="roomName" class="form-control" placeholder="Enter Room Name">
+      </div>
+
+>>>>>>> Stashed changes
       <div *ngFor="let user of listUsers" class="mb-4">
         <div class="card">
           <div class="card-body">
@@ -59,6 +74,7 @@
           </div>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div class="card mt-4">
         <div class="card-body">
           <h4 class="card-title">List of Issues</h4>
@@ -110,9 +126,42 @@
           </div>
         </div>
         <button routerLink="chrono" type="submit" class="btn btn-outline-secondary waves-effect waves-light">Start Room</button>
+=======
+      <div class="table-responsive" *ngIf="issues.length > 0">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th class="btn-col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let issue of issues; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ issue.title }}</td>
+            <td>{{ issue.description }}</td>
+            <td>
+              <span [ngClass]="{
+                  'status-to-do': issue.status === 'TO_DO',
+                  'status-in-progress': issue.status === 'IN_PROGRESS',
+                  'status-completed': issue.status === 'COMPLETED'
+                }">
+                {{ issue.status }}
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+>>>>>>> Stashed changes
       </div>
     </div>
   </div>
 </div>
+<<<<<<< Updated upstream
 </body>
 </html>
+=======
+>>>>>>> Stashed changes

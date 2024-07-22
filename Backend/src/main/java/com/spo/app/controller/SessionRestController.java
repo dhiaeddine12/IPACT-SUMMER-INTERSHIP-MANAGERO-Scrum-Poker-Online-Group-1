@@ -1,8 +1,13 @@
 package com.spo.app.controller;
+<<<<<<< Updated upstream
 
 
 import com.spo.app.entity.Session;
 import com.spo.app.services.interfaces.ISessionService;
+=======
+import com.spo.app.entity.Session;
+import com.spo.app.services.ISessionService;
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,12 +37,20 @@ public class SessionRestController {
     @GetMapping("/retrieve-session/{id_session}")
     @ResponseBody
     public Session getSession_by_id(@PathVariable("id_session") String id) {
+<<<<<<< Updated upstream
        Session session = sessionService.retrieveoneSession(id);
+=======
+        Session session = sessionService.retrieveoneSession(id);
+>>>>>>> Stashed changes
         return session;
     }
 
     @PostMapping("/invite/{id_user}/{id_session}")
+<<<<<<< Updated upstream
 @ResponseBody
+=======
+    @ResponseBody
+>>>>>>> Stashed changes
     public Session addSession(@PathVariable("id_session") String id_session,@PathVariable("id_user") String id_projet)
     {
         Session session = sessionService.invite_users(id_projet,id_session);

@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import { UserService } from '../Services/user.service';
 import { LoggerService } from '../Services/logger.service';
 import { SessionPreperationService } from '../Service/session-preperation.service';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+=======
+import { LoggerService } from '../Services/logger.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {SessionPreperationService} from '../services/Session/session-prep.service';
+import {UserService} from '../services/UserService/user.service';
+import {IssueService} from '../services/issue.service';
+import {Issue} from '../models/issues';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'ngx-session-prep',
@@ -11,6 +21,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./session-prep.component.scss'],
 })
 export class SessionPrepComponent implements OnInit {
+<<<<<<< Updated upstream
 
   listUsers: any[] = [];
   session: any;
@@ -21,6 +32,26 @@ export class SessionPrepComponent implements OnInit {
 
   ngOnInit() {
     this.add_session=this.fb.group({
+=======
+  issues: Issue[] = [];
+
+  listUsers: any[] = [];
+  projectId: any;
+  session: any;
+  add_session!: FormGroup;
+  constructor(private userService: UserService, private logger: LoggerService,
+              private sessionService: SessionPreperationService, private router: Router,
+              private fb: FormBuilder, private route: ActivatedRoute, private issueService: IssueService) {
+  }
+  roomName: string; // Nouvelle variable pour le nom de la salle
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.projectId = params.get('projectId');
+    });
+    this.loadIssues();
+    this.add_session = this.fb.group({
+>>>>>>> Stashed changes
       name: ['', Validators.required],  // Ajoutez des validateurs si nécessaire
     });
 
@@ -28,14 +59,22 @@ export class SessionPrepComponent implements OnInit {
     this.userService.getAll().subscribe(
       (data: any) => {
         this.listUsers = data;
+<<<<<<< Updated upstream
         this.logger.log(this.listUsers); // Utilisation du service de journalisation
       },
       (error: any) => {
         this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
+=======
+       // this.logger.log(this.listUsers); // Utilisation du service de journalisation
+      },
+      (error: any) => {
+       // this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
+>>>>>>> Stashed changes
       },
     );
   }
 
+<<<<<<< Updated upstream
 
   Add(){
     let session={
@@ -53,6 +92,30 @@ export class SessionPrepComponent implements OnInit {
     this.sessionService.inviteUser(email, sessionId).subscribe(
       (response: any) => {
         console.log('Utilisateur invité avec succès :', response);
+=======
+  loadIssues(): void {
+    this.issueService.getIssuesByProjectId(this.projectId).subscribe(
+      issues => this.issues = issues,
+      error => console.error('Error fetching issues:', error),
+    );
+  }
+  Add() {
+    const session = {
+    };
+    this.onOptionSelected();
+   // console.log(this.add_session.value);
+    this.sessionService.addSession(session).
+    subscribe(() => {alert('adde Success');
+    }); }
+
+
+  inviteUser(email: any) {
+  //  console.log('Invitation pour :', email);
+    const sessionId = '668edb1714515533cbbebf49'; // Remplacez par l'ID correct de la session
+    this.sessionService.inviteUser(email, sessionId).subscribe(
+      (response: any) => {
+       // console.log('Utilisateur invité avec succès :', response);
+>>>>>>> Stashed changes
       },
       (error: any) => {
         console.error('Une erreur s\'est produite lors de l\'invitation de l\'utilisateur :', error);
@@ -68,7 +131,11 @@ export class SessionPrepComponent implements OnInit {
     };
     this.sessionService.addSession(newSession).subscribe(
       (data: any) => {
+<<<<<<< Updated upstream
         console.log('Session ajoutée avec succès :', data);
+=======
+      //  console.log('Session ajoutée avec succès :', data);
+>>>>>>> Stashed changes
         this.session = data;
       },
       (error: any) => {

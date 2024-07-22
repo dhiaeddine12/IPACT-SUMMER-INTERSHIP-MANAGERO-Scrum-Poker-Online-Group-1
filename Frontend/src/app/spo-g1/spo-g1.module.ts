@@ -26,11 +26,15 @@ import { UpdateprojectComponent } from './updateproject/updateproject.component'
 import { AddissueComponent } from './addissue/addissue.component';
 import { UpdateissueComponent } from './updateissue/updateissue.component';
 import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
+<<<<<<< Updated upstream
 import { AddTutowhyComponent } from './add-tutowhy/add-tutowhy.component';
 import {TutowhatComponent} from "./tutowhat/tutowhat.component";
 import {TutowhyComponent} from "./tutowhy/tutowhy.component";
 import {UpdateTutowhyComponent} from "./update-tutowhy/update-tutowhy.component";
 import {PokerPlanningComponent} from "./poker-planning/poker-planning.component";
+=======
+import { SessionPrepComponent } from './session-prep/session-prep.component';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -55,8 +59,20 @@ import {PokerPlanningComponent} from "./poker-planning/poker-planning.component"
     TutowhatComponent,
     TutowhyComponent,
     AddTutowhyComponent,
+<<<<<<< Updated upstream
     UpdateTutowhyComponent,
     PokerPlanningComponent
+=======
+        UpdateTutowhyComponent,
+        DeleteTutowhyComponent,
+        CreategameComponent,
+        ForumComponent,
+        UpdatewhatifComponent,
+        SessionPrepComponent,
+      
+    
+    
+>>>>>>> Stashed changes
   ],
   imports: [
     FormsModule,

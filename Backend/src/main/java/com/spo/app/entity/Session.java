@@ -1,5 +1,8 @@
 package com.spo.app.entity;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -33,4 +36,8 @@ public class Session {
 
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

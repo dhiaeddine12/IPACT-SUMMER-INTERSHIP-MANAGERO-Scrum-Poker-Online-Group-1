@@ -230,6 +230,7 @@ height: 100%;
 			<nb-card-body>
 			  <nb-stepper orientation="horizontal">
 				<nb-step [label]="labelOne">
+<<<<<<< Updated upstream
 				  <ng-template #labelOne>What</ng-template>
           <div class="core-block core-heading" data-module="core-heading">
             <h2 class="wp-block-heading has-text-align-center" id="h-bring-planning-poker-to-life-remotely">SCRUM POKER</h2>
@@ -247,6 +248,64 @@ height: 100%;
             </button>
           </div>
 				  <div class="core-block core-heading" data-module="core-heading">
+=======
+					<ng-template #labelOne>What</ng-template>
+					<div class="core-block core-heading" data-module="core-heading">
+					  <h2 class="wp-block-heading has-text-align-center" id="h-bring-planning-poker-to-life-remotely">SCRUM POKER</h2>
+					  <div class="text-center">
+						<video autoplay loop muted width="800" height="auto">
+						  <source src="assets/images/sprint-poker-estimate.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+					  <div class="intro mt-3">
+						<p class="card-text">{{ tutowhat?.whatDescription }}</p>
+					  </div>
+					  <button type="button" class="btn btn-link" (click)="editWhattuto($event, tutowhat)">
+						<i class="fa fa-pen"></i> 
+					  </button>  
+					  
+					</div>
+					<button class="start-button" [routerLink]="'/pages/spo-g1/project'">Start Now</button>
+					<button nbButton disabled nbStepperPrevious>prev</button>
+					<button nbButton nbStepperNext>next</button>
+				  </nb-step>
+				
+				
+				
+				  <nb-step [label]="labelTwo">
+					<ng-template #labelTwo>Why</ng-template>
+					
+					<div class="text-center">
+					  <img src="assets/images/how.png" style="height: 400px; width: 700px; margin-left: 200px; margin-bottom: 50px;" alt="Image Description">
+					  <div class="button-container">
+						<button nbButton status="primary" (click)="addWhyTuto()">
+						  <i class="fa fa-plus"></i> Add Benefit
+						</button>
+					  </div>
+					</div>
+					
+					<div *ngFor="let tutowhy of tutowhys" style="width: 300px; background-color: #FFFFFF; border-radius: 8px; margin: 10px; margin-left: 100px; padding: 10px; display: inline-block; vertical-align: top; text-align: center;">
+					  <h3 style="margin-top: 10px; font-size: 1.2em;">{{ tutowhy.whyTitle }}</h3>
+					  <p style="margin-top: 8px; font-size: 1em; color: #333;">{{ tutowhy.whyDescription }}</p>
+					  <button type="button" class="btn btn-link" (click)="updatewhytuto($event, tutowhy)">
+						<i class="fa fa-pen"></i>
+					  </button>
+					  <button type="button" class="btn btn-link" (click)="deleteWhyTuto($event, tutowhy)">
+						<i class="fa fa-trash"></i> 
+					  </button>
+			  
+				
+					
+					</div>
+				  
+					<div style="margin-top: 20px;">
+					  <button nbButton nbStepperPrevious>Prev</button>
+					  <button nbButton nbStepperNext>Next</button>
+					</div>
+				  </nb-step>
+				  
+>>>>>>> Stashed changes
 
 
 
@@ -387,6 +446,7 @@ height: 100%;
 										<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">See who has voted, but not what they voted to prevent participants anchoring each other</span></li>
 										<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Select a Question card if you don’t have enough information, or chose to Pass on estimating</span></li><li style="font-weight: 400;" aria-level="1">
 											<span style="font-weight: 400;">Reveal estimates once everyone has voted</span></li></ul></div></div></div></section>	</div>
+											<button class="start-button" [routerLink]="'/pages/spo-g1/forum'">Forum</button>
 							</nb-accordion-item-body>
 						  </nb-accordion-item>
 						  <nb-accordion-item>
