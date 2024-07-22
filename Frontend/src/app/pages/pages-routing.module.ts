@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ScrumPokerG1Component } from '../scrum-poker-g1/scrum-poker-g1.component';
+import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,7 +25,10 @@ const routes: Routes = [{
       path: 'poker-planning',
       component: ScrumPokerG1Component,
     },
-   
+    {
+      path: 'poker-planning/preparation/:projectId',
+      component: SessionPrepComponent,
+    },
     { path: 'poker-planning/forum', component: ForumComponent },
     { path: 'poker-planning/creategame', component: CreategameComponent },
     {

@@ -104,6 +104,10 @@
           <option value="Sequential_Numbers">Sequential Numbers</option>
         </select>
       </div>
+      <div class="input-group">
+        <label for="issue_title">Issue Title</label>
+        <input type="text" id="issue_title" [value]="issueTitle" disabled>
+      </div>
       <button type="submit" class="submit-button" [disabled]="isLoading">Submit</button>
     </form>
   </div>

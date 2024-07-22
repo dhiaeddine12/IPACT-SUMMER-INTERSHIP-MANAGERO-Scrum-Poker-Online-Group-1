@@ -26,6 +26,7 @@ import { DeleteTutowhyComponent } from './delete-tutowhy/delete-tutowhy.componen
 import { CreategameComponent } from './creategame/creategame.component';
 import { ForumComponent } from './forum/forum.component';
 import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
+import { SessionPrepComponent } from './session-prep/session-prep.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
         CreategameComponent,
         ForumComponent,
         UpdatewhatifComponent,
+        SessionPrepComponent,
       
     
     
