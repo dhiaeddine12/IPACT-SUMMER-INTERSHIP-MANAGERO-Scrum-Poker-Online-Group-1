@@ -51,7 +51,7 @@
       margin-left: auto;
     }
     .search-container {
-      margin-top: 20px; 
+      margin-top: 20px;
       margin-left: 0px;
     }
     .status-to-do {
@@ -87,6 +87,7 @@
             <h4 class="card-title">
               List of Issues
               <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession()">Start Session</button>
+              <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession2()">Start Session khalil</button>
               <button type="button" class="btn btn-outline-primary btn-add" (click)="openAddIssueDialog()">Add Issue</button>
 
             </h4>
@@ -116,17 +117,17 @@
                       </span>
                     </td>
                     <td class="btn-col">
-                      
+
                       <button type="button" class="btn btn-link" (click)="editIssue($event, issue)">
                         <i class="fa fa-pen"></i>
                       </button>
 
                       <button type="button" class="btn btn-link text-danger" (click)="deleteIssue($event, issue)">
-                        <i class="fa fa-trash"></i> 
-                      </button>  
+                        <i class="fa fa-trash"></i>
+                      </button>
                     </td>
                   </tr>
-                </tbody>            
+                </tbody>
               </table>
             </div>
             <div *ngIf="issues.length === 0">

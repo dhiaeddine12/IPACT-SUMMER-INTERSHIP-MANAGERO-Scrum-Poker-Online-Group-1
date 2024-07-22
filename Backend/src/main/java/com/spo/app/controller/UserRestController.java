@@ -1,8 +1,6 @@
 package com.spo.app.controller;
-
-import com.spo.app.entity.Session;
 import com.spo.app.entity.User;
-import com.spo.app.services.interfaces.IUserService;
+import com.spo.app.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +18,7 @@ public class UserRestController {
     @ResponseBody
     public List<User> getUsers() {
         List<User> listUsers = userService.retrieveUsers();
+        System.out.println("khalil"+listUsers.size());
         return listUsers;
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 
 
@@ -20,10 +22,13 @@ public class Creategame {
 
     private String room_name;
 
+    @Enumerated(EnumType.STRING)
+    private  VoteType votetype;
 
     public Creategame(String id, String room_name, VoteType votetype) {
         this.id = id;
         this.room_name = room_name;
+        this.votetype = votetype;
     }
 
     public String getId() {
@@ -42,14 +47,20 @@ public class Creategame {
         this.room_name = room_name;
     }
 
+    public VoteType getVotetype() {
+        return votetype;
+    }
 
+    public void setVotetype(VoteType votetype) {
+        this.votetype = votetype;
+    }
 
     @Override
     public String toString() {
         return "Creategame{" +
                 "id=" + id +
                 ", room_name='" + room_name + '\'' +
-
+                ", votetype=" + votetype +
                 '}';
     }
 

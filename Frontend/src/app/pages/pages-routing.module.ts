@@ -1,18 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
+import { ForumComponent } from '../spo-g1/forum/forum.component';
+import { CreategameComponent } from '../spo-g1/creategame/creategame.component';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ScrumPokerG1Component } from '../scrum-poker-g1/scrum-poker-g1.component';
-import { VotesComponent } from '../spo-g1/votes/votes.component';
-import { ForumComponent } from '../spo-g1/forum/forum.component';
-import { CreategameComponent } from '../spo-g1/creategame/creategame.component';
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
-import {ChronometreComponent} from '../spo-g1/chronometre/chronometre.component';
-import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
-import {PokerPlanningComponent} from "../spo-g1/poker-planning/poker-planning.component";
+
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -29,7 +25,10 @@ const routes: Routes = [{
       path: 'poker-planning',
       component: ScrumPokerG1Component,
     },
-    { path: 'poker-planning/votes', component: VotesComponent },
+    {
+      path: 'poker-planning/preparation/:projectId',
+      component: SessionPrepComponent,
+    },
     { path: 'poker-planning/forum', component: ForumComponent },
     { path: 'poker-planning/creategame', component: CreategameComponent },
     {
@@ -38,9 +37,9 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
-      path: 'spo-g1',
-      loadChildren: () => import('../spo-g1/spo-g1.module')
-        .then(m => m.SpoG1Module),
+    path: 'spo-g1',
+    loadChildren: () => import('../spo-g1/spo-g1.module')
+      .then(m => m.SpoG1Module),
     },
     {
       path: 'forms',
@@ -89,28 +88,8 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'poker-planning/votes',
+      redirectTo: 'dashboard',
       pathMatch: 'full',
-    },
-    {
-      path: 'poker-planning',
-      component: ScrumPokerG1Component,
-    },
-    {
-      path: 'poker-planning/preparation',
-      component: SessionPrepComponent,
-    },
-    {
-      path: 'poker-planning/preparation/chrono',
-      component: ChronometreComponent,
-    },
-    {
-      path: 'poker-planning/fibunaci',
-      component: FibunaciCardsComponent,
-    },
-    {
-      path: 'ws',
-      component: PokerPlanningComponent,
     },
     {
       path: '**',

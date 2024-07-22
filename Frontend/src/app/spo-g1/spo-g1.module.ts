@@ -1,18 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { SpoG1RoutingModule } from './spo-g1-routing.module';
-import { SessionPrepComponent } from './session-prep/session-prep.component';
-import { ChronometreComponent } from './chronometre/chronometre.component';
-import {FormsModule} from "@angular/forms";
-import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
-
-
-
-import { VotesComponent } from './votes/votes.component';
-import { ForumComponent } from './forum/forum.component';
-import { CreategameComponent } from './creategame/creategame.component';
-
 import { ProjectsComponent } from './projects/projects.component';
 import { UserstoriesComponent } from './userstories/userstories.component';
 import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule, NbSelectModule} from '@nebular/theme';
@@ -25,18 +14,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateprojectComponent } from './updateproject/updateproject.component';
 import { AddissueComponent } from './addissue/addissue.component';
 import { UpdateissueComponent } from './updateissue/updateissue.component';
-import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
+import { LoginComponent } from './login/login.component';
+import { WhattutoComponent } from './whattuto/whattuto.component';
+import { WhytutoComponent } from './whytuto/whytuto.component';
+import { TutowhatComponent } from './tutowhat/tutowhat.component';
+import { TutowhyComponent } from './tutowhy/tutowhy.component';
+
 import { AddTutowhyComponent } from './add-tutowhy/add-tutowhy.component';
-import {TutowhatComponent} from "./tutowhat/tutowhat.component";
-import {TutowhyComponent} from "./tutowhy/tutowhy.component";
-import {UpdateTutowhyComponent} from "./update-tutowhy/update-tutowhy.component";
-import {PokerPlanningComponent} from "./poker-planning/poker-planning.component";
+import { UpdateTutowhyComponent } from './update-tutowhy/update-tutowhy.component';
+import { DeleteTutowhyComponent } from './delete-tutowhy/delete-tutowhy.component';
+import { CreategameComponent } from './creategame/creategame.component';
+import { ForumComponent } from './forum/forum.component';
+import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
+import { SessionPrepComponent } from './session-prep/session-prep.component';
 
 
 @NgModule({
   declarations: [
-    VotesComponent,
-
     ProjectsComponent,
     UserstoriesComponent,
     AddprojectComponent,
@@ -45,21 +39,26 @@ import {PokerPlanningComponent} from "./poker-planning/poker-planning.component"
     UpdateprojectComponent,
     AddissueComponent,
     UpdateissueComponent,
-    UpdatewhatifComponent,
-    SessionPrepComponent,
-    ChronometreComponent,
-    FibunaciCardsComponent,
-    ForumComponent,
-    CreategameComponent,
-    AddTutowhyComponent,
+    LoginComponent,
+    WhattutoComponent,
+    WhytutoComponent,
     TutowhatComponent,
     TutowhyComponent,
+   
     AddTutowhyComponent,
-    UpdateTutowhyComponent,
-    PokerPlanningComponent
+        UpdateTutowhyComponent,
+        DeleteTutowhyComponent,
+        CreategameComponent,
+        ForumComponent,
+        UpdatewhatifComponent,
+        SessionPrepComponent,
+      
+    
+    
   ],
+  exports: [WhytutoComponent , WhattutoComponent ],
+
   imports: [
-    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     SpoG1RoutingModule,
@@ -69,8 +68,7 @@ import {PokerPlanningComponent} from "./poker-planning/poker-planning.component"
     NbInputModule,
     NbSelectModule,
     ThemeModule,
-
+    FormsModule,
   ]
-
 })
 export class SpoG1Module { }

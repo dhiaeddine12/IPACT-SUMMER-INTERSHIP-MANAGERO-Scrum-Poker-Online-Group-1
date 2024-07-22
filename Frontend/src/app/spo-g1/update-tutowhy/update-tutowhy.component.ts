@@ -1,17 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { TutowhyService , TutoWhy } from '../services/tutowhy/tutowhy.service';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
-import {TutowhyService} from "../Services/tutowhy/tutowhy.service";
 @Component({
   selector: 'ngx-update-tutowhy',
   templateUrl: './update-tutowhy.component.html',
   styleUrls: ['./update-tutowhy.component.scss']
 })
 export class UpdateTutowhyComponent implements OnInit{
-
+  
   whytutoform: FormGroup;
-  whytutodata: any;
+  whytutodata: any; 
+  tutowhys: TutoWhy[] = [];
+  
   constructor(
     private fb: FormBuilder,
     private toastrService: NbToastrService,
@@ -21,8 +23,8 @@ export class UpdateTutowhyComponent implements OnInit{
 
   ngOnInit(): void {
     this.whytutoform = this.fb.group({
-      title: [this.whytutodata.description, Validators.required],
-      description: [this.whytutodata.description, Validators.required],
+      whyTitle: [this.whytutodata.whyTitle, Validators.required],
+      whyDescription: [this.whytutodata.whyDescription, Validators.required],
     });
   }
 
@@ -30,8 +32,8 @@ export class UpdateTutowhyComponent implements OnInit{
     if (this.whytutoform.valid && this.whytutodata.id) {
       const updatedWhyTuto: any = {
         id: this.whytutodata.id,
-        whyTitle: this.whytutoform.value.title,
-        whyDescription: this.whytutoform.value.description
+        whyTitle: this.whytutoform.value.whyTitle,
+        whyDescription: this.whytutoform.value.whyDescription
       };
 
       this.tutowhyService.updateTutoWhy(updatedWhyTuto).subscribe(
@@ -45,7 +47,7 @@ export class UpdateTutowhyComponent implements OnInit{
         }
       );
     }
-
+    
   }
 
   close(): void {

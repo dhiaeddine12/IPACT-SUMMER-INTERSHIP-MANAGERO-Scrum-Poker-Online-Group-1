@@ -51,7 +51,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Scrum Poker Online Group 1',
-        link: '/poker-planning',
+        link: 'poker-planning',
       },
       {
         title: 'Scrum Poker Online Group 2',

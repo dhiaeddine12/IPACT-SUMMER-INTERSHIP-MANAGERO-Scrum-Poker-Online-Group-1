@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Forum, ForumService} from "../Services/forum/forum.service";
-
+import { Forum } from '../services/forum/forum.service';
+import { ForumService } from '../services/forum/forum.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'ngx-forum',
   templateUrl: './forum.component.html',
   styleUrls: ['./forum.component.scss']
 })
 export class ForumComponent implements OnInit {
-  messages: any[] = [];
+  messages: Forum[] = [];
   newMessage: string = '';
   currentUser: string = 'You'; // Replace this with actual user logic
-  editingMessage: any | null = null;
+  editingMessage: Forum | null = null;
 
   senderId: string; // Current user's ID
   receiverId: string; // ID of the user whose messages are being viewed
@@ -64,7 +65,7 @@ export class ForumComponent implements OnInit {
       this.loadMessages();
     });
   }
- /* confirmDelete(message: Forum): void {
+  confirmDelete(message: Forum): void {
     Swal.fire({
       title: 'Are you sure?',
       text: `Do you want to delete this message from ${message.user}?`,
@@ -78,5 +79,5 @@ export class ForumComponent implements OnInit {
         this.deleteMessage(message.id);
       }
     });
-  }*/
+  }
 }

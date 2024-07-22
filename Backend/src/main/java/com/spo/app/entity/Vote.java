@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 @Getter
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
@@ -29,6 +32,8 @@ public class Vote {
         this.estimation = estimation;
     }
 
+    public Vote() {
+    }
 
     @Override
     public String toString() {

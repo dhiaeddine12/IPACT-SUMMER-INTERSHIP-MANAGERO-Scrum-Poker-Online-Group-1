@@ -70,20 +70,21 @@ h4 {
   font-size: 1rem;
 }
 
-nb-button[status="info"] {
+nb-button[status='info'] {
   background-color: #6200ea;
   border-color: #6200ea;
   color: #ffffff;
 }
 
-nb-button[status="success"] {
+nb-button[status='success'] {
   background-color: #4caf50;
   border-color: #4caf50;
   color: #ffffff;
 }
 
-nb-button[status="info"]:hover,
-nb-button[status="success"]:hover {
+nb-button[status='info']:hover,
+nb-button[status='success']:hover {
   opacity: 0.9;
 }
 
+/* Ensure there is an empty line at the end of the file */

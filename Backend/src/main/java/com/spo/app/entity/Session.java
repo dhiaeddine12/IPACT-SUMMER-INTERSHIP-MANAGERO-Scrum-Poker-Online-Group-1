@@ -1,5 +1,4 @@
 package com.spo.app.entity;
-
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -30,6 +29,7 @@ public class Session {
 
     @DBRef
     private List<User> userList;
+
 
 
 

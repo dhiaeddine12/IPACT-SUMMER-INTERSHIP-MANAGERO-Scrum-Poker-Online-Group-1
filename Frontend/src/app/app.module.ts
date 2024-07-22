@@ -15,7 +15,6 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
-
   NbStepperModule,
   NbCardModule,
   NbMenuModule,
@@ -25,11 +24,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { ScrumPokerG1Component } from './scrum-poker-g1/scrum-poker-g1.component';
-import { ForumComponent } from './forum/forum.component';
-
-
+import { SpoG1Module } from './spo-g1/spo-g1.module';
+import { ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
-  declarations: [AppComponent, ForumComponent, ],
+  declarations: [AppComponent, ScrumPokerG1Component],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,6 +35,7 @@ import { ForumComponent } from './forum/forum.component';
     AppRoutingModule,
     NbCardModule,
     NbAccordionModule,
+    
     NbSidebarModule.forRoot(),
      NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -50,6 +49,8 @@ import { ForumComponent } from './forum/forum.component';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NbStepperModule,
+    SpoG1Module,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
 })

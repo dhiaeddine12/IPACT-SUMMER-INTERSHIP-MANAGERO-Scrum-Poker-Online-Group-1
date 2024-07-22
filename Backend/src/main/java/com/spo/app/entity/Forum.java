@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 @Getter

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
-import {TutowhatService} from "../Services/tutowhat/tutowhat.service";
+import { TutowhatService } from '../services/tutowhat/tutowhat.service';
 @Component({
   selector: 'ngx-tutowhat',
   templateUrl: './tutowhat.component.html',
@@ -12,8 +12,8 @@ import {TutowhatService} from "../Services/tutowhat/tutowhat.service";
 })
 export class TutowhatComponent implements OnInit{
   whattutoform: FormGroup;
-  whattutodata: any;
-
+  whattutodata: any; 
+  
 
 
   constructor(
@@ -21,13 +21,13 @@ export class TutowhatComponent implements OnInit{
     private http: HttpClient,
     private toastrService: NbToastrService,
     protected dialogRef: NbDialogRef<TutowhatComponent>,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, 
     private tutowhatService: TutowhatService
   ) {}
 
   ngOnInit(): void {
     this.whattutoform = this.fb.group({
-
+      
       description: [this.whattutodata.description, Validators.required],
     });
   }

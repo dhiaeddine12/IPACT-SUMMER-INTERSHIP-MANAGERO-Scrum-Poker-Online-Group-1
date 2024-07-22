@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../Services/user.service';
 import { LoggerService } from '../Services/logger.service';
-import { SessionPreperationService } from '../Service/session-preperation.service';
-import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {SessionPreperationService} from '../services/Session/session-prep.service';
+import {UserService} from '../services/UserService/user.service';
+import {IssueService} from '../services/issue.service';
+import {Issue} from '../models/issues';
 
 @Component({
   selector: 'ngx-session-prep',
@@ -11,16 +13,24 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./session-prep.component.scss'],
 })
 export class SessionPrepComponent implements OnInit {
+  issues: Issue[] = [];
 
   listUsers: any[] = [];
+  projectId: any;
   session: any;
-  add_session!:FormGroup;
+  add_session!: FormGroup;
   constructor(private userService: UserService, private logger: LoggerService,
               private sessionService: SessionPreperationService, private router: Router,
-              private fb :FormBuilder) {}
+              private fb: FormBuilder, private route: ActivatedRoute, private issueService: IssueService) {
+  }
+  roomName: string; // Nouvelle variable pour le nom de la salle
 
   ngOnInit() {
-    this.add_session=this.fb.group({
+    this.route.paramMap.subscribe(params => {
+      this.projectId = params.get('projectId');
+    });
+    this.loadIssues();
+    this.add_session = this.fb.group({
       name: ['', Validators.required],  // Ajoutez des validateurs si nécessaire
     });
 
@@ -28,31 +38,36 @@ export class SessionPrepComponent implements OnInit {
     this.userService.getAll().subscribe(
       (data: any) => {
         this.listUsers = data;
-        this.logger.log(this.listUsers); // Utilisation du service de journalisation
+       // this.logger.log(this.listUsers); // Utilisation du service de journalisation
       },
       (error: any) => {
-        this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
+       // this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
       },
     );
   }
 
-
-  Add(){
-    let session={
-    }
+  loadIssues(): void {
+    this.issueService.getIssuesByProjectId(this.projectId).subscribe(
+      issues => this.issues = issues,
+      error => console.error('Error fetching issues:', error),
+    );
+  }
+  Add() {
+    const session = {
+    };
     this.onOptionSelected();
-    console.log(this.add_session.value);
+   // console.log(this.add_session.value);
     this.sessionService.addSession(session).
-    subscribe(()=>{alert("adde Success")
-    })}
+    subscribe(() => {alert('adde Success');
+    }); }
 
 
   inviteUser(email: any) {
-    console.log('Invitation pour :', email);
+  //  console.log('Invitation pour :', email);
     const sessionId = '668edb1714515533cbbebf49'; // Remplacez par l'ID correct de la session
     this.sessionService.inviteUser(email, sessionId).subscribe(
       (response: any) => {
-        console.log('Utilisateur invité avec succès :', response);
+       // console.log('Utilisateur invité avec succès :', response);
       },
       (error: any) => {
         console.error('Une erreur s\'est produite lors de l\'invitation de l\'utilisateur :', error);
@@ -68,7 +83,7 @@ export class SessionPrepComponent implements OnInit {
     };
     this.sessionService.addSession(newSession).subscribe(
       (data: any) => {
-        console.log('Session ajoutée avec succès :', data);
+      //  console.log('Session ajoutée avec succès :', data);
         this.session = data;
       },
       (error: any) => {

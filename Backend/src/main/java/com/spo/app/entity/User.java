@@ -22,67 +22,67 @@ import java.util.List;
 
 @Document(collection = "User")
 public class User {
-        @Id
-        private ObjectId id;
+    @Id
+    private ObjectId id;
 
-        @Field
-        private String email;
+    @Field
+    private String email;
 
-        @Field
-        private String resetPassword;
+    @Field
+    private String resetPassword;
 
-        @Field
-        private String matriculate;
+    @Field
+    private String matriculate;
 
-        @Field
-        private List<ObjectId> roles;
+    @Field
+    private List<ObjectId> roles;
 
-        @Field
-        private int failedAttempts;
+    @Field
+    private int failedAttempts;
 
-        @Field
-        private String answer1;
+    @Field
+    private String answer1;
 
-        @Field
-        private String answer2;
+    @Field
+    private String answer2;
 
-        @Field
-        private String answer3;
+    @Field
+    private String answer3;
 
-        @Field
-        private boolean nonLocked;
+    @Field
+    private boolean nonLocked;
 
-        @Field
-        private boolean archiver;
+    @Field
+    private boolean archiver;
 
-        @Field
-        private boolean accountEnabled;
+    @Field
+    private boolean accountEnabled;
 
-        @Field
-        private String codeVerification;
+    @Field
+    private String codeVerification;
 
-        @Field
-        private String codeExpiryDate;
+    @Field
+    private String codeExpiryDate;
 
-        @Field
-        private String password;
+    @Field
+    private String password;
 
-        @Field
-        private String username;
+    @Field
+    private String username;
 
-        @Field
-        private List<String> authorities;
+    @Field
+    private List<String> authorities;
 
-        @Field
-        private boolean accountNonExpired;
+    @Field
+    private boolean accountNonExpired;
 
-        @Field
-        private boolean accountNonLocked;
+    @Field
+    private boolean accountNonLocked;
 
-        @Field
-        private boolean credentialsNonExpired;
+    @Field
+    private boolean credentialsNonExpired;
 
-        @Field
-        private boolean enabled;
+    @Field
+    private boolean enabled;
 
-    }
+}
