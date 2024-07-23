@@ -60,51 +60,6 @@ button[nbButton] {
     background-color: #0056b3; /* Darker shade for hover effect */
   }
 
-<<<<<<< HEAD
-  &:active {
-    background-color: #004085; /* Even darker shade for active effect */
-=======
-<<<<<<< Updated upstream
-  .card {
-    width: 400px; /* Adjust width of each card */
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    text-align: center;
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-}
-
-<<<<<<< HEAD
-/* Ensure there is an empty line at the end of the file */
-=======
-  .top-right-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-  }
-=======
-.start-button {
-  background-color: #007bff; /* Change to your preferred color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
-  }
-
   &:active {
     background-color: #004085; /* Even darker shade for active effect */
   }
@@ -116,5 +71,3 @@ button[nbButton] {
 }
 
 /* Ensure there is an empty line at the end of the file */
->>>>>>> Stashed changes
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a

@@ -22,80 +22,6 @@ import java.util.List;
 
 @Document(collection = "User")
 public class User {
-<<<<<<< HEAD
-    @Id
-    private ObjectId id;
-=======
-<<<<<<< Updated upstream
-        @Id
-        private ObjectId id;
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
-
-    @Field
-    private String email;
-
-    @Field
-    private String resetPassword;
-
-    @Field
-    private String matriculate;
-
-    @Field
-    private List<ObjectId> roles;
-
-    @Field
-    private int failedAttempts;
-
-    @Field
-    private String answer1;
-
-    @Field
-    private String answer2;
-
-    @Field
-    private String answer3;
-
-    @Field
-    private boolean nonLocked;
-
-    @Field
-    private boolean archiver;
-
-    @Field
-    private boolean accountEnabled;
-
-    @Field
-    private String codeVerification;
-
-    @Field
-    private String codeExpiryDate;
-
-    @Field
-    private String password;
-
-    @Field
-    private String username;
-
-    @Field
-    private List<String> authorities;
-
-    @Field
-    private boolean accountNonExpired;
-
-    @Field
-    private boolean accountNonLocked;
-
-    @Field
-    private boolean credentialsNonExpired;
-
-    @Field
-    private boolean enabled;
-
-<<<<<<< HEAD
-}
-=======
-    }
-=======
     @Id
     private ObjectId id;
 
@@ -160,5 +86,3 @@ public class User {
     private boolean enabled;
 
 }
->>>>>>> Stashed changes
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a

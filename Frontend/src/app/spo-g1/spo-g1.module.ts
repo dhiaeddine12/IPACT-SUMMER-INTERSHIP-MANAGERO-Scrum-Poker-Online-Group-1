@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateprojectComponent } from './updateproject/updateproject.component';
 import { AddissueComponent } from './addissue/addissue.component';
 import { UpdateissueComponent } from './updateissue/updateissue.component';
-<<<<<<< HEAD
 import { LoginComponent } from './login/login.component';
 import { WhattutoComponent } from './whattuto/whattuto.component';
 import { WhytutoComponent } from './whytuto/whytuto.component';
@@ -28,18 +27,6 @@ import { CreategameComponent } from './creategame/creategame.component';
 import { ForumComponent } from './forum/forum.component';
 import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
 import { SessionPrepComponent } from './session-prep/session-prep.component';
-=======
-import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
-<<<<<<< Updated upstream
-import { AddTutowhyComponent } from './add-tutowhy/add-tutowhy.component';
-import {TutowhatComponent} from "./tutowhat/tutowhat.component";
-import {TutowhyComponent} from "./tutowhy/tutowhy.component";
-import {UpdateTutowhyComponent} from "./update-tutowhy/update-tutowhy.component";
-import {PokerPlanningComponent} from "./poker-planning/poker-planning.component";
-=======
-import { SessionPrepComponent } from './session-prep/session-prep.component';
->>>>>>> Stashed changes
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
 
 
 @NgModule({
@@ -57,28 +44,17 @@ import { SessionPrepComponent } from './session-prep/session-prep.component';
     WhytutoComponent,
     TutowhatComponent,
     TutowhyComponent,
-   
+
     AddTutowhyComponent,
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
     UpdateTutowhyComponent,
-    PokerPlanningComponent
-=======
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
-        UpdateTutowhyComponent,
-        DeleteTutowhyComponent,
-        CreategameComponent,
-        ForumComponent,
-        UpdatewhatifComponent,
-        SessionPrepComponent,
-      
-    
-    
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
+    DeleteTutowhyComponent,
+    CreategameComponent,
+    ForumComponent,
+    UpdatewhatifComponent,
+    SessionPrepComponent,
+
+
+
   ],
   exports: [WhytutoComponent , WhattutoComponent ],
 

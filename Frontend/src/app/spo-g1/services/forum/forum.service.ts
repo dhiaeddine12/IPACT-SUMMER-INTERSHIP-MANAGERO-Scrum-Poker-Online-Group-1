@@ -13,14 +13,14 @@ export interface Forum {
 })
 export class ForumService {
 
-  apiUrl = `http://localhost:8081/forum`; 
+  apiUrl = `http://localhost:8081/forum`;
   constructor(private http: HttpClient) { }
   getForum(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/retrieve-all-forums`);
   }
 
-   
-   getForumById(id: number): Observable<any> {
+
+  getForumById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/retrieve-forum/${id}`);
   }
 
@@ -34,7 +34,7 @@ export class ForumService {
     return this.http.put<any>(`${this.apiUrl}/modify-forum`, forum);
   }
 
-  
+
   deleteForum(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/remove-forum/${id}`);
   }
@@ -44,5 +44,5 @@ export class ForumService {
     return this.http.get<any>(`${this.apiUrl}/retrieve/${senderId}/${receiverId}`);
   }
 
-  
+
 }
