@@ -88,6 +88,30 @@
   </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+<div class="container">
+  <h1>Planning Poker Game Setup</h1>
+  <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label for="room_name">Game Name</label>
+      <input type="text" id="room_name" formControlName="room_name" placeholder="Enter game name">
+    </div>
+    <div class="input-group">
+      <label for="votetype">Voting type</label>
+      <select id="votetype" formControlName="votetype">
+        <option value="Fibonacci_Sequence_Cards">Fibonacci</option>
+        <option value="TShirt_Sizes_Cards">T-Shirt Sizes</option>
+        <option value="Modified_Fibonacci_Sequence">Modified Fibonacci</option>
+        <option value="Sequential_Numbers">Sequential Numbers</option>
+      </select>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="isLoading">Submit</button>
+  </form>
+</div>
+=======
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
   <div class="container">
     <h1>Planning Poker Game Setup</h1>
     <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
@@ -112,6 +136,10 @@
     </form>
   </div>
   
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
 
   <script>
     document.getElementById('gameForm').addEventListener('submit', function(event) {

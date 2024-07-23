@@ -1,5 +1,41 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="col-lg-4 col-md-6 mb-4">
+=======
+<<<<<<< Updated upstream
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Display</title>
+
+</head>
+<body>
+<div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
+<div class="form-group">
+  <label for="estimationMethod">Select Estimation Method:</label>
+  <select id="estimationMethod" class="form-control" >
+    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+  </select>
+</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
+    <div class="card h-100">
+      <div class="card-title">
+        <label>name</label>
+        <input type="input" class="form-control" formControlName="name">
+      </div>
+    </div>
+=======
+<div class="container">
+  <div class="col-lg-4 col-md-6 mb-4">
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
   </div>
   <div class="col-7 align-self-center">
     <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Invite Team Members</h3>
@@ -7,6 +43,11 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">List of Users to Invite</h4>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
 
       <!-- Ajout de l'input pour le room_name -->
       <div class="form-group">
@@ -14,6 +55,10 @@
         <input type="text" id="roomName" [(ngModel)]="roomName" class="form-control" placeholder="Enter Room Name">
       </div>
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
       <div *ngFor="let user of listUsers" class="mb-4">
         <div class="card">
           <div class="card-body">
@@ -40,6 +85,62 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title">List of Issues</h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="bg-warning text-dark">
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1</td>
+                <td>Issue 1</td>
+                <td>Issue 1 Description</td>
+                <td>Open</td>
+                <td>High</td>
+                <td class="btn-col">
+                  <button type="button" class="btn btn-outline-warning waves-effect waves-light">Add to Vote</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Issue 2</td>
+                <td>Issue 2 Description</td>
+                <td>In Progress</td>
+                <td>Medium</td>
+                <td class="btn-col">
+                  <button type="button" class="btn btn-outline-warning waves-effect waves-light">Add to Vote</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Issue 3</td>
+                <td>Issue 3 Description</td>
+                <td>Closed</td>
+                <td>Low</td>
+                <td class="btn-col">
+                  <button type="button" class="btn btn-outline-warning waves-effect waves-light">Add to Vote</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <button routerLink="chrono" type="submit" class="btn btn-outline-secondary waves-effect waves-light">Start Room</button>
+=======
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
       <div class="table-responsive" *ngIf="issues.length > 0">
         <table class="table">
           <thead>
@@ -68,7 +169,19 @@
           </tr>
           </tbody>
         </table>
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
       </div>
     </div>
   </div>
 </div>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+</body>
+</html>
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
