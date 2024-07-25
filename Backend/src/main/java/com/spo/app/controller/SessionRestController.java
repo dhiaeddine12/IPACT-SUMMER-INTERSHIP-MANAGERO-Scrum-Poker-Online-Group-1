@@ -50,4 +50,18 @@ public class SessionRestController {
 
         return session;
     }
+
+    @GetMapping("/room/{token}")
+    public Session getSessionByToken(@PathVariable String token) {
+        return sessionService.GetsessionByToken(token)
+                .orElseThrow(() -> new RuntimeException("Session not found"));
+    }
+    @PostMapping("/mail")
+    public Session createSession(@RequestParam String email,@RequestBody Session ae) {
+        Session session = sessionService.addSession(ae);
+        String link = "http://localhost:4200/pages/room/" + session.getToken();
+        sessionService.sendEmail(email, "Join the session", "Click the link to join the session: " + link);
+        return session;
+    }
+
 }

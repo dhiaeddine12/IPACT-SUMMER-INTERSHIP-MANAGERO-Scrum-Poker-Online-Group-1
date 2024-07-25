@@ -35,10 +35,11 @@ const routes: Routes = [{
       path: 'poker-planning/preparation/:projectId',
       component: SessionPrepComponent,
     },
-    {
+    /*{
       path: 'fibunaci',
       component: FibunaciCardsComponent,
-    },
+    },*/
+    { path: 'room/:token', component: FibunaciCardsComponent },
     { path: 'poker-planning/forum', component: ForumComponent },
     { path: 'poker-planning/creategame', component: CreategameComponent },
     {

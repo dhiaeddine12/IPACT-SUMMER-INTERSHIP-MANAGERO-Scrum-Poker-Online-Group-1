@@ -4,13 +4,16 @@ import com.spo.app.dao.SessionRepository;
 import com.spo.app.dao.UserRepository;
 import com.spo.app.entity.Issue;
 import com.spo.app.entity.Session;
+import com.spo.app.entity.TokenGenerator;
 import com.spo.app.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SessionService implements ISessionService {
@@ -20,11 +23,14 @@ public class SessionService implements ISessionService {
     UserRepository userRepository;
     @Autowired
     IssueRepo issueRepo;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Override
     public Session addSession(Session session) {
 
         Date now = new Date();
+        session.setToken(TokenGenerator.generateToken());
         session.setStart_date(now);
         session.setStart_date(now);
         return sessionRepository.save(session);
@@ -40,6 +46,12 @@ public class SessionService implements ISessionService {
         return sessionRepository.findAll();
 
     }
+    @Override
+    public Optional<Session> GetsessionByToken(String token)
+    {
+        return sessionRepository.findByToken(token);
+    }
+
 
     @Override
     public Session retrieveoneSession(String id) {
@@ -67,5 +79,15 @@ public class SessionService implements ISessionService {
         session.setIssueList(issues);
         return sessionRepository.save(session);
 
+    }
+
+
+
+    public void sendEmail(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        javaMailSender.send(message);
     }
 }

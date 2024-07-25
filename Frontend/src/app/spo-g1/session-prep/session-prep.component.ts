@@ -75,9 +75,12 @@ export class SessionPrepComponent implements OnInit {
 
   inviteUser(email: any) {
     const sessionId = '668edb1714515533cbbebf49'; // Replace with the correct session ID
+    console.log(email);
+    this.sessionService.createSessionAndSendEmail(email,this.session).subscribe(
 
-    this.sessionService.inviteUser(email,this.session.id).subscribe(
+   // this.sessionService.inviteUser(email,this.session.id).subscribe(
         (response: any) => {
+          console.log(email);
           console.log('User invited successfully:', response);
         },
         (error: any) => {

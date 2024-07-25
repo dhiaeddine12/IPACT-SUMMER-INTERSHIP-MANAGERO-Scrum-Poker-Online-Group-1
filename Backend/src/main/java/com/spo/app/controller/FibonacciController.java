@@ -16,4 +16,11 @@ public class FibonacciController {
         // Broadcast the clicked value to all subscribers
         messagingTemplate.convertAndSend("/topic/lastClicked", value);
     }
+
+    @MessageMapping("/validate")
+    public void handleValidation(int value) {
+        // Broadcast the validated value to all subscribers
+        messagingTemplate.convertAndSend("/topic/validatedChoice", value);
+    }
+
 }
