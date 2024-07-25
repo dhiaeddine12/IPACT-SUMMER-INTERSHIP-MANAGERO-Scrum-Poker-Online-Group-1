@@ -10,12 +10,19 @@ export class SessionPreperationService {
   constructor(private http: HttpClient) { }
 
   addSession(session: any): Observable<any> {
-    return this.http.post<any>(`${this.BasedUrl}/add_Session/`, session);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(`${this.BasedUrl}/add_Session`, session,{ headers });
   }
 
   inviteUser(id_user: string, id_session: string): Observable<any> {
     const url = `${this.BasedUrl}/${id_user}/${id_session}`;
     return this.http.post<any>(`${this.BasedUrl}/invite/${id_user}/${id_session}`, {});
+  }
+
+  ajouter_issue(id_issue: string, id_session: string): Observable<any> {
+    const url = `${this.BasedUrl}/${id_issue}/${id_session}`;
+    return this.http.post<any>(`${this.BasedUrl}/ajouter_issues/${id_issue}/${id_session}`, {});
   }
 
 }

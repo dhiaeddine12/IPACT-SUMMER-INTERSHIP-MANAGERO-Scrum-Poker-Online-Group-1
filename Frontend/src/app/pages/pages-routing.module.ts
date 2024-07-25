@@ -8,6 +8,8 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ScrumPokerG1Component } from '../scrum-poker-g1/scrum-poker-g1.component';
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
+import {WebSocketComponent} from '../spo-g1/web-socket/web-socket.component';
+import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
 
 const routes: Routes = [{
   path: '',
@@ -26,8 +28,16 @@ const routes: Routes = [{
       component: ScrumPokerG1Component,
     },
     {
+      path: 'ws',
+      component: WebSocketComponent ,
+    },
+    {
       path: 'poker-planning/preparation/:projectId',
       component: SessionPrepComponent,
+    },
+    {
+      path: 'fibunaci',
+      component: FibunaciCardsComponent,
     },
     { path: 'poker-planning/forum', component: ForumComponent },
     { path: 'poker-planning/creategame', component: CreategameComponent },

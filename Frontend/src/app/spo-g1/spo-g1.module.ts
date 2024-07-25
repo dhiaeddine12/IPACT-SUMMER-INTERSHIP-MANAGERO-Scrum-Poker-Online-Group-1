@@ -27,6 +27,8 @@ import { CreategameComponent } from './creategame/creategame.component';
 import { ForumComponent } from './forum/forum.component';
 import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
 import { SessionPrepComponent } from './session-prep/session-prep.component';
+import { WebSocketComponent } from './web-socket/web-socket.component';
+import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { SessionPrepComponent } from './session-prep/session-prep.component';
     ForumComponent,
     UpdatewhatifComponent,
     SessionPrepComponent,
+    WebSocketComponent,
+    FibunaciCardsComponent,
 
 
 

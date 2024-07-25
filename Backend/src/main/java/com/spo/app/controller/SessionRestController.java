@@ -14,7 +14,7 @@ public class SessionRestController {
     // http://localhost:8088/Spring/etudiant/add-etudiant
     @PostMapping("/add_Session")
     @ResponseBody
-    public Session addAnalyse(@RequestBody Session ae)
+    public Session addSession(@RequestBody Session ae)
     {
         Session session = sessionService.addSession(ae);
 
@@ -36,9 +36,17 @@ public class SessionRestController {
 
     @PostMapping("/invite/{id_user}/{id_session}")
     @ResponseBody
-    public Session addSession(@PathVariable("id_session") String id_session,@PathVariable("id_user") String id_projet)
+    public Session invite_user(@PathVariable("id_session") String id_session,@PathVariable("id_user") String id_projet)
     {
         Session session = sessionService.invite_users(id_projet,id_session);
+
+        return session;
+    }
+    @PostMapping("/ajouter_issues/{id_issue}/{id_session}")
+    @ResponseBody
+    public Session ajouter_issues(@PathVariable("id_session") String id_session,@PathVariable("id_issue") String id_issue)
+    {
+        Session session = sessionService.ajouterIssues(id_issue,id_session);
 
         return session;
     }

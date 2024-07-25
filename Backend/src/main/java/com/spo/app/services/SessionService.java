@@ -1,6 +1,8 @@
 package com.spo.app.services;
+import com.spo.app.dao.IssueRepo;
 import com.spo.app.dao.SessionRepository;
 import com.spo.app.dao.UserRepository;
+import com.spo.app.entity.Issue;
 import com.spo.app.entity.Session;
 import com.spo.app.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,14 @@ public class SessionService implements ISessionService {
     SessionRepository sessionRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    IssueRepo issueRepo;
 
     @Override
     public Session addSession(Session session) {
 
         Date now = new Date();
+        session.setStart_date(now);
         session.setStart_date(now);
         return sessionRepository.save(session);
     }
@@ -51,5 +56,16 @@ public class SessionService implements ISessionService {
         users.add(user);
         session.setUserList(users);
         return sessionRepository.save(session);
+    }
+
+    @Override
+    public Session ajouterIssues(String id_issue, String id_session) {
+        Session session=sessionRepository.findById(id_session).orElse(null);
+        List<Issue> issues=new ArrayList<>();
+        Issue issue=issueRepo.findById(id_issue).orElse(null);
+        issues.add(issue);
+        session.setIssueList(issues);
+        return sessionRepository.save(session);
+
     }
 }

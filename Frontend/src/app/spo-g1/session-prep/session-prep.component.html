@@ -1,23 +1,29 @@
 <div class="container">
-  <div class="col-lg-4 col-md-6 mb-4">
-  </div>
-  <div class="col-7 align-self-center">
-    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Invite Team Members</h3>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <!-- Optional content -->
+    </div>
+    <div class="col-lg-8 col-md-6 mb-4">
+      <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Create ROOM</h3>
+    </div>
   </div>
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">List of Users to Invite</h4>
+      <form class="container" [formGroup]="add_session" (ngSubmit)="Add()">
+        <!-- Room Name Input -->
+        <div class="form-group">
+          <label for="name">Room Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter Room Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Session</button>
+      </form>
 
-      <!-- Ajout de l'input pour le room_name -->
-      <div class="form-group">
-        <label for="roomName">Room Name</label>
-        <input type="text" id="roomName" [(ngModel)]="roomName" class="form-control" placeholder="Enter Room Name">
-      </div>
-
-      <div *ngFor="let user of listUsers" class="mb-4">
+      <!-- List of Users to Invite -->
+      <div *ngIf="listUsers.length > 0" class="mb-4">
         <div class="card">
           <div class="card-body">
-            <table class="table">
+            <table class="table table-responsive">
               <thead class="bg-primary text-white">
               <tr>
                 <th>Email</th>
@@ -27,7 +33,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
+              <tr *ngFor="let user of listUsers">
                 <td>{{ user.email }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.accountEnabled }}</td>
@@ -40,6 +46,8 @@
           </div>
         </div>
       </div>
+
+      <!-- List of Issues -->
       <div class="table-responsive" *ngIf="issues.length > 0">
         <table class="table">
           <thead>
@@ -64,6 +72,9 @@
                 }">
                 {{ issue.status }}
               </span>
+            </td>
+            <td class="btn-col">
+              <button (click)="ajouter_issue(issue.id)" class="btn btn-outline-primary waves-effect waves-light">Ajouter</button>
             </td>
           </tr>
           </tbody>

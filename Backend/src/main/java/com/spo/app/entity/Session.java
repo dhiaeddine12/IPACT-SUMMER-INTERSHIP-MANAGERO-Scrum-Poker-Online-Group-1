@@ -30,4 +30,8 @@ public class Session {
 
     @DBRef
     private List<User> userList;
+
+
+    @DBRef
+    private List<Issue> issueList;
 }

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../Services/logger.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {SessionPreperationService} from '../services/Session/session-prep.service';
-import {UserService} from '../services/UserService/user.service';
-import {IssueService} from '../services/issue.service';
-import {Issue} from '../models/issues';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SessionPreperationService } from '../services/Session/session-prep.service';
+import { UserService } from '../services/UserService/user.service';
+import { IssueService } from '../services/issue.service';
+import { Issue } from '../models/issues';
 
 @Component({
   selector: 'ngx-session-prep',
@@ -14,81 +13,87 @@ import {Issue} from '../models/issues';
 })
 export class SessionPrepComponent implements OnInit {
   issues: Issue[] = [];
-
   listUsers: any[] = [];
   projectId: any;
-  session: any;
   add_session!: FormGroup;
-  constructor(private userService: UserService, private logger: LoggerService,
-              private sessionService: SessionPreperationService, private router: Router,
-              private fb: FormBuilder, private route: ActivatedRoute, private issueService: IssueService) {
-  }
-  roomName: string; // Nouvelle variable pour le nom de la salle
+
+  constructor(
+      private userService: UserService,
+      private sessionService: SessionPreperationService,
+      private router: Router,
+      private fb: FormBuilder,
+      private route: ActivatedRoute,
+      private issueService: IssueService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.projectId = params.get('projectId');
     });
-    this.loadIssues();
+
     this.add_session = this.fb.group({
-      name: ['', Validators.required],  // Ajoutez des validateurs si nécessaire
+      name: ['', Validators.required],
+      start_date: ['', Validators.required]
     });
+  }
+   session:any;
+  Add(): void {
+     this.session = {
+      start_date: this.add_session.value.start_date,
+      name: this.add_session.value.name
+    };
+    console.log(this.add_session.value);
 
+    this.sessionService.addSession(this.session).subscribe(
+        () => {
+          alert('Session added successfully');
+          this.loadUsers(); // Fetch users
+          this.loadIssues(); // Fetch issues
+        },
+        error => {
+          console.error('Error adding session:', error);
+          alert('Failed to add session');
+        }
+    );
+  }
 
+  loadUsers(): void {
     this.userService.getAll().subscribe(
-      (data: any) => {
-        this.listUsers = data;
-       // this.logger.log(this.listUsers); // Utilisation du service de journalisation
-      },
-      (error: any) => {
-       // this.logger.error('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + error);
-      },
+        (data: any) => {
+          this.listUsers = data;
+        },
+        error => console.error('Error fetching users:', error)
     );
   }
 
   loadIssues(): void {
     this.issueService.getIssuesByProjectId(this.projectId).subscribe(
-      issues => this.issues = issues,
-      error => console.error('Error fetching issues:', error),
+        issues => this.issues = issues,
+        error => console.error('Error fetching issues:', error)
     );
   }
-  Add() {
-    const session = {
-    };
-    this.onOptionSelected();
-   // console.log(this.add_session.value);
-    this.sessionService.addSession(session).
-    subscribe(() => {alert('adde Success');
-    }); }
-
 
   inviteUser(email: any) {
-  //  console.log('Invitation pour :', email);
-    const sessionId = '668edb1714515533cbbebf49'; // Remplacez par l'ID correct de la session
-    this.sessionService.inviteUser(email, sessionId).subscribe(
-      (response: any) => {
-       // console.log('Utilisateur invité avec succès :', response);
-      },
-      (error: any) => {
-        console.error('Une erreur s\'est produite lors de l\'invitation de l\'utilisateur :', error);
-      },
+    const sessionId = '668edb1714515533cbbebf49'; // Replace with the correct session ID
+
+    this.sessionService.inviteUser(email,this.session.id).subscribe(
+        (response: any) => {
+          console.log('User invited successfully:', response);
+        },
+        (error: any) => {
+          console.error('Error inviting user:', error);
+        }
     );
   }
 
-  addSession(): void {
-    const newSession: any = {
-      startDate: '2024-07-10T11:00:00',
-      endDate: '2024-07-10T12:00:00',
-      userList: [],
-    };
-    this.sessionService.addSession(newSession).subscribe(
-      (data: any) => {
-      //  console.log('Session ajoutée avec succès :', data);
-        this.session = data;
-      },
-      (error: any) => {
-        console.error('Une erreur s\'est produite lors de l\'ajout de la session :', error);
-      },
+  ajouter_issue(id_issue: any) {
+    this.sessionService.ajouter_issue(id_issue,this.session.id).subscribe(
+        (response: any) => {
+          console.log('add successfully:', response);
+        },
+        (error: any) => {
+          console.error('Error:', error);
+        }
     );
   }
 

@@ -12,5 +12,6 @@ public interface ISessionService {
     public Session retrieveoneSession(String id);
 
     public Session invite_users(String id_user, String id_session);
+     Session ajouterIssues(String id_issue, String id_session);
 }
 
