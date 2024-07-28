@@ -24,5 +24,12 @@ export class SessionPreperationService {
     const url = `${this.BasedUrl}/${id_issue}/${id_session}`;
     return this.http.post<any>(`${this.BasedUrl}/ajouter_issues/${id_issue}/${id_session}`, {});
   }
-
+ // BasedUrl = `http://localhost:8081`;
+ /* createSessionAndSendEmail(email: string, session: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.BasedUrl}/mail/${email}`, session,{ headers });
+  }*/
+  createSessionAndSendEmail(email: string, session: any): Observable<any> {
+    return this.http.post(`${this.BasedUrl}/mail?email=${email}`, session);
+  }
 }

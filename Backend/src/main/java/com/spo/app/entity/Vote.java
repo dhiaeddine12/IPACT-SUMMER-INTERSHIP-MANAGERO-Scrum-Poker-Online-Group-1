@@ -10,36 +10,17 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+
+
 @Getter
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
-
-
 @Setter
-@Document
+@Document(collection = "votes")
 public class Vote {
-
-
     @Id
-    private String  id;
-    private Long estimation;
-
-    public void setId(String  id) {
-        this.id = id;
-    }
-
-    public void setEstimation(Long estimation) {
-        this.estimation = estimation;
-    }
-
-    public Vote() {
-    }
-
-    @Override
-    public String toString() {
-        return "Vote{" +
-                "id=" + id +
-                ", estimation=" + estimation +
-                '}';
-    }
+    private String id;
+    private String sessionId;
+    private String userId;
+    private int value;
 }

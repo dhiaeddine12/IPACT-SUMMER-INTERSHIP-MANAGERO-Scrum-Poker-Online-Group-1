@@ -10,6 +10,7 @@ import { ScrumPokerG1Component } from '../scrum-poker-g1/scrum-poker-g1.componen
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
 import {WebSocketComponent} from '../spo-g1/web-socket/web-socket.component';
 import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
+import {VoteResultsComponent} from '../spo-g1/vote-results/vote-results.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +32,7 @@ const routes: Routes = [{
       path: 'ws',
       component: WebSocketComponent ,
     },
+    { path: 'votes', component: VoteResultsComponent },
     {
       path: 'poker-planning/preparation/:projectId',
       component: SessionPrepComponent,
