@@ -1,0 +1,48 @@
+<div class="card-container">
+    <div
+            *ngFor="let number of fibonacciSequence"
+            class="card"
+            [ngClass]="{'disabled': number === 0}"
+            (click)="onCardClick(number)"
+    >
+        <div>
+            <svg *ngIf="number === 0" class="disabled-svg">
+                <!-- SVG content here if needed -->
+            </svg>
+            {{ number }}
+        </div>
+    </div>
+</div>
+
+<div class="last-clicked-card" *ngIf="lastClickedValue !== null">
+    <h4>Last Clicked Value:</h4>
+    <div class="card">
+        <div>
+            {{ lastClickedValue }}
+        </div>
+    </div>
+    <button (click)="validateChoice()" class="cssbuttons-io-button">Validate Choice<div class="icon">
+        <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                    fill="currentColor"
+            ></path>
+        </svg>
+    </div>
+    </button>
+</div>
+
+<div class="validated-card" *ngIf="validatedValue !== null">
+    <h4>Validated Value:</h4>
+    <div class="card">
+        <div>
+            {{ validatedValue }}
+        </div>
+    </div>
+</div>
