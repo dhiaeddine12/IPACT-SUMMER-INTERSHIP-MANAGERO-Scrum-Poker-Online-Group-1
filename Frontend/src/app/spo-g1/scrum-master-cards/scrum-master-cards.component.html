@@ -11,13 +11,14 @@
     <h4 class="card-title">Select Issue to Start Voting</h4>
     <form class="container">
         <div class="form-group">
-            <label for="issueSelect">Choose an Issue</label>
-            <select id="issueSelect" class="form-control" (change)="startVote($event.target.value)">
+            <label for="selectedIssueTitle">Choose an Issue</label>
+            <select id="selectedIssueTitle" class="form-control" (change)="startVote($event)">
                 <option *ngFor="let issue of issues" [ngValue]="issue">
                     {{ issue.title }}
                 </option>
             </select>
         </div>
+
 
         <button type="button" (click)="finishVote()" class="btn btn-primary">Finish Voting</button>
     </form>

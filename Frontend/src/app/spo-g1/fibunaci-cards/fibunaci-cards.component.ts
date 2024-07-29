@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WebSocketService } from '../services/Web Socket/web-socket-service.service';
 import { ActivatedRoute } from '@angular/router';
+import {WebSocketService} from '../services/Web Socket/web-socket-service.service';
 
 @Component({
   selector: 'ngx-fibunaci-cards',
@@ -15,10 +15,17 @@ export class FibunaciCardsComponent implements OnInit {
   sessionToken: any;
   issues: any[] = [];
   disabledCards: boolean[] = [];
+  issueTitle: string | null = null;  // Declare the issueTitle variable
 
   constructor(private webSocketService: WebSocketService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.webSocketService.onIssueTitle().subscribe(title => {
+      this.issueTitle = title;
+      console.log('job:', this.issueTitle);
+    });
+
     this.route.paramMap.subscribe(params => {
       this.sessionToken = params.get('token');
     });
@@ -34,6 +41,9 @@ export class FibunaciCardsComponent implements OnInit {
       this.validatedValue = value;
       console.log('Received validated value:', this.validatedValue);
     });
+
+    // Subscribe to WebSocket updates for issue title
+
   }
 
   generateFibonacciSequence(count: number): void {

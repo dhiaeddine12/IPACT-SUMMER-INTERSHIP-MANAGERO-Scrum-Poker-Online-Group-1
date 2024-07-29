@@ -15,6 +15,7 @@ export class ScrumMasterCardsComponent implements OnInit {
   isVotingDisabled = true;
   sessionToken: string | null = null;
   issues: any[] = [];
+  selectedIssueTitle:any;
 
   constructor(
       private webSocketService: WebSocketService,
@@ -41,7 +42,7 @@ export class ScrumMasterCardsComponent implements OnInit {
     let a = 0, b = 1;
     for (let i = 0; i < count; i++) {
       this.fibonacciSequence.push(a);
-      [a, b] = [b, a + b];
+      [a, b] = [b, a + b]; // Simplified Fibonacci sequence generation
     }
   }
 
@@ -56,15 +57,23 @@ export class ScrumMasterCardsComponent implements OnInit {
         );
   }
 
-  startVote(issue: any): void {
-    this.isVotingDisabled = false;
-    this.webSocketService.sendVoteStart(); // Notify other clients to start voting
-    console.log('Vote started for issue:', issue);
+  startVote(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const issue = this.issues.find(issue => issue.title === selectElement.value);
+
+    if (issue) {
+      this.isVotingDisabled = false;
+      this.selectedIssueTitle = issue.title;
+      console.log('Selected Issue Title:', this.selectedIssueTitle);
+      this.webSocketService.sendVoteStart();
+      this.webSocketService.sendIssueTitle(issue.title); // Send issue title to WebSocket
+      console.log('Vote started for issue:', issue);
+    }
   }
+
 
   finishVote(): void {
     this.isVotingDisabled = true;
-    this.webSocketService.sendVoteStart(); // Optionally, notify other clients to finish voting
     console.log('Vote finished');
   }
 
@@ -84,6 +93,15 @@ export class ScrumMasterCardsComponent implements OnInit {
   }
 
   private subscribeToWebSocket(): void {
+    this.webSocketService.onVoteStart().subscribe(() => {
+      this.isVotingDisabled = false;
+    });
+
+    this.webSocketService.onIssueTitle().subscribe(title => {
+      this.selectedIssueTitle = title;
+      console.log('Received issue title:', this.selectedIssueTitle);
+    });
+
     this.webSocketService.subscribeToValidatedValue((value: number) => {
       this.validatedValue = value;
       console.log('Received validated value:', this.validatedValue);

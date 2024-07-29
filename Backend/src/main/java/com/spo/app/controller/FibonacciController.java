@@ -22,6 +22,11 @@ public class FibonacciController {
         // Broadcast the validated value to all subscribers
         messagingTemplate.convertAndSend("/topic/validatedChoice", value);
     }
+    @MessageMapping("/send-issue-title")
+    public void sendIssueTitle(String title) {
+        System.out.println("Received issue title: " + title);
+        messagingTemplate.convertAndSend("/topic/issueTitle", title);
+    }
 
     @MessageMapping("/vote-start")
     public void startVote() {
