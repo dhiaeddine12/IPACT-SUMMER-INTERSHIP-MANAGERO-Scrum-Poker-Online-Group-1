@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface SessionRepository extends MongoRepository<Session,String> {
-    Optional<Session> findByToken(String token);
+    Session findByToken(String Token);
 }

@@ -56,14 +56,16 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public Optional<Session> GetsessionByToken(String token) {
-        return sessionRepository.findByToken(token);
-    }
+    public List<Issue> GetsessionByToken(String token) {
+      Session s= sessionRepository.findByToken(token);
+    //List<Issue> issues=s.getIssueList();
+    return s.getIssueList();}
 
     @Override
     public Session retrieveoneSession(String id) {
         return sessionRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public Session invite_users(String id_user, String id_session) {
@@ -80,10 +82,15 @@ public class SessionService implements ISessionService {
     @Override
     public Session ajouterIssues(String id_issue, String id_session) {
         Session session = sessionRepository.findById(id_session).orElse(null);
-        List<Issue> issues = new ArrayList<>();
         Issue issue = issueRepo.findById(id_issue).orElse(null);
+        List<Issue> issues = session.getIssueList();
+        if (issues == null) {
+            issues = new ArrayList<>();
+        }
+
+        // Add the new issue to the existing list
         issues.add(issue);
-        session.setIssueList(issues);
+
         return sessionRepository.save(session);
     }
 

@@ -1,4 +1,5 @@
 package com.spo.app.controller;
+import com.spo.app.entity.Issue;
 import com.spo.app.entity.Session;
 import com.spo.app.services.ISessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,8 @@ public class SessionRestController {
     }
 
     @GetMapping("/room/{token}")
-    public Session getSessionByToken(@PathVariable String token) {
-        return sessionService.GetsessionByToken(token)
-                .orElseThrow(() -> new RuntimeException("Session not found"));
+    public List<Issue> getSessionByToken(@PathVariable("token") String token) {
+        return sessionService.GetsessionByToken(token);
     }
     @PostMapping("/mail")
     public Session createSession(@RequestParam String email,@RequestBody Session ae) {

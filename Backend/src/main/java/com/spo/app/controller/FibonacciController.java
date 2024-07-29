@@ -23,4 +23,11 @@ public class FibonacciController {
         messagingTemplate.convertAndSend("/topic/validatedChoice", value);
     }
 
+    @MessageMapping("/vote-start")
+    public void startVote() {
+        // Broadcast a message to all subscribers when a vote starts
+        messagingTemplate.convertAndSend("/topic/voteStart", "Vote started");
+    }
+
+
 }

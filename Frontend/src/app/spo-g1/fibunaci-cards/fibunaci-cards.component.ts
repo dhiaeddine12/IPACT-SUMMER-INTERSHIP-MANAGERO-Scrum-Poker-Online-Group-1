@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebSocketService } from '../services/Web Socket/web-socket-service.service';
-import {SessionPreperationService} from '../services/Session/session-prep.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ngx-fibunaci-cards',
@@ -12,13 +12,24 @@ export class FibunaciCardsComponent implements OnInit {
   lastClickedValue: number | null = null;
   validatedValue: number | null = null;
   userEmail: string = '';
+  sessionToken: any;
+  issues: any[] = [];
+  disabledCards: boolean[] = [];
 
-  constructor(private webSocketService: WebSocketService, private sessionService:SessionPreperationService) { }
+  constructor(private webSocketService: WebSocketService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.generateFibonacciSequence(10); // Generate the first 10 Fibonacci numbers
+    this.route.paramMap.subscribe(params => {
+      this.sessionToken = params.get('token');
+    });
+    this.generateFibonacciSequence(10);
+    this.initializeDisabledCards();
 
-    // Optional: Subscribe to updates from WebSocketService
+    // Subscribe to WebSocket for vote start and validated values
+    this.webSocketService.onVoteStart().subscribe(() => {
+      this.enableCards();
+    });
+
     this.webSocketService.subscribeToValidatedValue((value) => {
       this.validatedValue = value;
       console.log('Received validated value:', this.validatedValue);
@@ -30,24 +41,36 @@ export class FibunaciCardsComponent implements OnInit {
     let a = 0, b = 1;
     for (let i = 0; i < count; i++) {
       this.fibonacciSequence.push(a);
-      const temp = a;
-      a = b;
-      b = temp + b;
+      [a, b] = [b, a + b];
     }
   }
 
+  initializeDisabledCards(): void {
+    this.disabledCards = this.fibonacciSequence.map(() => true);
+  }
+
+  enableCards(): void {
+    this.disabledCards = this.fibonacciSequence.map(() => false);
+  }
+
+  isCardDisabled(number: number): boolean {
+    const index = this.fibonacciSequence.indexOf(number);
+    return this.disabledCards[index];
+  }
+
   onCardClick(value: number): void {
-    this.lastClickedValue = value;
-    console.log('Last clicked value:', this.lastClickedValue);
+    const index = this.fibonacciSequence.indexOf(value);
+    if (!this.disabledCards[index]) {
+      this.lastClickedValue = value;
+      console.log('Last clicked value:', this.lastClickedValue);
+    }
   }
 
   validateChoice(): void {
     if (this.lastClickedValue !== null) {
-      this.webSocketService.sendValidatedChoice(this.lastClickedValue); // Send the validated choice to the backend
+      this.webSocketService.sendValidatedChoice(this.lastClickedValue);
     } else {
       console.error('No value selected to validate.');
     }
   }
-
-
 }

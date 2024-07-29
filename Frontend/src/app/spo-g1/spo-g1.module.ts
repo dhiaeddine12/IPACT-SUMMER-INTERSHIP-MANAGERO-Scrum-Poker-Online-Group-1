@@ -29,7 +29,8 @@ import { UpdatewhatifComponent } from './updatewhatif/updatewhatif.component';
 import { SessionPrepComponent } from './session-prep/session-prep.component';
 import { WebSocketComponent } from './web-socket/web-socket.component';
 import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
-import { VoteResultsComponent } from './vote-results/vote-results.component';
+import { RoomManagementComponent } from './room-management/room-management.component';
+import { ScrumMasterCardsComponent } from './scrum-master-cards/scrum-master-cards.component';
 
 
 @NgModule({
@@ -57,6 +58,8 @@ import { VoteResultsComponent } from './vote-results/vote-results.component';
     SessionPrepComponent,
     WebSocketComponent,
     FibunaciCardsComponent,
+    RoomManagementComponent,
+    ScrumMasterCardsComponent,
 
 
 

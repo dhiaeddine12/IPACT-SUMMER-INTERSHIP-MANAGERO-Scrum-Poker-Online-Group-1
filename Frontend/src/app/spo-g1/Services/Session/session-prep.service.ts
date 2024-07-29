@@ -7,8 +7,17 @@ import {Observable} from 'rxjs';
 })
 export class SessionPreperationService {
   BasedUrl = `http://localhost:8081`;
+  private session: any = null;
+
   constructor(private http: HttpClient) { }
 
+  setSession(session: any) {
+    this.session = session;
+  }
+
+  getSession() {
+    return this.session;
+  }
   addSession(session: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -32,4 +41,10 @@ export class SessionPreperationService {
   createSessionAndSendEmail(email: string, session: any): Observable<any> {
     return this.http.post(`${this.BasedUrl}/mail?email=${email}`, session);
   }
+
+  getIssues_By_Session(token: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.BasedUrl}/room/${token}`);
+  }
+
+
 }

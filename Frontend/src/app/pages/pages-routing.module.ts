@@ -10,7 +10,8 @@ import { ScrumPokerG1Component } from '../scrum-poker-g1/scrum-poker-g1.componen
 import {SessionPrepComponent} from '../spo-g1/session-prep/session-prep.component';
 import {WebSocketComponent} from '../spo-g1/web-socket/web-socket.component';
 import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
-import {VoteResultsComponent} from '../spo-g1/vote-results/vote-results.component';
+import {RoomManagementComponent} from '../spo-g1/room-management/room-management.component';
+import {ScrumMasterCardsComponent} from '../spo-g1/scrum-master-cards/scrum-master-cards.component';
 
 const routes: Routes = [{
   path: '',
@@ -32,15 +33,18 @@ const routes: Routes = [{
       path: 'ws',
       component: WebSocketComponent ,
     },
-    { path: 'votes', component: VoteResultsComponent },
+    { path: 'issue-management', component: RoomManagementComponent },
+
     {
       path: 'poker-planning/preparation/:projectId',
       component: SessionPrepComponent,
     },
-    /*{
+    {
       path: 'fibunaci',
       component: FibunaciCardsComponent,
-    },*/
+    },
+      { path: 'scrum_master/:token', component:ScrumMasterCardsComponent },
+      { path: 'fibunaci/:token', component: FibunaciCardsComponent },
     { path: 'room/:token', component: FibunaciCardsComponent },
     { path: 'poker-planning/forum', component: ForumComponent },
     { path: 'poker-planning/creategame', component: CreategameComponent },

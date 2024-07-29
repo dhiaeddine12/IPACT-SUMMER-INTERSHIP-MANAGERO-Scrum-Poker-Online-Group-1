@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface IssueRepo extends MongoRepository<Issue,String> {
     List<Issue> findByProject(Project project);
+    
 }

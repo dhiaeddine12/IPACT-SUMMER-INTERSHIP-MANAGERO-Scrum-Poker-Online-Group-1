@@ -38,6 +38,7 @@ export class IssuesComponent implements OnInit {
     this.router.navigate(['pages/poker-planning/preparation',  this.projectId ]);
   }
 
+
   startSession(): void {
     // For demonstration, let's use the first issue's title
     const firstIssueTitle = this.issues.length > 0 ? this.issues[0].title : 'Default Issue Title';

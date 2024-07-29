@@ -35,9 +35,8 @@ public class Session {
     @DBRef
     private List<User> userList;
 
-
     @Field
-    private  String Token;
+    private  String token;
 
 
     @DBRef

@@ -1,5 +1,6 @@
 package com.spo.app.services;
 
+import com.spo.app.entity.Issue;
 import com.spo.app.entity.Session;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public interface ISessionService {
     public Session invite_users(String id_user, String id_session);
      Session ajouterIssues(String id_issue, String id_session);
     void sendEmail(String to, String subject, String text);
-    Optional<Session> GetsessionByToken(String token);
+   // Optional<Session> GetsessionByToken(String token);
+    List<Issue> GetsessionByToken(String token);
 }
 
