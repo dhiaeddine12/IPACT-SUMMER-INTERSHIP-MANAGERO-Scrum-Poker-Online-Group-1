@@ -11,6 +11,7 @@ import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule } from '@ne
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import {ChartsModule} from './charts/charts.module';
 @NgModule({
   imports: [
     PagesRoutingModule,

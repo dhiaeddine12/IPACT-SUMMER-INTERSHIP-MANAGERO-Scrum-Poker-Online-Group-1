@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebSocketService } from '../services/Web Socket/web-socket-service.service';
 import { SessionPreperationService } from '../services/Session/session-prep.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-scrum-master-cards',
@@ -17,10 +17,12 @@ export class ScrumMasterCardsComponent implements OnInit {
   issues: any[] = [];
   selectedIssueTitle:any;
 
+
   constructor(
       private webSocketService: WebSocketService,
       private sessionService: SessionPreperationService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+   private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +77,8 @@ export class ScrumMasterCardsComponent implements OnInit {
   finishVote(): void {
     this.isVotingDisabled = true;
     console.log('Vote finished');
+    console.log("job",this.selectedIssueTitle);
+    this.router.navigate(['pages/vote',  this.selectedIssueTitle ]);
   }
 
   onCardClick(value: number): void {
@@ -107,4 +111,5 @@ export class ScrumMasterCardsComponent implements OnInit {
       console.log('Received validated value:', this.validatedValue);
     });
   }
+
 }

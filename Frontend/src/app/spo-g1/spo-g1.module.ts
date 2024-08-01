@@ -31,6 +31,9 @@ import { WebSocketComponent } from './web-socket/web-socket.component';
 import { FibunaciCardsComponent } from './fibunaci-cards/fibunaci-cards.component';
 import { RoomManagementComponent } from './room-management/room-management.component';
 import { ScrumMasterCardsComponent } from './scrum-master-cards/scrum-master-cards.component';
+import { VotesComponent } from './votes/votes.component';
+import {ChartsModule} from '../pages/charts/charts.module';
+import {CanvasJSAngularChartsModule} from '@canvasjs/angular-charts';
 
 
 @NgModule({
@@ -60,23 +63,26 @@ import { ScrumMasterCardsComponent } from './scrum-master-cards/scrum-master-car
     FibunaciCardsComponent,
     RoomManagementComponent,
     ScrumMasterCardsComponent,
+    VotesComponent,
+
+
 
 
 
   ],
   exports: [WhytutoComponent , WhattutoComponent ],
 
-  imports: [
-    ReactiveFormsModule,
-    CommonModule,
-    SpoG1RoutingModule,
-    NbCardModule,
-    NbTreeGridModule,
-    NbIconModule,
-    NbInputModule,
-    NbSelectModule,
-    ThemeModule,
-    FormsModule,
-  ]
+    imports: [
+        ReactiveFormsModule,
+        CommonModule,
+        SpoG1RoutingModule,
+        NbCardModule,
+        NbTreeGridModule,
+        NbIconModule,
+        NbInputModule,
+        NbSelectModule,
+        ThemeModule,
+        FormsModule,
+    ]
 })
 export class SpoG1Module { }

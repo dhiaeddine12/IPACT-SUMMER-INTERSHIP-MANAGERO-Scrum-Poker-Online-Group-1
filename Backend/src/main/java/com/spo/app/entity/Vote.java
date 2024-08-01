@@ -20,7 +20,8 @@ import javax.persistence.Enumerated;
 public class Vote {
     @Id
     private String id;
-    private String sessionId;
-    private String userId;
     private int value;
+    private Session session;
+    private Issue issue;
+
 }

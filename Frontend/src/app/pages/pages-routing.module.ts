@@ -12,6 +12,7 @@ import {WebSocketComponent} from '../spo-g1/web-socket/web-socket.component';
 import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.component';
 import {RoomManagementComponent} from '../spo-g1/room-management/room-management.component';
 import {ScrumMasterCardsComponent} from '../spo-g1/scrum-master-cards/scrum-master-cards.component';
+import {VotesComponent} from '../spo-g1/votes/votes.component';
 
 const routes: Routes = [{
   path: '',
@@ -42,6 +43,9 @@ const routes: Routes = [{
     {
       path: 'fibunaci',
       component: FibunaciCardsComponent,
+    },
+    { path: 'vote/:issueTitle',
+      component: VotesComponent ,
     },
       { path: 'scrum_master/:token', component:ScrumMasterCardsComponent },
       { path: 'fibunaci/:token', component: FibunaciCardsComponent },
