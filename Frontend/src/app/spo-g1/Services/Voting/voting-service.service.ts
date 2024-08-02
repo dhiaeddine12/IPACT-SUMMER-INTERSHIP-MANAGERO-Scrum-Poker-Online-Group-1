@@ -1,28 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class VotingService {
-  private votingStateSource = new BehaviorSubject<boolean>(true); // true = disabled, false = enabled
-  votingState$ = this.votingStateSource.asObservable();
+  constructor(private http: HttpClient) { }
+  BasedUrl = `http://localhost:8081`;
+  addVote(vote: any,id_session:any,id_issue:any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  private lastClickedValueSource = new BehaviorSubject<number | null>(null);
-  lastClickedValue$ = this.lastClickedValueSource.asObservable();
-
-  private validatedValueSource = new BehaviorSubject<number | null>(null);
-  validatedValue$ = this.validatedValueSource.asObservable();
-
-  setVotingState(isDisabled: boolean) {
-    this.votingStateSource.next(isDisabled);
+    return this.http.post<any>(`${this.BasedUrl}/add_vote/${id_issue}/${id_session}`, vote);
   }
 
-  setLastClickedValue(value: number | null) {
-    this.lastClickedValueSource.next(value);
-  }
-
-  setValidatedValue(value: number | null) {
-    this.validatedValueSource.next(value);
+  getVoteStatistics(issueTitle: string): Observable<any> {
+    return this.http.get<any>(`${this.BasedUrl}/vote_statistics/${issueTitle}`);
   }
 }

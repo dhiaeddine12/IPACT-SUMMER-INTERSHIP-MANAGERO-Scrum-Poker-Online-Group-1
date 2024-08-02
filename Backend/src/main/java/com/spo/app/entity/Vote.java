@@ -15,6 +15,7 @@ import javax.persistence.Enumerated;
 @Getter
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Document(collection = "votes")
 public class Vote {
