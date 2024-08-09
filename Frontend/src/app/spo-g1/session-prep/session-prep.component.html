@@ -9,7 +9,7 @@
   </div>
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">List of Users to Invite</h4>
+
       <form class="container" [formGroup]="add_session" (ngSubmit)="Add()">
         <!-- Room Name Input -->
         <div class="form-group">
@@ -21,6 +21,7 @@
 
       <!-- List of Users to Invite -->
       <div *ngIf="listUsers.length > 0" class="mb-4">
+        <h4 class="card-title">List of Users to Invite</h4>
         <div class="card">
           <div class="card-body">
             <table class="table table-responsive">
@@ -79,7 +80,6 @@
           </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession2()">Start Session khalil</button>
         <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession_scrum_master()">Start Session scrum master</button>
       </div>
     </div>

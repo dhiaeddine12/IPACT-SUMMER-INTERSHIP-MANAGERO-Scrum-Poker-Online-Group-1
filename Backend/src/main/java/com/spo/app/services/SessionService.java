@@ -90,6 +90,7 @@ public class SessionService implements ISessionService {
 
         // Add the new issue to the existing list
         issues.add(issue);
+        session.setIssueList(issues);
 
         return sessionRepository.save(session);
     }

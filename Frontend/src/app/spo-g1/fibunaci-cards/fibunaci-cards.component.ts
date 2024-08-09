@@ -91,7 +91,8 @@ export class FibunaciCardsComponent implements OnInit {
 
       this.votingService.addVote(this.vote,this.sessionToken, this.issueTitle).subscribe(
         response => {
-          console.log('Vote added successfully', response);
+
+          alert('Vote Added successfully');
         },
         error => {
           console.error('Error adding vote', error);

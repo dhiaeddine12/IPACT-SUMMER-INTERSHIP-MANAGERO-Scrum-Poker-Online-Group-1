@@ -34,6 +34,7 @@ import { ScrumMasterCardsComponent } from './scrum-master-cards/scrum-master-car
 import { VotesComponent } from './votes/votes.component';
 import {ChartsModule} from '../pages/charts/charts.module';
 import {CanvasJSAngularChartsModule} from '@canvasjs/angular-charts';
+import { TShirtCardsComponent } from './t-shirt-cards/t-shirt-cards.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import {CanvasJSAngularChartsModule} from '@canvasjs/angular-charts';
     RoomManagementComponent,
     ScrumMasterCardsComponent,
     VotesComponent,
+    TShirtCardsComponent,
 
 
 

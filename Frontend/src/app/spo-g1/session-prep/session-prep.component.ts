@@ -83,6 +83,7 @@ export class SessionPrepComponent implements OnInit {
     console.log(email);
     this.sessionService.createSessionAndSendEmail(email, this.session).subscribe(
       (response: any) => {
+        alert('Mail Send ');
         console.log('User invited successfully:', response);
       },
       (error: any) => {
@@ -95,6 +96,7 @@ export class SessionPrepComponent implements OnInit {
     if (this.session && this.session.id) {
       this.sessionService.ajouter_issue(id_issue, this.session.id).subscribe(
         (response: any) => {
+          alert('Issue added successfully');
           console.log('Issue added successfully:', response);
         },
         (error: any) => {

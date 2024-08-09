@@ -1,10 +1,7 @@
 package com.spo.app.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Getter
+@Setter
 
 @Document(collection = "User")
 public class User {
