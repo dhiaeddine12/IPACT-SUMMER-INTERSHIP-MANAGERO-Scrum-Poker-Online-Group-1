@@ -13,4 +13,9 @@ export class KpiService {
   getKpiData(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+
+  getTopThreeIssuesByAverageVote(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8081/top-three-by-average-vote`);
+  }
 }
