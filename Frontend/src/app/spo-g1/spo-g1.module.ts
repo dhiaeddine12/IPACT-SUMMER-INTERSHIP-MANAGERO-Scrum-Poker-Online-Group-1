@@ -35,6 +35,7 @@ import { VotesComponent } from './votes/votes.component';
 import {ChartsModule} from '../pages/charts/charts.module';
 import {CanvasJSAngularChartsModule} from '@canvasjs/angular-charts';
 import { TShirtCardsComponent } from './t-shirt-cards/t-shirt-cards.component';
+import { KpiDashboardComponentComponent } from './kpi-dashboard-component/kpi-dashboard-component.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { TShirtCardsComponent } from './t-shirt-cards/t-shirt-cards.component';
     ScrumMasterCardsComponent,
     VotesComponent,
     TShirtCardsComponent,
+    KpiDashboardComponentComponent,
 
 
 

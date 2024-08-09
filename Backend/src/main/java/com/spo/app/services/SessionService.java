@@ -102,4 +102,14 @@ public class SessionService implements ISessionService {
         message.setText(text);
         javaMailSender.send(message);
     }
+
+    public Issue Issue_delicate(){
+        List<Vote> votes=voteRepository.findAll();
+        for(Vote v:votes)
+        {
+
+        }
+    return null; }
+
+
 }

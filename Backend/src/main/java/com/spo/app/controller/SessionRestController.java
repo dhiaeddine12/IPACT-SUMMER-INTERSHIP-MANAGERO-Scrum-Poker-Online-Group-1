@@ -1,8 +1,11 @@
 package com.spo.app.controller;
 import com.spo.app.entity.Issue;
+import com.spo.app.entity.KpiData;
 import com.spo.app.entity.Session;
 import com.spo.app.services.ISessionService;
+import com.spo.app.services.KPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +15,9 @@ import java.util.List;
 public class SessionRestController {
     @Autowired
     ISessionService sessionService;
+
+    @Autowired
+    private KPI kpiService;
     // http://localhost:8088/Spring/etudiant/add-etudiant
     @PostMapping("/add_Session")
     @ResponseBody
@@ -64,4 +70,11 @@ public class SessionRestController {
         return session;
     }
 
+
+    @RequestMapping("/kpis")
+    @GetMapping
+    public ResponseEntity<KpiData> getKpiData() {
+        KpiData kpiData = kpiService.getKpiData();
+        return ResponseEntity.ok(kpiData);
+    }
 }

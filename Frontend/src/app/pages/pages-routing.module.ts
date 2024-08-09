@@ -13,6 +13,7 @@ import {FibunaciCardsComponent} from '../spo-g1/fibunaci-cards/fibunaci-cards.co
 import {RoomManagementComponent} from '../spo-g1/room-management/room-management.component';
 import {ScrumMasterCardsComponent} from '../spo-g1/scrum-master-cards/scrum-master-cards.component';
 import {VotesComponent} from '../spo-g1/votes/votes.component';
+import {KpiDashboardComponentComponent} from '../spo-g1/kpi-dashboard-component/kpi-dashboard-component.component';
 
 const routes: Routes = [{
   path: '',
@@ -39,6 +40,10 @@ const routes: Routes = [{
     {
       path: 'poker-planning/preparation/:projectId',
       component: SessionPrepComponent,
+    },
+    {
+      path: 'KPI',
+      component: KpiDashboardComponentComponent,
     },
     {
       path: 'fibunaci',
