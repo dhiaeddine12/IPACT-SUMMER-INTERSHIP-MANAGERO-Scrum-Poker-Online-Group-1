@@ -35,10 +35,18 @@ public class Issue {
     @Field(name = "project", targetType = FieldType.OBJECT_ID)
     private String project;
 
+    private double averageVote;
+
     public String getId() {
         return id;
     }
 
+    public double getAverageVote() {
+        return averageVote;
+    }
+    public void setAverageVote(double averageVote) {
+        this.averageVote = averageVote;
+    }
     public void setId(String id) {
         this.id = id;
     }

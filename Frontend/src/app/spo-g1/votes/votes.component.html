@@ -1,10 +1,4 @@
 <p>votes works!</p>
+<h2> Vote For :{{issueTitle}}</h2>
 <!-- src/app/vote-statistics/vote-statistics.component.html -->
-<div class="container">
-    <h2>Vote Statistics for {{ issueTitle }}</h2>
-    <div *ngIf="voteStatistics">
-        <div *ngFor="let vote of voteStatistics | keyvalue">
-            <p>{{ vote.key }}: {{ vote.value }}</p>
-        </div>
-    </div>
-</div>
+<canvas id="voteChart"></canvas>

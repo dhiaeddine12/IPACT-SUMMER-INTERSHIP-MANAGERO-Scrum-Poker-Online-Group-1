@@ -77,4 +77,10 @@ public class SessionRestController {
         KpiData kpiData = kpiService.getKpiData();
         return ResponseEntity.ok(kpiData);
     }
+
+    @GetMapping("/top-three-by-average-vote")
+    public ResponseEntity<List<Issue>> getTopThreeIssuesByAverageVote() {
+        List<Issue> topIssues = sessionService.getTopThreeIssuesByAverageVote();
+        return ResponseEntity.ok(topIssues);
+    }
 }

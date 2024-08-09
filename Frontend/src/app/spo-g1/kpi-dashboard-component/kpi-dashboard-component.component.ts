@@ -16,7 +16,10 @@ export class KpiDashboardComponentComponent {
       this.kpiData = data;
       this.updateChart();
     });
-
+    this.kpiService.getTopThreeIssuesByAverageVote().subscribe(data => {
+      this.rankedIssues = data;
+      this.updateIssueChart();
+    });
 
     this.kpiService.getKpiData().subscribe(data => {
       this.kpiData = data;
@@ -32,10 +35,10 @@ export class KpiDashboardComponentComponent {
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Total Votes', 'Total Issues'],
+        labels: ['Total Votes'],
         datasets: [{
           label: 'KPI Data',
-          data: [this.kpiData.totalVotes, this.kpiData.totalIssues],
+          data: [this.kpiData.totalIssues],
           backgroundColor: 'rgb(123,195,254)',
           borderColor: 'rgb(123,195,254)',
           borderWidth: 1
@@ -73,5 +76,51 @@ export class KpiDashboardComponentComponent {
       }
     });
   }
+
+  rankedIssues: any[] = [];
+  updateIssueChart(): void {
+    const ctx = (document.getElementById('issueChart') as HTMLCanvasElement).getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: this.rankedIssues.map(issue => issue.title),
+        datasets: [{
+          label: 'Average Votes per Issue',
+          data: this.rankedIssues.map(issue => issue.averageVote),
+          backgroundColor: [
+            'rgb(174,101,253)',
+            'rgb(54,162,235)',
+            'rgb(75,192,192)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgb(174,101,253)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Issues Ranked by Average Votes'
+          }
+        }
+      }
+    });
+  }
+
+
 }
 

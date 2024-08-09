@@ -7,3 +7,19 @@
   <h1>KPI Dashboard</h1>
   <canvas id="kpiChart2"></canvas>
 </div>
+
+
+<div class="card">
+  <h3>Hardest Issues by Average Votes</h3>
+  <div class="card2">
+    <b></b>
+    <div class="content">
+  <ul>
+    <li *ngFor="let issue of rankedIssues">
+      {{ issue.title }} - Average Vote: {{ issue.averageVote }}
+    </li>
+  </ul>
+
+    </div>
+  </div>
+</div>

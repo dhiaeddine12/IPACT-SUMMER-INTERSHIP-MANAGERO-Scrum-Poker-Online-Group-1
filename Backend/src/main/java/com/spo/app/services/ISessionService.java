@@ -18,5 +18,6 @@ public interface ISessionService {
     void sendEmail(String to, String subject, String text);
    // Optional<Session> GetsessionByToken(String token);
     List<Issue> GetsessionByToken(String token);
+    public List<Issue> getTopThreeIssuesByAverageVote();
 }
 

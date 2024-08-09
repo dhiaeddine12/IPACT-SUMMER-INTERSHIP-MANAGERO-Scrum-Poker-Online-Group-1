@@ -11,10 +11,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SessionService implements ISessionService {
@@ -110,6 +108,25 @@ public class SessionService implements ISessionService {
 
         }
     return null; }
+
+@Override
+    public List<Issue> getTopThreeIssuesByAverageVote() {
+        List<Issue> allIssues = issueRepo.findAll();
+
+        // Calculer la moyenne des votes pour chaque issue
+        for (Issue issue : allIssues) {
+            List<Vote> votes = voteRepository.findAllByIssueTitle(issue.getTitle());
+            double averageVote = votes.stream().mapToInt(Vote::getValue).average().orElse(0);
+            issue.setAverageVote(averageVote);  // Assurez-vous que la classe Issue a un champ averageVote
+        }
+
+        // Trier les issues par la moyenne des votes en ordre décroissant
+        return allIssues.stream()
+                .sorted(Comparator.comparingDouble(Issue::getAverageVote).reversed())
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
 
 
 }
