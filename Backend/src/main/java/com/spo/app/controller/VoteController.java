@@ -39,9 +39,9 @@ public class VoteController {
 
         return ResponseEntity.status(HttpStatus.OK).body(voteCountsByValue);
     }
-    @PostMapping("/add_vote/{issue_id}/{session_id}")
-    public Vote addVote(@RequestBody Vote vote,@PathVariable("session_id") String  session_id,@PathVariable("issue_id") String  issue_title) {
-        return voteService.addVote(vote,issue_title,session_id);
+    @PostMapping("/add_vote/{issue_token}/{session_title}/{username}")
+    public Vote addVote(@RequestBody Vote vote,@PathVariable("issue_token") String  issue_title,@PathVariable("session_title") String  session_id,@PathVariable("username") String  username) {
+        return voteService.addVote(vote,issue_title,session_id,username);
     }
 
     @PutMapping("/modify-vote")

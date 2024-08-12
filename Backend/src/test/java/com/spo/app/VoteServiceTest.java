@@ -46,12 +46,13 @@ public class VoteServiceTest {
         Issue issue = new Issue();
         String issueTitle = "issue-title";
         String sessionId = "session-id";
+        String username="khamim";
 
         when(sessionRepository.findByToken(sessionId)).thenReturn(session);
         when(issueRepo.findByTitle(issueTitle)).thenReturn(issue);
         when(voteRepository.save(vote)).thenReturn(vote);
 
-        Vote savedVote = voteService.addVote(vote, issueTitle, sessionId);
+        Vote savedVote = voteService.addVote(vote, issueTitle, sessionId,username);
 
         assertEquals(vote, savedVote);
         assertEquals(session, vote.getSession());

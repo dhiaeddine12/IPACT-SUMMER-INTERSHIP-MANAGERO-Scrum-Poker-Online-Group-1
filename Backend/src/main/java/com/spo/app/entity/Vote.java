@@ -1,5 +1,6 @@
 package com.spo.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,10 @@ public class Vote {
     @Id
     private String id;
     private int value;
+
     private Session session;
+
     private Issue issue;
+    private User user;
 
 }
