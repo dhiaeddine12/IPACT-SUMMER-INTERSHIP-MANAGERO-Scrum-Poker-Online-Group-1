@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebSocketService } from '../services/Web Socket/web-socket-service.service';
 import { SessionPreperationService } from '../services/Session/session-prep.service';
 import { ActivatedRoute ,Router} from '@angular/router';
+import {VotingService} from '../services/Voting/voting-service.service';
 
 @Component({
   selector: 'ngx-scrum-master-cards',
@@ -22,12 +23,14 @@ export class ScrumMasterCardsComponent implements OnInit {
       private webSocketService: WebSocketService,
       private sessionService: SessionPreperationService,
       private route: ActivatedRoute,
+      private votingService: VotingService,
    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.sessionToken = params.get('token');
+
       if (this.sessionToken) {
         this.loadIssues();
       } else {
@@ -55,6 +58,7 @@ export class ScrumMasterCardsComponent implements OnInit {
               console.log('Fetched issues:', issues);
               this.issues = issues;
             },
+
             (error: any) => console.error('Error fetching issues:', error)
         );
   }
@@ -87,12 +91,32 @@ export class ScrumMasterCardsComponent implements OnInit {
       console.log('Last clicked value:', this.lastClickedValue);
     }
   }
-
+  issueTitle: string | null = null;
+  vote: any = {};
   validateChoice(): void {
-    if (this.lastClickedValue !== null) {
+    {
       this.webSocketService.sendValidatedChoice(this.lastClickedValue);
-    } else {
-      console.error('No value selected to validate.');
+      this.vote = {
+        value: this.lastClickedValue,
+        //  sessionToken: this.sessionToken,
+        //issueTitle: this.issueTitle
+      };
+
+      this.votingService.addVote(this.vote,this.issueTitle, this.sessionToken).subscribe(
+        response => {
+          console.log('Vote added successfully', response);
+          console.log('Last Clicked Value33:', this.lastClickedValue);
+          console.log('param lowel', this.sessionToken);
+          console.log('param el theni', this.issueTitle);
+          alert('Vote Added successfully');
+        },
+        error => {
+          console.error('Error adding vote', error);
+          console.log('Last Clicked Value33:', this.lastClickedValue);
+          console.log('Session Token:33', this.sessionToken);
+          console.log('Issue Title:33', this.issueTitle);
+        }
+      );
     }
   }
 

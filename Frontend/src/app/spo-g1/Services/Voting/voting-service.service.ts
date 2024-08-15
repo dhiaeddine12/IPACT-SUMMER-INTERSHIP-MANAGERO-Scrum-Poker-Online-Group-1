@@ -10,10 +10,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class VotingService {
   constructor(private http: HttpClient) { }
   BasedUrl = `http://localhost:8081`;
-  addVote(vote: any,id_session:any,id_issue:any,username:any): Observable<any> {
+  addVote(vote: any,id_session:any,id_issue:any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(`${this.BasedUrl}/add_vote/${id_issue}/${id_session}/${username}`, vote);
+    return this.http.post<any>(`${this.BasedUrl}/add_vote/${id_issue}/${id_session}`, vote);
   }
 
   getVoteStatistics(issueTitle: string): Observable<any> {

@@ -17,6 +17,7 @@ export class SessionPrepComponent implements OnInit {
   projectId: any;
   add_session!: FormGroup;
   session: any;
+  token:any;
 
   constructor(
     private userService: UserService,
@@ -48,10 +49,12 @@ export class SessionPrepComponent implements OnInit {
     this.sessionService.addSession(this.session).subscribe(
       (createdSession) => {
         if (createdSession && createdSession.token) {
+
           alert('Session added successfully');
           this.session = createdSession;  // Set the session to the created session with the token
           this.loadUsers(); // Fetch users
           this.loadIssues(); // Fetch issues
+
         } else {
           console.error('Error: Session created but token is missing');
         }
@@ -61,6 +64,7 @@ export class SessionPrepComponent implements OnInit {
         alert('Failed to add session');
       }
     );
+
   }
 
   loadUsers(): void {
@@ -81,8 +85,11 @@ export class SessionPrepComponent implements OnInit {
 
   inviteUser(email: any) {
     console.log(email);
+    console.log(this.session);
+
     this.sessionService.createSessionAndSendEmail(email, this.session).subscribe(
       (response: any) => {
+     //  this.token=this.session.token;
         alert('Mail Send ');
         console.log('User invited successfully:', response);
       },
@@ -93,11 +100,13 @@ export class SessionPrepComponent implements OnInit {
   }
 
   ajouter_issue(id_issue: any) {
+
     if (this.session && this.session.id) {
       this.sessionService.ajouter_issue(id_issue, this.session.id).subscribe(
         (response: any) => {
           alert('Issue added successfully');
-          console.log('Issue added successfully:', response);
+          console.log('Issue added successfully:', response.token);
+          this.token=response.token;
         },
         (error: any) => {
           console.error('Error:', error);
@@ -107,7 +116,7 @@ export class SessionPrepComponent implements OnInit {
       console.error("Session ID is undefined or null");
     }
   }
-
+/*
   startSession2() {
     if (this.session && this.session.token) {
       this.router.navigate(['pages/fibunaci', this.session.token]);
@@ -115,24 +124,16 @@ export class SessionPrepComponent implements OnInit {
     } else {
       console.error("Session token is undefined or null");
     }
-  }
+  }*/
+
   startSession_scrum_master() {
+    console.log("this token",this.token)
     if (this.session && this.session.token) {
-      this.router.navigate(['pages/scrum_master', this.session.token]);
-      console.log("Token for session:", this.session.token);
+      this.router.navigate(['pages/scrum_master',this.token]);
+      console.log("Token for session:2", this.token);
     } else {
       console.error("Session token is undefined or null");
     }
   }
 
-  selectedOption: string;
-  options = ['Fibonacci', 'T-shirt'];
-
-  onOptionSelected(): void {
-    if (this.selectedOption === 'Fibonacci') {
-      this.router.navigate(['poker-planning/fibonacci']);
-    } else if (this.selectedOption === 'T-shirt') {
-      this.router.navigate(['poker-planning/tshirt']);
-    }
-  }
 }

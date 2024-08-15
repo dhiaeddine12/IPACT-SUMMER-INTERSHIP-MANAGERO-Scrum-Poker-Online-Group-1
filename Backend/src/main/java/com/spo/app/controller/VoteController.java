@@ -3,6 +3,7 @@ package com.spo.app.controller;
 import com.spo.app.dao.VoteRepository;
 import com.spo.app.entity.Creategame;
 import com.spo.app.entity.Vote;
+import com.spo.app.services.IVoteService;
 import com.spo.app.services.VoteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 @RestController
 public class VoteController {
 
-    VoteServiceImpl voteService;
+    IVoteService voteService;
     @Autowired
     VoteRepository voteRepository;
 
@@ -39,9 +40,10 @@ public class VoteController {
 
         return ResponseEntity.status(HttpStatus.OK).body(voteCountsByValue);
     }
-    @PostMapping("/add_vote/{issue_token}/{session_title}/{username}")
-    public Vote addVote(@RequestBody Vote vote,@PathVariable("issue_token") String  issue_title,@PathVariable("session_title") String  session_id,@PathVariable("username") String  username) {
-        return voteService.addVote(vote,issue_title,session_id,username);
+    @PostMapping("/add_vote/{session_token}/{issue_title}")
+    public Vote addVote(@RequestBody Vote vote,@PathVariable("session_token") String  session_token,@PathVariable("issue_title") String  issue_title) {
+        return voteService.addVote(vote,issue_title,session_token,"khalil");
+       // public Vote addVote(Vote vote, String issue_title, String id_session, String username);
     }
 
     @PutMapping("/modify-vote")

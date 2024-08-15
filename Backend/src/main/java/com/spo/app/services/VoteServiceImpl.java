@@ -24,14 +24,14 @@ import java.util.Map;
 @Service
 @AllArgsConstructor
 public class VoteServiceImpl implements  IVoteService{
-@Autowired
+    @Autowired
     private VoteRepository voteRepository ;
-@Autowired
+    @Autowired
     private IssueRepo issueRepo;
-@Autowired
-private SessionRepository sessionRepository;
-@Autowired
-private UserRepository userRepository;
+    @Autowired
+    private SessionRepository sessionRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public Vote addVote(Vote vote, String issue_title, String id_session, String username) {

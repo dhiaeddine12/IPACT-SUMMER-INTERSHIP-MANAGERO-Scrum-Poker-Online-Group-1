@@ -1,20 +1,18 @@
 package com.spo.app.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-
+@Data
 @Getter
-@CrossOrigin(origins = "*")
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

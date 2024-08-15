@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WebSocketService } from '../services/Web Socket/web-socket-service.service';
 import { VotingService } from '../services/Voting/voting-service.service';
-import {WebSocketService} from '../services/Web Socket/web-socket-service.service';
 
 @Component({
   selector: 'ngx-fibunaci-cards',
@@ -12,6 +12,7 @@ export class FibunaciCardsComponent implements OnInit {
   fibonacciSequence: number[] = [];
   lastClickedValue: number | null = null;
   validatedValue: number | null = null;
+  userEmail: string = '';
   sessionToken: string | null = null;
   issues: any[] = [];
   disabledCards: boolean[] = [];
@@ -31,10 +32,22 @@ export class FibunaciCardsComponent implements OnInit {
 
     this.generateFibonacciSequence(10);
     this.initializeDisabledCards();
-    this.setupWebSocketSubscriptions();
+    // Subscribe to WebSocket updates for issue title
+    this.webSocketService.onIssueTitle().subscribe(title => {
+      this.issueTitle = title;
+      console.log('job', this.issueTitle);
+    });
+    // Subscribe to WebSocket for vote start and validated values
+    this.webSocketService.onVoteStart().subscribe(() => {
+      this.enableCards();
+    });
 
-    // Example login, ideally this should be handled via actual authentication
-    this.login('exampleUser', 'exampleToken');
+    this.webSocketService.subscribeToValidatedValue(value => {
+      this.validatedValue = value;
+      console.log('Received validated value:', this.validatedValue);
+    });
+
+
   }
 
   generateFibonacciSequence(count: number): void {
@@ -67,69 +80,46 @@ export class FibunaciCardsComponent implements OnInit {
     }
   }
 
-  login(username: string, token: string): void {
-    // Create a user object with the necessary information
-    const user = {
-      username: username,
-      token: token // This could be an authentication token
-    };
-
-    // Store the user object in localStorage
-    localStorage.setItem('user', JSON.stringify(user));
-  }
-
   validateChoice(): void {
-    this.webSocketService.sendValidatedChoice(this.lastClickedValue);
+    {
+      this.webSocketService.sendValidatedChoice(this.lastClickedValue);
+      this.vote = {
+        value: this.lastClickedValue,
+      //  sessionToken: this.sessionToken,
+        //issueTitle: this.issueTitle
+      };
 
-    // Retrieve user information from localStorage
-    const storedUser = localStorage.getItem('user');
-    let username = 'khalil';
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      username = user.username;
+      this.votingService.addVote(this.vote,this.issueTitle, this.sessionToken).subscribe(
+        response => {
+          console.log('Vote added successfully', response);
+          console.log('Last Clicked Value33:', this.lastClickedValue);
+          console.log('param lowel', this.sessionToken);
+          console.log('param el theni', this.issueTitle);
+          alert('Vote Added successfully');
+        },
+        error => {
+          console.error('Error adding vote', error);
+          console.log('Last Clicked Value33:', this.lastClickedValue);
+          console.log('Session Token:33', this.sessionToken);
+          console.log('Issue Title:33', this.issueTitle);
+        }
+      );
     }
-    console.log('Retrieved username:', username);
-
-    // Prepare the vote object
-    this.vote = {
-      value: this.lastClickedValue,
-      sessionToken: this.sessionToken,
-      issueTitle: this.issueTitle,
-      user: username // Add the logged-in user
-    };
-
-    // Call the service to add the vote
-    this.votingService.addVote(this.vote, this.sessionToken, this.issueTitle,username).subscribe(
-      response => {
-        alert('Vote added successfully');
-        console.log('Last Clicked Value:', this.lastClickedValue);
-        console.log('Session Token:', this.sessionToken);
-        console.log('Issue Title:', this.issueTitle);
-        console.log('user:',username);
-      },
-      error => {
-        console.error('Error adding vote', error);
-        console.log('Last Clicked Value:', this.lastClickedValue);
-        console.log('Session Token:', this.sessionToken);
-        console.log('Issue Title:', this.issueTitle);
-        console.log('user:',username);
-      }
-    );
+  }
+  voteStatistics: any = {};
+  fetchVoteStatistics(): void {
+    if (this.issueTitle) {
+      this.votingService.getVoteStatistics(this.issueTitle).subscribe(
+        statistics => {
+          this.voteStatistics = statistics;
+          console.log('Vote statistics:', this.voteStatistics);
+        },
+        error => {
+          console.error('Error fetching vote statistics', error);
+        }
+      );
+    }
   }
 
-  setupWebSocketSubscriptions(): void {
-    this.webSocketService.onIssueTitle().subscribe(title => {
-      this.issueTitle = title;
-      console.log('Received issue title:', this.issueTitle);
-    });
 
-    this.webSocketService.onVoteStart().subscribe(() => {
-      this.enableCards();
-    });
-
-    this.webSocketService.subscribeToValidatedValue(value => {
-      this.validatedValue = value;
-      console.log('Received validated value:', this.validatedValue);
-    });
-  }
 }

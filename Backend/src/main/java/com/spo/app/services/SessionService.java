@@ -43,6 +43,7 @@ public class SessionService implements ISessionService {
     public Session addSession(Session session) {
         Date now = new Date();
         session.setToken(TokenGenerator.generateToken());
+     //   session.setToken(TokenGenerator.generateToken());
         session.setStart_date(now);
         session.setEnd_date(now);
         return sessionRepository.save(session);
@@ -67,7 +68,8 @@ public class SessionService implements ISessionService {
 
     @Override
     public Session invite_users(String id_user, String id_session) {
-        Session session = sessionRepository.findById(id_session).orElse(null);
+      Session session = sessionRepository.findById(id_session).orElse(null);
+      //  Session session = sessionRepository.findByToken(id_session);
         Date now = new Date();
         session.setStart_date(now);
         List<User> users = new ArrayList<>();
