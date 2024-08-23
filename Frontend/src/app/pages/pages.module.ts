@@ -10,7 +10,8 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import {ChartsModule} from './charts/charts.module';
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -24,6 +25,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     PagesComponent,

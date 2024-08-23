@@ -4,16 +4,14 @@ import com.spo.app.dao.IssueRepo;
 import com.spo.app.dao.ProjectRepo;
 import com.spo.app.entity.Issue;
 import com.spo.app.entity.Project;
+import com.spo.app.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -72,7 +70,7 @@ public class ProjectController {
             project.setTitle(updatedProject.getTitle());
             project.setDescription(updatedProject.getDescription());
             project.setStatus(updatedProject.getStatus());
-
+            project.setArchived(updatedProject.isArchived());  // Ensure archived status is updated
             // Save updated project
             Project savedProject = projectRepository.save(project);
             return new ResponseEntity<>(savedProject, HttpStatus.OK);
@@ -130,5 +128,58 @@ public class ProjectController {
         }
     }
 
+    // Archive project by ID
+    @PutMapping("/archive/{id}")
+    public ResponseEntity<Project> archiveProject(@PathVariable String id) {
+        Optional<Project> optionalProject = projectRepository.findById(id);
+        if (optionalProject.isPresent()) {
+            Project project = optionalProject.get();
+            project.setArchived(true);
+            projectRepository.save(project);
+            return new ResponseEntity<>(project, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
+    // Restore project by ID
+    @PutMapping("/restore/{id}")
+    public ResponseEntity<Project> restoreProject(@PathVariable String id) {
+        Optional<Project> optionalProject = projectRepository.findById(id);
+        if (optionalProject.isPresent()) {
+            Project project = optionalProject.get();
+            project.setArchived(false);
+            projectRepository.save(project);
+            return new ResponseEntity<>(project, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Get all archived projects
+    @GetMapping("/archived")
+    public ResponseEntity<List<Project>> getArchivedProjects() {
+        List<Project> projects = projectRepository.findAll();
+        List<Project> archivedProjects = new ArrayList<>();
+        for (Project project : projects) {
+            if (project.isArchived()) {
+                archivedProjects.add(project);
+            }
+        }
+        return new ResponseEntity<>(archivedProjects, HttpStatus.OK);
+    }
+
+    @GetMapping("/status-counts")
+    public Map<String, Long> getStatusCounts() {
+        List<Project> projects = projectRepository.findAll();
+        Map<String, Long> statusCounts = new HashMap<>();
+
+        for (Status status : Status.values()) {
+            final Status currentStatus = status;
+            long count = projects.stream().filter(project -> project.getStatus() == currentStatus).count();
+            statusCounts.put(currentStatus.name(), count);
+        }
+
+        return statusCounts;
+    }
 }

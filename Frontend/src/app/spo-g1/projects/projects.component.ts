@@ -6,7 +6,9 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { tap } from 'rxjs/operators';
 import { AddprojectComponent } from '../addproject/addproject.component';
 import { UpdateprojectComponent } from '../updateproject/updateproject.component';
-
+import { Chart, registerables } from 'chart.js';
+import { environment } from '../../../environments/environment';
+import { IssueStatusChartComponent } from '../issue-status-chart/issue-status-chart.component';
 interface Project {
   id: string;
   title: string;
@@ -26,6 +28,7 @@ interface Project {
 })
 export class ProjectsComponent implements OnInit{
   projects: Project[] = [];
+  chart: any;
   constructor(
     private dialogService: NbDialogService,
     private toastrService: NbToastrService,
@@ -35,6 +38,10 @@ export class ProjectsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getProjects();
+    this.http.get<{ [key: string]: number }>(`${environment.apiUrl}/api/issues/status-counts`)
+    .subscribe(data => {
+      this.createChart(data);
+    });
   }
   getProjects() {
     this.http.get<Project[]>('http://localhost:8081/api/projects')
@@ -51,6 +58,44 @@ export class ProjectsComponent implements OnInit{
         }
       });
   }
+  createChart(data: { [key: string]: number }): void {
+    const ctx = document.getElementById('statusChart') as HTMLCanvasElement;
+
+    this.chart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: Object.keys(data),
+        datasets: [{
+          label: 'Number of Projects per Status',
+          data: Object.values(data),
+          backgroundColor: [
+            '#ff6384',
+            '#36a2eb',
+            '#cc65fe',
+            '#ffce56',
+          ],
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  navigateToArchivedProjects(): void {
+    this.router.navigate(['pages/spo-g1/archived-projects']);
+  }
+  navigateToKPI(): void {
+    this.router.navigate(['pages/spo-g1/kpi-dashboard']);
+  }
+  /*
   loadProjects() {
     this.http.get('http://localhost:8081/api/projects')
       .subscribe(
@@ -63,7 +108,13 @@ export class ProjectsComponent implements OnInit{
         }
       );
   }
-
+*/
+loadProjects(): void {
+  this.http.get<Project[]>('http://localhost:8081/api/projects')
+    .subscribe(data => {
+      this.projects = data.filter(project => !project.archived);
+    });
+}
   editProject(event: Event, project: any): void {
     event.stopPropagation();
   
@@ -124,6 +175,53 @@ export class ProjectsComponent implements OnInit{
   navigateToProjectIssues(projectId: string) {
     this.router.navigate(['pages/spo-g1/issues', projectId]);
   }
+
+  archiveProject(event: Event, project: Project): void {
+    project.archived = true;
+    this.http.put<Project>(`http://localhost:8081/api/projects/updatep/${project.id}`, project)
+      .subscribe(
+        updatedProject => {
+          this.toastrService.success('Project archived successfully');
+          this.loadProjects();  // Refresh the project list to reflect the change
+        },
+        error => {
+          this.toastrService.danger('Failed to archive project');
+          console.error(error);
+        }
+      );
+  }
+  
+  restoreProject(event: Event, project: any): void {
+    event.stopPropagation();
+    this.http.put(`http://localhost:8081/api/projects/restore/${project.id}`, {})
+      .subscribe(
+        () => {
+          this.loadProjects();
+          this.toastrService.success('Project restored successfully', 'Success');
+        },
+        (error) => {
+          this.toastrService.danger('Error restoring project', 'Error');
+          console.error('Error restoring project:', error);
+        }
+      );
+  }
+  
+  getArchivedProjects() {
+    this.http.get<Project[]>('http://localhost:8081/api/projects/archived')
+      .subscribe(data => {
+        this.projects = data;
+      });
+  }
+
+
+
+
+
+
+
+
+
+
 }
 
 

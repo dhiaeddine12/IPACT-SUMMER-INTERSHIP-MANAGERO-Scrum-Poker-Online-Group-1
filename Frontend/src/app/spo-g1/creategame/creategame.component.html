@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning Poker Online</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #333333;
+    }
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .submit-button {
+      background-color: #6200ea;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .submit-button:hover {
+      background-color: #4500b5;
+    }
+
+    .edit-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.edit-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.edit-container button {
+  padding: 10px 20px;
+  background-color: #6200ea;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-container button:hover {
+  background-color: #3700b3;
+}
+  </style>
+</head>
+<body>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+<div class="container">
+  <h1>Planning Poker Game Setup</h1>
+  <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <label for="room_name">Game Name</label>
+      <input type="text" id="room_name" formControlName="room_name" placeholder="Enter game name">
+    </div>
+    <div class="input-group">
+      <label for="votetype">Voting type</label>
+      <select id="votetype" formControlName="votetype">
+        <option value="Fibonacci_Sequence_Cards">Fibonacci</option>
+        <option value="TShirt_Sizes_Cards">T-Shirt Sizes</option>
+        <option value="Modified_Fibonacci_Sequence">Modified Fibonacci</option>
+        <option value="Sequential_Numbers">Sequential Numbers</option>
+      </select>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="isLoading">Submit</button>
+  </form>
+</div>
+=======
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
+  <div class="container">
+    <h1>Planning Poker Game Setup</h1>
+    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="room_name">Game Name</label>
+        <input type="text" id="room_name" formControlName="room_name" placeholder="Enter game name">
+      </div>
+      <div class="input-group">
+        <label for="votetype">Voting type</label>
+        <select id="votetype" formControlName="votetype">
+          <option value="Fibonacci_Sequence_Cards">Fibonacci</option>
+          <option value="TShirt_Sizes_Cards">T-Shirt Sizes</option>
+          <option value="Modified_Fibonacci_Sequence">Modified Fibonacci</option>
+          <option value="Sequential_Numbers">Sequential Numbers</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="issue_title">Issue Title</label>
+        <input type="text" id="issue_title" [value]="issueTitle" disabled>
+      </div>
+      <button type="submit" class="submit-button" [disabled]="isLoading">Submit</button>
+    </form>
+  </div>
+  
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9a0e8d7cd80e12fd230a4077d9e5fb9446455c9a
+
+  <script>
+    document.getElementById('gameForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const gameName = document.getElementById('gameName').value;
+      const votingSystem = document.getElementById('votingSystem').value;
+      alert(`Game Name: ${gameName}\nVoting System: ${votingSystem}`);
+    });
+  </script>
+</body>
+</html>

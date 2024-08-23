@@ -1,0 +1,33 @@
+<div class="container">
+  <!-- Issue Title -->
+  <div *ngIf="issueTitle" class="issue-title">
+    <h3 class="page-title">
+      <span class="highlight">Issue to Vote:</span> {{ issueTitle }}
+    </h3>
+  </div>
+  
+  <!-- Flipped Card Container -->
+  <div class="flipped-card-wrapper">
+    <div class="flipped-card-container">
+      <div class="flipped-card" [ngClass]="{'flipped': isCardFlipped}">
+        <div class="card-front"></div>
+        <div class="card-back">
+          <div class="card-number">{{ lastClickedValue }}</div>
+        </div>
+      </div>
+    </div>
+    <button (click)="validateChoice()" class="btn btn-validate">Validate Choice</button>
+  </div>
+
+  <!-- Fibonacci Cards -->
+  <div class="card-container">
+    <div
+      *ngFor="let number of fibonacciSequence"
+      class="card"
+      [ngClass]="{'disabled': isCardDisabled(number), 'elevated': number === lastClickedValue}"
+      (click)="onCardClick(number)"
+    >
+      <div class="card-number">{{ number }}</div>
+    </div>
+  </div>
+</div>
