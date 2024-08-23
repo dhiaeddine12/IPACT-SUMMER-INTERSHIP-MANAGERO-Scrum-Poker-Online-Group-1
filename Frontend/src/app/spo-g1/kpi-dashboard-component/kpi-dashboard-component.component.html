@@ -1,0 +1,132 @@
+<!-- Conteneur principal pour la page d'accueil -->
+<div class="home-container">
+  <!-- Section pour les KPI Totaux et le Tableau de Bord des KPI côte à côte -->
+  <section class="charts-container">
+    <div class="card">
+      <div class="title">
+        <p class="title-text">Total Votes</p>
+        <p class="percent">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+            <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+          </svg> 
+        </p>
+      </div>
+      <div class="data">
+        <p>{{ kpiData?.totalVotes }}</p>
+        <div class="range">
+          <div class="fill" [style.width.%]="kpiData?.votePercentage"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">
+        <p class="title-text">Total Issues</p>
+        <p class="percent">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+            <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+          </svg> 
+        </p>
+      </div>
+      <div class="data">
+        <p>{{ kpiData?.totalIssues }}</p>
+        <div class="range">
+          <div class="fill" [style.width.%]="kpiData?.issuePercentage"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="title">
+        <p class="title-text">Total Sessions</p>
+        <p class="percent">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+            <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+          </svg> 
+        </p>
+      </div>
+      <div class="data">
+        <p>{{ kpiData?.totalSessions }}</p>
+        <div class="range">
+          <div class="fill" [style.width.%]="kpiData?.sessionPercentage"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="title">
+        <p class="title-text">Total Projects</p>
+        <p class="percent">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+            <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+          </svg> 
+        </p>
+      </div>
+      <div class="data">
+        <p>{{ kpiData?.totalProjects }}</p>
+        <div class="range">
+          <div class="fill" [style.width.%]="kpiData?.projectPercentage"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteneur pour afficher les "Hardest Issues" côte à côte -->
+  <section class="flex-container">
+    <div class="chart">
+      <h1>Hardest Issues by Average Votes</h1>
+      <canvas id="issueChart"></canvas>
+    </div>
+
+    <div class="info-cards-container">
+      <section class="info-card info-card-left">
+        <h1>Top Hardest Issues</h1>
+        <canvas id="issuePieChart"></canvas>
+      </section>
+
+      <section class="info-card info-card-right">
+        <h1>Average Issues Per Session</h1>
+        <div class="progress-bar-container">
+          <div class="progress-bar" [style.width.%]="scaleValue(averageIssuesPerSession)">
+            <span class="progress-text">    tes Issues</span>
+          </div>
+        </div>
+        <div class="progress-number">
+          {{ averageIssuesPerSession | number: '1.0-3' }} Issues
+        </div>
+      </section>
+      
+      
+      
+      
+      
+    </div>
+  </section>
+ 
+  <!-- Conteneur pour les cours ou projets -->
+  <div class="ag-format-container">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item" *ngFor="let project of projects">
+        <div class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            {{ project.title }}
+          </div>
+          <div class="ag-courses-item_date-box">
+            Description:
+            <span class="ag-courses-item_date">
+              {{ project.description }}
+            </span>
+          </div>
+          <div class="ag-courses-item_date-box">
+            Percentage of progress:
+            <span class="ag-courses-item_date">
+              {{ pourcentages[project.id] || 0 }}%
+            </span>
+          </div>
+          <div class="ag-courses-item_date-box">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

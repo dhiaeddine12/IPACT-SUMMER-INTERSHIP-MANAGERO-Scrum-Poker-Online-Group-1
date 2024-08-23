@@ -1,0 +1,33 @@
+<!-- Conteneur principal -->
+<div class="container">
+    <!-- Title -->
+    <h1 class="title">Vote Results</h1>
+
+    <!-- Conteneurs pour les graphiques -->
+    <div class="charts-container">
+        <div *ngFor="let chart of chartData" class="chart-container">
+            <h3>Issue : {{ chart.label }}</h3>
+            <canvas id="{{ chart.id }}"></canvas>
+        </div>
+    </div>
+
+    <!-- Tableau pour afficher les résultats de vote -->
+    <div class="table-responsive">
+        <table class="table votes-table">
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Votes</th>
+                    <th>Average Vote</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of tableData">
+                    <td>{{ data.issue }}</td>
+                    <td>{{ data.votes.join(' | ') }}</td>
+                    <td>{{ data.average }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
