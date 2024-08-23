@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: 20px;
+  max-width: 100%;
+  background-color: white; /* Set background color to white */
+  padding: 20px; /* Add padding to the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+}
+
+.title {
+  text-align: center; /* Center the title */
+  font-size: 28px; /* Adjust font size */
+  margin-bottom: 20px; /* Space below the title */
+  color: #333; /* Text color */
+}
+
+.form-control {
+  margin-top: 20px;
+}
+
+.table-responsive {
+  margin-top: 20px; 
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  padding: 12px;
+  text-align: left;
+  border-bottom: none;
+}
+
+.btn-col {
+  text-align: center;
+}
+
+.card {
+  border: none;
+  color: white;
+  margin-top: 20px;
+  box-shadow: none;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-add {
+  margin-left: auto;
+}
+
+.search-container {
+  margin-top: 20px; 
+  margin-left: 0px;
+}
+
+.project-name {
+  display: flex;
+  align-items: center;
+}
+
+.project-name img {
+  margin-right: 8px; 
+  width: 30px; 
+  height: 30px;
+  border-radius: 8px;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  gap: 20px;
+  margin-bottom: 20px; /* Ensure spacing between charts and table */
+}
+
+.chart-container {
+  flex: 1;
+  min-width: 200px; /* Adjust as needed */
+  max-width: 400px; /* Adjust as needed */
+  padding: 10px;
+  border: none; /* No border */
+  border-radius: 8px;
+  
+  background-color: white; /* Background color of chart containers */
+}
+
+.chart-canvas {
+  width: 100%;
+  height: 200px; /* Adjust the height as needed */
+}

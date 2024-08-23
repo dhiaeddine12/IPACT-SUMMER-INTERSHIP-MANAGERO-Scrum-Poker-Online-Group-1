@@ -1,0 +1,15 @@
+<div *ngIf="issues.length > 0">
+  <h2>Issues</h2>
+  <ul>
+    <li *ngFor="let issue of issues" (click)="selectIssue(issue)">
+      {{ issue.title }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedIssue">
+  <h3>Selected Issue: {{ selectedIssue.title }}</h3>
+  <label for="vote">Vote:</label>
+  <input id="vote" type="number" [(ngModel)]="voteValue">
+  <button (click)="submitVote()">Submit Vote</button>
+</div>

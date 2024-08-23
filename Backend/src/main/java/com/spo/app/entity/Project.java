@@ -30,7 +30,8 @@ public class Project {
     private String description;
 
     @Field(name = "issueIds", targetType = FieldType.ARRAY)
-    private List<String> issueIds = new ArrayList<>(); // Store issue IDs as Strings
+    private List<String> issueIds = new ArrayList<>(); // Store issue IDs as String
+
 
     public List<String> getIssueIds() {
         return issueIds;

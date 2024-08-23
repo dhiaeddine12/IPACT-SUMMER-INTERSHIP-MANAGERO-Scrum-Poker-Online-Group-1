@@ -64,6 +64,11 @@
       height: 30px;
       border-radius: 8px;
     }
+    .chart-container {
+      width: 800px; /* Adjust the width as needed */
+      height: 800px; /* Adjust the height as needed */
+      margin: 20px auto; /* Center the chart */
+    }
   </style>
 </head>
 <body>
@@ -71,9 +76,19 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">
-          List of Projects
           <button type="button" class="btn btn-outline-primary btn-add" (click)="navigateToAddProject()">Add Project</button>
+          <button type="button" class="btn btn-outline-primary btn-add" (click)="navigateToArchivedProjects()">Archived Projects</button>
+          
+          <button type="button" class="btn btn-outline-primary btn-add" (click)="navigateToKPI()">Dashboard</button>
+         
+          
         </h4>
+        <h4 class="card-title">
+         
+          List of Projects
+          
+        </h4>
+        
         <div class="search-container">
           <div class="form-group col-md-6">
             <input type="text" class="form-control" id="name" placeholder="Search by name">
@@ -97,21 +112,35 @@
                   <a (click)="navigateToProjectIssues(project.id)" style="cursor: pointer; color: #0056b3;">
                     {{ project.title }}
                   </a>
-                  
                 </td>
                 <td>{{ project.description }}</td>
                 <td class="btn-col">
                   <button type="button" class="btn btn-link" (click)="editProject($event, project)">
-                    <i class="fa fa-pen"></i> 
-                  </button>                  
-
-                  <button type="button" class="btn btn-link text-danger" (click)="deleteProject($event, project)">
-                    <i class="fa fa-trash"></i> 
+                    <i class="fa fa-pen"></i>
                   </button>
+                  <button type="button" class="btn btn-link text-warning" (click)="archiveProject($event, project)" *ngIf="!project.archived">
+                    <i class="fa fa-archive"></i>
+                  </button>
+                 <!--
+                  <button type="button" class="btn btn-link text-danger" (click)="deleteProject($event, project)">
+                   <i class="fa fa-trash"></i>
+                  </button>
+-->
                 </td>
               </tr>
             </tbody>                         
           </table>
+          <div >
+            <h4 class="card-title">
+              Chart of Status per Project
+              
+            </h4>
+           
+          </div>
+          <div class="chart-container">
+           
+            <canvas id="statusChart"></canvas>
+          </div>
         </div>
       </div>
     </div>

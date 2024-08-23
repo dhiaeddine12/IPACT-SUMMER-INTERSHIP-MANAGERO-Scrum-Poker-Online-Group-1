@@ -1,0 +1,86 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+    <nb-stepper orientation="horizontal" [formGroup]="add_session">
+ <!-- Step 1: Room Name Input -->
+<nb-step label="Room Name">
+  <div class="form-group">
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter Room Name">
+  </div>
+  <button nbButton nbStepperNext (click)="createSession()" [disabled]="!add_session.get('name').valid" class="btn-custom btn-next">Next</button>
+</nb-step>
+
+
+<!-- Step 2: List of Users -->
+<nb-step label="Invite Users">
+  <div class="table-responsive" *ngIf="listUsers.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th class="btn-col">Invite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of listUsers; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.username }}</td>
+          <td class="btn-col">
+            <button *ngIf="!isInvitationSent(user.email)" (click)="inviteUser(user.email)" class="btn btn-success btn-square">
+              <i class="fa fa-plus"></i>
+            </button>
+            <span *ngIf="isInvitationSent(user.email)">Sent</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button nbButton nbStepperPrevious class="btn-custom btn-prev">Previous</button>
+  <button nbButton nbStepperNext (click)="createSession()" [disabled]="!add_session.get('name').valid" class="btn-custom btn-next">Next</button>
+</nb-step>
+
+<!-- Step 3: List of Issues -->
+<nb-step label="Add Issues">
+  <div class="table-responsive" *ngIf="issues.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th class="btn-col">Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let issue of issues; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ issue.title }}</td>
+          <td>{{ issue.description }}</td>
+          <td>
+            <span [ngClass]="{
+                'status-to-do': issue.status === 'TO_DO',
+                'status-in-progress': issue.status === 'IN_PROGRESS',
+                'status-completed': issue.status === 'COMPLETED'
+              }">
+              {{ issue.status }}
+            </span>
+          </td>
+          <td class="btn-col">
+            <button *ngIf="!isIssueAdded(issue.id)" (click)="ajouter_issue(issue.id)" class="btn btn-success btn-square">
+              <i class="fa fa-plus"></i>
+            </button>
+            <span *ngIf="isIssueAdded(issue.id)">Added</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-outline-primary btn-add" (click)="startSession_scrum_master()">Start Session scrum master</button>
+  </div>
+</nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>

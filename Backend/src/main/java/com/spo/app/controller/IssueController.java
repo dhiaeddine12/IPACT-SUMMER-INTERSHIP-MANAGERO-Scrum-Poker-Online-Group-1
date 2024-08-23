@@ -6,14 +6,15 @@ import com.spo.app.dao.IssueRepo;
 import com.spo.app.dao.ProjectRepo;
 import com.spo.app.entity.Issue;
 import com.spo.app.entity.Project;
+import com.spo.app.entity.Status;
+import com.spo.app.entity.StatusI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/issues")
@@ -62,6 +63,7 @@ public class IssueController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @PutMapping("/update-issue/{id}")
     public ResponseEntity<Issue> updateIssue(@PathVariable String id, @RequestBody Issue updatedIssue) {
         Issue issue = issueRepo.findById(id).orElse(null);
@@ -78,10 +80,12 @@ public class IssueController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping
     public List<Issue> getAllIssues() {
         return issueRepo.findAll();
     }
+
     @GetMapping("/project/{projectId}")
     public ResponseEntity<List<Issue>> getIssuesByProjectId(@PathVariable String projectId) {
         Optional<Project> projectOptional = projectRepo.findById(projectId);
@@ -95,4 +99,17 @@ public class IssueController {
         }
     }
 
+    @GetMapping("/status-counts")
+    public Map<String, Long> getStatusCounts() {
+        List<Project> projects = projectRepo.findAll();
+        Map<String, Long> statusCounts = new HashMap<>();
+
+        for (Status status : Status.values()) {
+            final Status currentStatus = status;
+            long count = projects.stream().filter(project -> project.getStatus() != null && project.getStatus() == currentStatus).count();
+            statusCounts.put(currentStatus.name(), count);
+        }
+
+        return statusCounts;
+    }
 }

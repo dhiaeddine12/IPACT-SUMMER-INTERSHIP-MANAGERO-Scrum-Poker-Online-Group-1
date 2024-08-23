@@ -1,0 +1,162 @@
+.container {
+  margin-top: 20px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.issue-selection {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.issue-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between the select and button */
+}
+
+.issue-form select {
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.flipped-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.flipped-card-container {
+  position: relative;
+  width: 150px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+
+.flipped-card {
+  position: relative;
+  width: 150px;
+  height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flipped-card .card-front,
+.flipped-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.flipped-card .card-front {
+  background-image: url('card.jpg'); 
+  background-size: cover;
+  background-position: center;
+}
+
+.flipped-card .card-back {
+  background-image: url('cardf.png'); 
+  background-size: cover;
+  transform: rotateY(180deg);
+}
+
+.flipped-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.btn-validate {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.btn-validate {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #292c73; /* Text color for the number */
+  border: 2px solid #e5e5e5;
+  background-color: #292c73;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  background-image: url('cardf.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.card:hover {
+  background-color: rgba(29, 238, 175, 0.1);
+  color: #28a745;
+}
+
+.card.disabled {
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  opacity: 0.5;
+}
+
+.card-number {
+  position: absolute;
+  font-size: 36px;
+  font-weight: bold;
+  color: #292c73;
+}
+.card.elevated {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+.validated-card {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.validated-card .card {
+  background-color: #28a745;
+  color: #fff;
+}
