@@ -1,0 +1,400 @@
+/* Styles pour le conteneur principal */
+.home-container {
+  padding: 20px;
+  font-family: 'Exo', sans-serif;
+  color: #333;
+  background-color: #f5f7fa;
+}
+
+/* Styles pour les sections de graphiques côte à côte */
+.charts-container {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.chart {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #4a4a4a;
+}
+
+.average-value {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-content {
+  margin-top: 15px;
+}
+
+.card-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-content li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #666;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Ensure both sides take up equal height */
+  gap: 20px; /* Adjust as needed */
+}
+
+.chart {
+  flex: 1; /* Take up remaining space */
+  min-width: 300px; /* Adjust to make it smaller */
+}
+
+.chart canvas {
+  width: 100% !important; /* Make sure the canvas fits within its container */
+  height: 300px; /* Adjust height as needed */
+}
+
+.info-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adjust as needed */
+}
+
+
+.info-card {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 20px; /* No border radius */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+  flex: 1;
+  border: none;
+}
+.card-right {
+  min-width: 200px; /* Adjust as needed */
+}
+
+.average-value {
+  font-size: 24px; /* Adjust as needed */
+  font-weight: bold;
+  color: white;
+}
+/* Styles pour les graphiques */
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Conteneur pour les cours ou projets */
+.ag-format-container {
+  width: 100%;
+  max-width: 1142px;
+  margin: 0 auto;
+}
+
+.ag-courses_box {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 50px 0;
+}
+
+.ag-courses_item {
+  flex-basis: calc(33.333% - 20px);
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #1c1c1c;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.ag-courses_item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ag-courses-item_link {
+  display: block;
+  padding: 25px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  border: none;
+}
+
+.ag-courses-item_title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #f9b234;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date-box {
+  font-size: 18px;
+  color: black;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #f9b234;
+  transition: color 0.4s;
+}
+
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+  background-color: #3ecd5e;
+}
+
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+  background-color: #e44002;
+}
+
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+}
+
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.cssbuttons-io:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1.2em 0.8em 1.05em;
+}
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    flex-basis: calc(50% - 20px);
+  }
+  .ag-courses-item_title {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    font-size: 20px;
+  }
+  .ag-courses-item_link {
+    padding: 22px 40px;
+  }
+}
+
+
+
+.card {
+  padding: 1rem;
+  background-color: #333; /* Dark gray */
+  box-shadow: 0 10px 15px -3px rgba(103, 103, 103, 0.3), 0 4px 6px -2px rgba(83, 82, 82, 0.2);
+  max-width: 500px;
+  border-radius: 20px;
+  width: 450px;
+  border: none;
+}
+
+
+.card:nth-child(1) {
+  background: linear-gradient(to right, #6660d9, #9c5cd2); /* Gradient from a dark purple to a lighter purple */
+}
+
+.card:nth-child(2) {
+  background: linear-gradient(to right, #3090EB, #7ec8f0); /* Gradient from a medium blue to a lighter blue */
+}
+
+.card:nth-child(3) {
+  background: linear-gradient(to right, #EB9F1B, #f8b65f); /* Gradient from an orange to a lighter orange */
+}
+.card:nth-child(4) {
+  background: linear-gradient(to right, #D34F4E, #e67a7a); /* Gradient from an orange to a lighter orange */
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title span {
+  position: relative;
+  padding: 0.5rem;
+  background-color: #ffffff; /* White for icon background */
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+}
+
+.title span svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #333; /* Dark gray icon color */
+  height: 1rem;
+}
+
+.title-text {
+  margin-left: 0.5rem;
+  color: #ffffff; /* White text */
+  font-size: 18px;
+}
+
+.percent {
+  margin-left: 0.5rem;
+  color: white; /* Light green */
+  font-weight: 600;
+  display: flex;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.data p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text */
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.data .range {
+  position: relative;
+  background-color: #555; /* Darker gray for the range background */
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.data .range .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff; /* White for the fill */
+  width: 76%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0; /* Light gray background */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 20px; /* Adjust height as needed */
+  background-color: #4caf50; /* Default color for the bar */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition: width 0.5s ease-in-out, background-color 0.3s ease;
+  position: relative;
+}
+.progress-bar.empty {
+  background-color: #e0e0e0; /* Couleur de la barre vide */
+  color: #999; /* Couleur du texte pour la barre vide */
+  width: 100%; /* Barre vide occupe toute la largeur */
+}
+
+.progress-bar-container:hover .progress-bar {
+  background-color: #ff9800; /* Change color on hover for the entire bar */
+}
+
+.progress-text {
+  position: relative;
+  color: white;
+  font-weight: bold;
+}
+
+.progress-number {
+  text-align: center;
+  margin-top: 10px; /* Space between progress bar and number */
+  font-size: 14px; /* Adjust font size as needed */
+  color: #333; /* Color of the number */
+}
+
+

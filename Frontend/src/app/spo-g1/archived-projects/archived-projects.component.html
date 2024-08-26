@@ -1,0 +1,29 @@
+<div class="archived-projects">
+    <h2>Archived Projects</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of archivedProjects; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ project.title }}</td>
+          <td>{{ project.description }}</td>
+          <td>
+            <button type="button" class="btn btn-link text-success" (click)="restoreArchivedProject($event, project.id)">
+              <i class="fa fa-undo"></i>
+            </button>
+            <button type="button" class="btn btn-link text-danger" (click)="deleteArchivedProject($event, project.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

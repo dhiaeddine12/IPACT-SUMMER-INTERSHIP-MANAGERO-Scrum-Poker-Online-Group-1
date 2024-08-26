@@ -1,0 +1,32 @@
+package com.spo.app.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+
+@Getter
+@CrossOrigin(origins = "*")
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Document(collection = "votes")
+public class Vote {
+    @Id
+    private String id;
+    private int value;
+
+    private Session session;
+
+    private Issue issue;
+    private User user;
+
+}

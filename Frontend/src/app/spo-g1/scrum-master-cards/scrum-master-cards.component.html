@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+        </div>
+
+    </div>
+    <!-- Issues Selection -->
+   <!-- Issue Selection -->
+<div class="issue-selection">
+    <h3 class="page-title">Scrum Master Voting Page</h3>
+    <form class="issue-form">
+      <label for="selectedIssueTitle">Choose an Issue</label>
+      <select id="selectedIssueTitle" class="form-control" (change)="startVote($event)">
+        <option *ngFor="let issue of issues" [ngValue]="issue">
+          {{ issue.title }}
+        </option>
+      </select>
+      <button type="button" (click)="finishVote()" class="btn btn-primary">Finish Voting</button>
+    </form>
+  </div>
+
+
+   <!-- Flipped Card Container -->
+   <div class="flipped-card-wrapper">
+    <div class="flipped-card-container">
+      <div class="flipped-card" [ngClass]="{'flipped': isCardFlipped}">
+        <div class="card-front"></div>
+        <div class="card-back">
+          <div class="card-number">{{ lastClickedValue }}</div>
+        </div>
+      </div>
+    </div>
+    <button (click)="validateChoice()" class="btn btn-validate">Validate Choice</button>
+  </div>
+
+<!-- Fibonacci Cards -->
+
+<div class="card-container">
+    <div
+      *ngFor="let number of fibonacciSequence"
+      class="card"
+      [ngClass]="{'disabled': isVotingDisabled, 'elevated': number === lastClickedValue}"
+      (click)="onCardClick(number)"
+    >
+      <div class="card-number">
+        {{ number }}
+      </div>
+    </div>
+  </div>
+
+
+
+  
+</div>
